@@ -1741,25 +1741,25 @@ Body:
       SpCost: 5
       ZenyCost:
         - Level: 1
-          Amount: 100
+          Amount: 10
         - Level: 2
-          Amount: 200
+          Amount: 20
         - Level: 3
-          Amount: 300
+          Amount: 30
         - Level: 4
-          Amount: 400
+          Amount: 40
         - Level: 5
-          Amount: 500
+          Amount: 50
         - Level: 6
-          Amount: 600
+          Amount: 60
         - Level: 7
-          Amount: 700
+          Amount: 70
         - Level: 8
-          Amount: 800
+          Amount: 80
         - Level: 9
-          Amount: 900
+          Amount: 90
         - Level: 10
-          Amount: 1000
+          Amount: 100
   - Id: 43
     Name: AC_OWL
     Description: Owl's Eye
@@ -5328,7 +5328,7 @@ Body:
     HitCount: 1
     Element: Weapon
     SplashArea: 1
-    Knockback: 2
+    Knockback: 0
     Requires:
       SpCost: 12
       State: Cart
@@ -6559,12 +6559,12 @@ Body:
           Amount: 1
     Unit:
       Id: Demonstration
-      Range: 1
+      Range: 3
       Interval: 500
       Target: Enemy
       Flag:
         NoReiteration: true
-        NoFootSet: true
+        # NoFootSet: true
   - Id: 230
     Name: AM_ACIDTERROR
     Description: Acid Terror
@@ -6578,6 +6578,18 @@ Body:
       IgnoreAutoGuard: true
       IgnoreCicada: true
     Range: 9
+    # Hit: Multi_Hit
+    # HitCount:
+    #   - Level: 1
+    #     Count: 1
+    #   - Level: 2
+    #     Count: 2
+    #   - Level: 3
+    #     Count: 3
+    #   - Level: 4
+    #     Count: 4
+    #   - Level: 5
+    #     Count: 5
     Hit: Single
     HitCount: 1
     CopyFlags:
@@ -13564,8 +13576,8 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    Flags:
-      IsSpirit: true
+    # Flags:
+    #   IsSpirit: true
     Hit: Single
     FixedCastTime: 3000
     CastTimeFlags:
@@ -13582,8 +13594,8 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    Flags:
-      IsSpirit: true
+    # Flags:
+    #   IsSpirit: true
     Hit: Single
     FixedCastTime: 3000
     CastTimeFlags:
@@ -13600,8 +13612,8 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    Flags:
-      IsSpirit: true
+    # Flags:
+    #   IsSpirit: true
     Hit: Single
     FixedCastTime: 3000
     CastTimeFlags:

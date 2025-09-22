@@ -12,7 +12,8 @@ void SkillCartRevolution::calculateSkillRatio(const Damage *wd, const block_list
 	const map_session_data *sd = BL_CAST(BL_PC, src);
 	base_skillratio += 50;
 	if (sd && sd->cart_weight)
-		base_skillratio += 100 * sd->cart_weight / sd->cart_weight_max; // +1% every 1% weight
+		// base_skillratio += 100 * sd->cart_weight / sd->cart_weight_max; // +1% every 1% weight
+		base_skillratio += 100; // ignore weight
 	else if (!sd)
 		base_skillratio += 100; // Max damage for non players.
 }
