@@ -219,7 +219,7 @@ Body:
     AegisName: Empty_Bottle
     Name: Empty Bottle
     Type: Etc
-    Buy: 400
+    Buy: 8
     Weight: 20
     Flags:
       BuyingStore: true
@@ -647,7 +647,7 @@ Body:
     AegisName: Stem
     Name: Stem
     Type: Etc
-    Buy: 46
+    Buy: 5
     Weight: 10
     Flags:
       BuyingStore: true
@@ -695,7 +695,7 @@ Body:
     AegisName: Scell
     Name: Scell
     Type: Etc
-    Buy: 120
+    Buy: 12
     Weight: 10
     Flags:
       BuyingStore: true
@@ -831,7 +831,7 @@ Body:
     AegisName: Immortal_Heart
     Name: Immortal Heart
     Type: Etc
-    Buy: 374
+    Buy: 37
     Weight: 10
     Flags:
       BuyingStore: true
@@ -1857,7 +1857,7 @@ Body:
     AegisName: Transparent_Cloth
     Name: Fabric
     Type: Etc
-    Buy: 306
+    Buy: 30
     Weight: 10
     Flags:
       BuyingStore: true
@@ -3716,7 +3716,7 @@ Body:
       DropEffect: CLIENT
     Script: |
       bonus bNoCastCancel;
-      bonus bVariableCastrate,25;
+      bonus bVariableCastrate,-25;
   - Id: 4078
     AegisName: Savage_Card
     Name: Savage Card
@@ -24218,7 +24218,7 @@ Body:
     AegisName: Poison_Spore
     Name: Poison Spore
     Type: Etc
-    Buy: 114
+    Buy: 11
     Weight: 10
     Flags:
       BuyingStore: true

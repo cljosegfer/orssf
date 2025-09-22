@@ -7425,10 +7425,12 @@ Body:
           - Green_Operation_Coat    # 15044
     Script: |
       .@r = max(getequiprefinerycnt(EQI_ARMOR),1);
-      bonus3 bAddMonsterDropItem,929,RC_DemiHuman,70*.@r;
-      bonus3 bAddMonsterDropItem,970,RC_DemiHuman,50*.@r;
-      bonus3 bAddMonsterDropItem,929,RC_Brute,70*.@r;
-      bonus3 bAddMonsterDropItem,970,RC_Brute,50*.@r;
+      bonus2 bAddMonsterDropItem,929,-50*.@r;
+      bonus2 bAddMonsterDropItem,970,-50*.@r;
+    #   bonus3 bAddMonsterDropItem,929,RC_DemiHuman,70*.@r;
+    #   bonus3 bAddMonsterDropItem,970,RC_DemiHuman,50*.@r;
+    #   bonus3 bAddMonsterDropItem,929,RC_Brute,70*.@r;
+    #   bonus3 bAddMonsterDropItem,970,RC_Brute,50*.@r;
   - Combos:
       - Combo:
           - Twilight_Desert    # 13034
