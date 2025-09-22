@@ -36,11 +36,8 @@ Header:
   Type: INTER_SERVER_DB
   Version: 1
 
-Body:
-  - ID: 0
-    Name: "Storage"
-    Table: storage
-
-Footer:
-  Imports:
-    - Path: conf/import/inter_server.yml
+#Body:
+#   - ID: 1
+#     Name: "VIP Storage"
+#     Table: vip_storage
+#     Max: 300

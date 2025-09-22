@@ -91,6 +91,13 @@ Body:
       breakguild: true
       channel: true
       langtype: true
+      warp: true
+      skreset: true
+      streset: true
+      item: true
+      jobchange: true
+      hlvl: true
+      homshuffle: true
     Permissions:
       attendance: false
   - Id: 2
