@@ -2041,12 +2041,12 @@ int64 battle_calc_damage(block_list *src,block_list *bl,struct Damage *d,int64 d
 			damage = i64max((damage - damage * sce->val2 / 100), 1);
 	}
 
-	if (bl->type == BL_MOB) { // Reduces damage received for Green Aura MVP
-		mob_data *md = BL_CAST(BL_MOB, bl);
+	// if (bl->type == BL_MOB) { // Reduces damage received for Green Aura MVP
+	// 	mob_data *md = BL_CAST(BL_MOB, bl);
 
-		if (md && md->damagetaken != 100)
-			damage = i64max(damage * md->damagetaken / 100, 1);
-	}
+	// 	if (md && md->damagetaken != 100)
+	// 		damage = i64max(damage * md->damagetaken / 100, 1);
+	// }
 	
 	if (tsc != nullptr && !tsc->empty()) {
 		if (!battle_status_block_damage(src, bl, tsc, d, damage, skill_id, skill_lv)) // Statuses that reduce damage to 0.
@@ -4858,20 +4858,26 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 				skillratio += 35 * skill_lv;
 			break;
 		case AM_DEMONSTRATION:
+			{
 			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
         	ATK_ADD(wd->damage, wd->damage2, matk);
 			skillratio += 20 * skill_lv;
+			}
 			break;
 		case AM_ACIDTERROR:
+			{
 #ifdef RENEWAL
 			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
         	ATK_ADD(wd->damage, wd->damage2, matk);
 			skillratio += -100 + 200 * skill_lv;
+			ShowError("0 enemies targeted by, divide per 0 avoided!\n");
+			ShowDebug("0 enemies targeted by, divide per 0 avoided!\n");
 			if (sd && pc_checkskill(sd, AM_LEARNINGPOTION))
 				skillratio += 100; // !TODO: What's this bonus increase?
 #else
 			skillratio += -50 + 50 * skill_lv;
 #endif
+			}
 			break;
 		case MO_FINGEROFFENSIVE:
 #ifdef RENEWAL
@@ -5005,6 +5011,8 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 #ifdef RENEWAL
 		case CR_ACIDDEMONSTRATION:
 			skillratio += -100 + 200 * skill_lv + sstatus->int_ + tstatus->vit; // !TODO: Confirm status bonus
+			// skillratio += (sstatus->matk_min + sstatus->matk_max) / 2;
+			skillratio += sstatus->smatk;
 			if (target->type == BL_PC)
 				skillratio /= 2;
 			break;
@@ -5610,8 +5618,12 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 			}
 			break;
 		case GN_CARTCANNON:
+			{
+			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+			ATK_ADD(wd->damage, wd->damage2, matk);
 			skillratio += -100 + (250 + 20 * pc_checkskill(sd, GN_REMODELING_CART)) * skill_lv + 2 * sstatus->int_ / (6 - pc_checkskill(sd, GN_REMODELING_CART));
 			RE_LVL_DMOD(100);
+			}
 			break;
 		case GN_SPORE_EXPLOSION:
 			skillratio += -100 + 400 + 200 * skill_lv;
@@ -9918,10 +9930,14 @@ struct Damage battle_calc_misc_attack(block_list *src,block_list *target,uint16 
 			// Fall through
 #else
 		case CR_ACIDDEMONSTRATION:
+			struct Damage atk = battle_calc_weapon_attack(src, target, skill_id, skill_lv, 0);
+			struct Damage matk = battle_calc_magic_attack(src, target, skill_id, skill_lv, 0);
+			
 			if(tstatus->vit+sstatus->int_) //crash fix
 				md.damage = (int32)((int64)7*tstatus->vit*sstatus->int_*sstatus->int_ / (10*(tstatus->vit+sstatus->int_)));
 			else
 				md.damage = 0;
+			md.damage += (atk.damage/skill_lv + matk.damage/skill_lv);
 			if (tsd)
 				md.damage /= 2;
 #endif

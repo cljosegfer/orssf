@@ -98,6 +98,8 @@ Body:
       jobchange: true
       hlvl: true
       homshuffle: true
+      guildlevelup: true
+      homfriendly: true
     Permissions:
       attendance: false
   - Id: 2

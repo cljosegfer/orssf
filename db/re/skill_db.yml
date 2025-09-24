@@ -5364,7 +5364,7 @@ Body:
     SplashArea: -1
     CastTime: 1000
     AfterCastActDelay: 1000
-    Duration1: 300000
+    Duration1: -1
     Cooldown: 30000
     FixedCastTime: 300
     Requires:
@@ -5402,7 +5402,7 @@ Body:
       IsQuest: true
     Hit: Single
     HitCount: 1
-    Duration1: 300000
+    Duration1: -1
     FixedCastTime: 5000
     Requires:
       SpCost: 30
@@ -13576,8 +13576,8 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    # Flags:
-    #   IsSpirit: true
+    Flags:
+      IsSpirit: true
     Hit: Single
     FixedCastTime: 3000
     CastTimeFlags:
@@ -13594,8 +13594,8 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    # Flags:
-    #   IsSpirit: true
+    Flags:
+      IsSpirit: true
     Hit: Single
     FixedCastTime: 3000
     CastTimeFlags:
@@ -13612,8 +13612,8 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    # Flags:
-    #   IsSpirit: true
+    Flags:
+      IsSpirit: true
     Hit: Single
     FixedCastTime: 3000
     CastTimeFlags:

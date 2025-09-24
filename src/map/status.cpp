@@ -3724,7 +3724,8 @@ bool status_calc_cart_weight(map_session_data *sd, enum e_status_calc_weight_opt
 
 	// Skill bonus max weight increases
 	if (flag&CALCWT_MAXBONUS)
-		sd->cart_weight_max += (pc_checkskill(sd, GN_REMODELING_CART) * 5000);
+		// sd->cart_weight_max += (pc_checkskill(sd, GN_REMODELING_CART) * 5000);
+		sd->cart_weight_max += (pc_checkskill(sd, GN_REMODELING_CART) * 500000);
 
 	// Update the client if the new weight calculations don't match
 	if (b_cart_weight_max != sd->cart_weight_max)

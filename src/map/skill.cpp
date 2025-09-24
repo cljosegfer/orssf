@@ -18708,13 +18708,13 @@ bool skill_check_condition_castbegin( map_session_data& sd, uint16 skill_id, uin
 			}
 			break;
 #endif
-		case AM_TWILIGHT2:
-		case AM_TWILIGHT3:
-			if (!party_skill_check(&sd, sd.status.party_id, skill_id, skill_lv)) {
-				clif_skill_fail( sd, skill_id );
-				return false;
-			}
-			break;
+		// case AM_TWILIGHT2:
+		// case AM_TWILIGHT3:
+		// 	if (!party_skill_check(&sd, sd.status.party_id, skill_id, skill_lv)) {
+		// 		clif_skill_fail( sd, skill_id );
+		// 		return false;
+		// 	}
+		// 	break;
 		case SG_SUN_COMFORT:
 		case SG_MOON_COMFORT:
 		case SG_STAR_COMFORT:
