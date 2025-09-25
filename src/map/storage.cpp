@@ -741,15 +741,15 @@ bool storage_guild_additem(map_session_data* sd, struct s_storage* stor, struct 
 	if( id->stack.guild_storage && amount > id->stack.amount ) // item stack limitation
 		return false;
 
-	if (!itemdb_canguildstore(item_data, pc_get_group_level(sd)) || item_data->expire_time) { // Check if item is storable. [Skotlex]
-		clif_displaymessage (sd->fd, msg_txt(sd,264));
-		return false;
-	}
+	// if (!itemdb_canguildstore(item_data, pc_get_group_level(sd)) || item_data->expire_time) { // Check if item is storable. [Skotlex]
+	// 	clif_displaymessage (sd->fd, msg_txt(sd,264));
+	// 	return false;
+	// }
 
-	if ((item_data->bound == BOUND_ACCOUNT || item_data->bound > BOUND_GUILD) && !pc_can_give_bounded_items(sd)) {
-		clif_displaymessage(sd->fd, msg_txt(sd,294));
-		return false;
-	}
+	// if ((item_data->bound == BOUND_ACCOUNT || item_data->bound > BOUND_GUILD) && !pc_can_give_bounded_items(sd)) {
+	// 	clif_displaymessage(sd->fd, msg_txt(sd,294));
+	// 	return false;
+	// }
 
 	if(itemdb_isstackable2(id)) { //Stackable
 		for(i = 0; i < stor->max_amount; i++) {

@@ -1256,7 +1256,7 @@ Body:
     Name: Oridecon
     Type: Etc
     Buy: 1100
-    Weight: 200
+    Weight: 0
     Flags:
       BuyingStore: true
       DropEffect: CLIENT
@@ -1265,7 +1265,7 @@ Body:
     Name: Elunium
     Type: Etc
     Buy: 1100
-    Weight: 200
+    Weight: 0
     Flags:
       BuyingStore: true
       DropEffect: CLIENT
@@ -17654,7 +17654,7 @@ Body:
     Name: Carnium
     Type: Etc
     Buy: 2000
-    Weight: 150
+    Weight: 0
     Flags:
       BuyingStore: true
       DropEffect: CLIENT
@@ -17663,7 +17663,7 @@ Body:
     Name: Bradium
     Type: Etc
     Buy: 2000
-    Weight: 150
+    Weight: 0
     Flags:
       BuyingStore: true
       DropEffect: CLIENT

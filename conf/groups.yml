@@ -100,6 +100,11 @@ Body:
       homshuffle: true
       guildlevelup: true
       homfriendly: true
+      checkquest: true
+      completequest: true
+      setquest: true
+      erasequest: true
+      delitem: true
     Permissions:
       attendance: false
   - Id: 2

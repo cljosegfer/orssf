@@ -10190,7 +10190,7 @@ spl_fild03,172,71,3	duplicate(Expedition Scout#1)	Expedition Scout#4	707
 	}
 }
 
-ra_temple,122,174,3	script	Nuria	918,{
+ra_temple,122,173,3	script	Nuria	918,{
 	mes "[Nuria]";
 	if (ep13_1_edq == 9 || ep13_1_edq == 101 || ep13_1_edq == 121 || ep13_1_edq == 122 || ep13_1_edq == 103) {
 		mes "Welcome, stranger. How can I help you?";

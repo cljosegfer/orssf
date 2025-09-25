@@ -28644,7 +28644,7 @@ Body:
         Reproduce: true
     CastTime: 1500
     AfterCastActDelay: 500
-    Duration1: 5000
+    Duration1: 50000
     Cooldown: 5000
     Requires:
       SpCost:
@@ -28835,7 +28835,7 @@ Body:
     CopyFlags:
       Skill:
         Reproduce: true
-    Duration1: 100
+    Duration1: 100 # aqui?
     Requires:
       SpCost: 1
     Unit:
