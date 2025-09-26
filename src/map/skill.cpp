@@ -9857,8 +9857,9 @@ int32 skill_castend_nodamage_id (block_list *src, block_list *bl, uint16 skill_i
 			}
 
 #ifdef RENEWAL
-			if (bl->type == BL_HOM)
-				hp *= 3; // Heal effectiveness is 3x for Homunculus
+			// if (bl->type == BL_HOM)
+			// 	hp *= 3; // Heal effectiveness is 3x for Homunculus
+			hp *= 3;
 #endif
 
 			clif_skill_nodamage(src,*bl,skill_id,skill_lv);

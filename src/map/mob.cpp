@@ -3458,6 +3458,18 @@ int32 mob_dead(mob_data *md, block_list *src, int32 type)
 
 			clif_mvp_exp( *mvp_sd, log_mvp_exp );
 			pc_gainexp( mvp_sd, md, log_mvp_exp, 0, 0 );
+
+			// mvp drops item_id=14545
+			struct item new_item;
+			memset(&new_item, 0, sizeof(new_item));
+
+			new_item.nameid = 14545;
+			new_item.identify = 1;
+			new_item.amount = 1;
+
+			char flag = pc_additem(mvp_sd, &new_item, 1, LOG_TYPE_MVP);
+			if (flag) {map_addflooritem(&new_item, 1, mvp_sd->m, mvp_sd->x, mvp_sd->y, 0, 0, 0, 4, 0);}
+			clif_displaymessage(mvp_sd->fd, "You have received a Diário de Aventuras for defeating an MVP!");
 		}
 
 		if( !(map_getmapflag(m, MF_NOMVPLOOT) || type&1) ) {
