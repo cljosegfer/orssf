@@ -6543,11 +6543,11 @@ enum e_additem_result pc_cart_additem(map_session_data *sd,struct item *item,int
 		return ADDITEM_STACKLIMIT;
 	}
 
-	if( !itemdb_cancartstore(item, pc_get_group_level(sd)) || (item->bound > BOUND_ACCOUNT && !pc_can_give_bounded_items(sd)))
-	{ // Check item trade restrictions	[Skotlex]
-		clif_displaymessage (sd->fd, msg_txt(sd,264));
-		return ADDITEM_INVALID;
-	}
+	// if( !itemdb_cancartstore(item, pc_get_group_level(sd)) || (item->bound > BOUND_ACCOUNT && !pc_can_give_bounded_items(sd)))
+	// { // Check item trade restrictions	[Skotlex]
+	// 	clif_displaymessage (sd->fd, msg_txt(sd,264));
+	// 	return ADDITEM_INVALID;
+	// }
 
 	if( (w = data->weight*amount) + sd->cart_weight > sd->cart_weight_max )
 		return ADDITEM_OVERWEIGHT;

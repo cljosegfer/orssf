@@ -8524,7 +8524,8 @@ Body:
       DropEffect: CLIENT
     Script: |
       bonus bStr,2;
-      autobonus "{ bonus bCritical,100; }",5,5000,BF_NORMAL,"{ specialeffect2 EF_ENHANCE; }";
+      autobonus "{ bonus bCritical,100; }",5,5000,BF_WEAPON,"{ specialeffect2 EF_ENHANCE; }";
+      autobonus "{ bonus bVariableCastrate,-50; bonus bFlee,30; }",50,5000,BF_WEAPON,"{ specialeffect2 EF_SUFFRAGIUM; }";
   - Id: 4412
     AegisName: Isilla_Card
     Name: Isilla Card
@@ -8541,6 +8542,7 @@ Body:
     Script: |
       bonus bInt,2;
       autobonus "{ bonus bVariableCastrate,-50; bonus bFlee,30; }",50,5000,BF_MAGIC,"{ specialeffect2 EF_SUFFRAGIUM; }";
+      autobonus "{ bonus bCritical,100; }",5,5000,BF_MAGIC,"{ specialeffect2 EF_ENHANCE; }";
   - Id: 4413
     AegisName: Hodremlin_Card
     Name: Hodremlin Card

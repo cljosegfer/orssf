@@ -105,7 +105,7 @@ Body:
       setquest: true
       erasequest: true
       delitem: true
-      identifyall: true
+      identifyall: true 
     Permissions:
       attendance: false
   - Id: 2
