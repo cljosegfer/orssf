@@ -291,8 +291,8 @@ Body:
       - Level: 10
         Area: 2
       - Level: 11
-        Area: 4
-    Knockback: 2
+        Area: 5
+    Knockback: 0
     CopyFlags:
       Skill:
         Plagiarism: true
@@ -4014,7 +4014,7 @@ Body:
       - Level: 4
         Time: 120000
       - Level: 5
-        Time: 150000
+        Time: -1
     Requires:
       SpCost:
         - Level: 1
@@ -4052,7 +4052,7 @@ Body:
       - Level: 2
         Time: 20000
       - Level: 3
-        Time: 30000
+        Time: -1
       - Level: 4
         Time: 40000
       - Level: 5

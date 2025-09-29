@@ -8375,7 +8375,7 @@ int32 skill_castend_nodamage_id (block_list *src, block_list *bl, uint16 skill_i
 	case SR_LIGHTNINGWALK:
 	case GN_CARTBOOST:
 	case GN_BLOOD_SUCKER:
-	case GN_HELLS_PLANT:
+	// case GN_HELLS_PLANT:
 	case KO_MEIKYOUSISUI:
 	case ALL_ODINS_POWER:
 	case ALL_FULL_THROTTLE:
@@ -8431,6 +8431,17 @@ int32 skill_castend_nodamage_id (block_list *src, block_list *bl, uint16 skill_i
 	case SKE_ENCHANTING_SKY:
 		clif_skill_nodamage(src,*bl,skill_id,skill_lv,
 			sc_start(src,bl,type,100,skill_lv,skill_get_time(skill_id,skill_lv)));
+		break;
+	
+	case GN_HELLS_PLANT:
+		// alch
+		clif_skill_nodamage(src, *bl, skill_id, skill_lv,
+			sc_start(src, bl, type, 100, skill_lv, skill_get_time(skill_id, skill_lv)));
+		// homunculus
+		if (sd && hom_is_active(sd->hd)) {
+			clif_skill_nodamage(src, *(block_list*)sd->hd, skill_id, skill_lv);
+			sc_start(src, (block_list*)sd->hd, type, 100, skill_lv, skill_get_time(skill_id, skill_lv));
+		}
 		break;
 
 	case NPC_GRADUAL_GRAVITY:
@@ -20454,7 +20465,7 @@ int32 skill_vfcastfix(block_list *bl, double time, uint16 skill_id, uint16 skill
 
 	// Apply Variable CastTime calculation by INT & DEX
 	if (!(flag&1))
-		time = time * (1 - sqrt(((float)(status_get_dex(bl) * 2 + status_get_int(bl)) / battle_config.vcast_stat_scale)));
+		time = time * (1 - sqrt(((float)(status_get_dex(bl) * 1.5 + status_get_int(bl) * 1.5) / battle_config.vcast_stat_scale)));
 
 	time = time * (1 - (float)min(reduce_cast_rate, 100) / 100);
 	time = max((int32)time, 0) + (1 - (float)min(fixcast_r, 100) / 100) * max(fixed, 0); //Underflow checking/capping

@@ -6084,8 +6084,9 @@ void status_calc_bl_main(block_list& bl, std::bitset<SCB_MAX> flag)
 #ifdef RENEWAL
 			// Recalculate homunculus speed if the player receives a speed buff/debuff
 			if (hom_is_active(sd->hd)) {
-				if (battle_config.hom_setting & HOMSET_COPY_SPEED)
-					sd->hd->battle_status.speed = status_get_speed(sd);
+				// if (battle_config.hom_setting & HOMSET_COPY_SPEED)
+				// 	sd->hd->battle_status.speed = status_get_speed(sd);
+				sd->hd->battle_status.speed = status_get_speed(sd);
 
 				// Homunculus speed buff/debuffs applies over the current speed
 				sd->hd->battle_status.speed = status_calc_speed(sd->hd, &sd->hd->sc, sd->hd->battle_status.speed);
@@ -6104,8 +6105,9 @@ void status_calc_bl_main(block_list& bl, std::bitset<SCB_MAX> flag)
 			homun_data* hd = reinterpret_cast<homun_data*>(&bl);
 
 			if (hd->master != nullptr) {
-				if (battle_config.hom_setting & HOMSET_COPY_SPEED)
-					status->speed = status_get_speed(hd->master);
+				// if (battle_config.hom_setting & HOMSET_COPY_SPEED)
+				// 	status->speed = status_get_speed(hd->master);
+				status->speed = status_get_speed(hd->master);
 
 				// Homunculus speed buff/debuffs applies over the current speed
 				status->speed = status_calc_speed(&bl, &hd->sc, status->speed);

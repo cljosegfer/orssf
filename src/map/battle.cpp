@@ -5668,7 +5668,11 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 			}
 			break;
 		case GN_HELLS_PLANT_ATK:
+			{
+			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+        	ATK_ADD(wd->damage, wd->damage2, matk);
 			skillratio += -100 + 100 * skill_lv + sstatus->int_ * (sd ? pc_checkskill(sd, AM_CANNIBALIZE) : 5); // !TODO: Confirm INT and Cannibalize bonus
+			}
 			RE_LVL_DMOD(100);
 			break;
 		// Physical Elemantal Spirits Attack Skills
@@ -9937,7 +9941,7 @@ struct Damage battle_calc_misc_attack(block_list *src,block_list *target,uint16 
 				md.damage = (int32)((int64)7*tstatus->vit*sstatus->int_*sstatus->int_ / (10*(tstatus->vit+sstatus->int_)));
 			else
 				md.damage = 0;
-			md.damage += (atk.damage/skill_lv + matk.damage/skill_lv);
+			md.damage += (atk.damage + matk.damage);
 			if (tsd)
 				md.damage /= 2;
 #endif
