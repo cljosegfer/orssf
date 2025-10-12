@@ -10233,6 +10233,21 @@ int64 pc_readparam(map_session_data* sd,int64 type)
 		case SP_ACHIEVEMENT_LEVEL: val = sd->achievement_data.level; break;
 		case SP_CRITICAL:        val = sd->battle_status.cri/10; break;
 		case SP_ASPD:            val = (AMOTION_ZERO_ASPD-sd->battle_status.amotion)/AMOTION_INTERVAL; break;
+		// case SP_WEAPON_ATK:		 val = sd->battle_status.rhw.atk + sd->battle_status.lhw.atk; break; // it doesnt get updated with equips
+		case SP_WEAPON_ATK:	{
+			val = 0;
+			int16 rh_idx = sd->equip_index[EQI_HAND_R];
+			int16 lh_idx = sd->equip_index[EQI_HAND_L];
+
+			// right
+			if (rh_idx >= 0 && sd->inventory_data[rh_idx] && sd->inventory_data[rh_idx]->type == IT_WEAPON) {
+				val += sd->inventory_data[rh_idx]->atk;
+			}
+			// left
+			if (lh_idx >= 0 && sd->inventory_data[lh_idx] && sd->inventory_data[lh_idx]->type == IT_WEAPON) {
+				val += sd->inventory_data[lh_idx]->atk;
+			}
+		}	break;
 		case SP_BASE_ATK:
 #ifdef RENEWAL
 			val = sd->bonus.eatk;
@@ -12032,7 +12047,9 @@ bool pc_equipitem(map_session_data *sd,int16 n,int32 req_pos,bool equipswitch)
 		}
 		return false;
 	}
-	if( !sd->sc.empty() && (sd->sc.cant.equip || (sd->sc.getSCE(SC_PYROCLASTIC) && sd->inventory_data[n]->type == IT_WEAPON))) {
+	// if( !sd->sc.empty() && (sd->sc.cant.equip || (sd->sc.getSCE(SC_PYROCLASTIC) && sd->inventory_data[n]->type == IT_WEAPON))) 
+	if( !sd->sc.empty() && (sd->sc.cant.equip)) 
+	{
 		if( equipswitch ){
 			clif_equipswitch_add( sd, n, req_pos, ITEM_EQUIP_ACK_FAIL );
 		}else{
@@ -12372,8 +12389,8 @@ bool pc_unequipitem(map_session_data *sd, int32 n, int32 flag) {
 		return false; //Nothing to unequip
 	}
 	// status change that makes player cannot unequip equipment
-	if (!(flag&2) && !sd->sc.empty() &&( sd->sc.cant.unequip ||
-		(sd->sc.getSCE(SC_PYROCLASTIC) &&	sd->inventory_data[n]->type == IT_WEAPON)))	// can't switch weapon
+	// if (!(flag&2) && !sd->sc.empty() &&( sd->sc.cant.unequip || (sd->sc.getSCE(SC_PYROCLASTIC) &&	sd->inventory_data[n]->type == IT_WEAPON)))	// can't switch weapon
+	if (!(flag&2) && !sd->sc.empty() &&( sd->sc.cant.unequip))	// can't switch weapon
 	{
 		clif_unequipitemack(*sd,n,0,false);
 		return false;

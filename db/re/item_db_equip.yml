@@ -6990,7 +6990,6 @@ Body:
       bonus bAtkEle,Ele_Holy;
       skill "AL_HEAL",3;
       bonus2 bAddRace,RC_Demon,3;
-      bonus bMatk,180;
   - Id: 1367
     AegisName: Slaughter
     Name: Slaughter
@@ -59969,7 +59968,7 @@ Body:
     SubType: Dagger
     Buy: 20
     Weight: 500
-    Attack: 200
+    Attack: 120
     Range: 1
     Slots: 3
     Jobs:
@@ -79630,7 +79629,6 @@ Body:
       .@r = getrefine();
       bonus bMaxSP,50*.@r;
       bonus bHealPower,20;
-      bonus bMatk,130;
   - Id: 16001
     AegisName: Red_Square_Bag
     Name: Red Square Bag
@@ -79673,7 +79671,6 @@ Body:
       bonus2 bAddMonsterDropItem,505,10;
       if (readparam(bStr)>=95)
          bonus2 bAddEff,Eff_Stun,500;
-      bonus bMatk,130;
   - Id: 16002
     AegisName: Stunner_C
     Name: Stunner
@@ -94718,6 +94715,9 @@ Body:
       bonus bMatk,(.@str/8)*5;
       bonus bUseSPrate,-.@str/8;
       bonus bHit,.@str/8;
+
+      .@bwatk = readparam(bWeaponAtk);
+      bonus bMatk,.@bwatk;
 
       if (.@int>=108) {
          bonus bBaseAtk,50;
@@ -149144,8 +149144,6 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
-    Script: |
-      bonus bMatk,125;
   - Id: 28705
     AegisName: Scarlet_Dagger
     Name: Crimson Dagger

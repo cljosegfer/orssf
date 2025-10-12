@@ -133,51 +133,51 @@ Body:
     Race: Brute
     Status:
       - Type: Hp
-        Base: 320
-        GrowthMinimum: 80
-        GrowthMaximum: 130
+        Base: 3200
+        GrowthMinimum: 800
+        GrowthMaximum: 1300
         EvolutionMinimum: 1600
         EvolutionMaximum: 3600
       - Type: Sp
         Base: 10
-        GrowthMinimum: 1
-        GrowthMaximum: 4
+        GrowthMinimum: 2
+        GrowthMaximum: 8
         EvolutionMinimum: 120
         EvolutionMaximum: 360
       - Type: Str
         Base: 20
-        GrowthMinimum: 8
-        GrowthMaximum: 20
+        GrowthMinimum: 16
+        GrowthMaximum: 40
         EvolutionMinimum: 20
         EvolutionMaximum: 50
       - Type: Agi
         Base: 17
-        GrowthMinimum: 4
-        GrowthMaximum: 20
+        GrowthMinimum: 8
+        GrowthMaximum: 40
         EvolutionMinimum: 10
         EvolutionMaximum: 30
       - Type: Vit
         Base: 35
-        GrowthMinimum: 4
-        GrowthMaximum: 20
+        GrowthMinimum: 8
+        GrowthMaximum: 40
         EvolutionMinimum: 20
         EvolutionMaximum: 50
       - Type: Int
         Base: 11
-        GrowthMinimum: 1
-        GrowthMaximum: 10
+        GrowthMinimum: 2
+        GrowthMaximum: 20
         EvolutionMinimum: 20
         EvolutionMaximum: 50
       - Type: Dex
         Base: 24
-        GrowthMinimum: 3
-        GrowthMaximum: 19
+        GrowthMinimum: 6
+        GrowthMaximum: 38
         EvolutionMinimum: 10
         EvolutionMaximum: 30
       - Type: Luk
         Base: 12
-        GrowthMinimum: 3
-        GrowthMaximum: 19
+        GrowthMinimum: 6
+        GrowthMaximum: 38
         EvolutionMinimum: 10
         EvolutionMaximum: 30
     SkillTree:
@@ -821,37 +821,37 @@ Body:
     Size: Medium
     Status:
       - Type: Hp
-        Base: 80
-        GrowthMinimum: 240
-        GrowthMaximum: 480
+        Base: 800
+        GrowthMinimum: 2400
+        GrowthMaximum: 4800
       - Type: Sp
         Base: 11
-        GrowthMinimum: 40
-        GrowthMaximum: 120
+        GrowthMinimum: 80
+        GrowthMaximum: 240
       - Type: Str
         Base: 11
-        GrowthMinimum: 20
-        GrowthMaximum: 40
+        GrowthMinimum: 40
+        GrowthMaximum: 80
       - Type: Agi
         Base: 11
-        GrowthMinimum: 13
-        GrowthMaximum: 26
+        GrowthMinimum: 26
+        GrowthMaximum: 52
       - Type: Vit
         Base: 11
-        GrowthMinimum: 18
-        GrowthMaximum: 36
+        GrowthMinimum: 36
+        GrowthMaximum: 72
       - Type: Int
         Base: 11
-        GrowthMinimum: 15
-        GrowthMaximum: 40
+        GrowthMinimum: 30
+        GrowthMaximum: 80
       - Type: Dex
         Base: 11
-        GrowthMinimum: 16
-        GrowthMaximum: 32
+        GrowthMinimum: 32
+        GrowthMaximum: 64
       - Type: Luk
         Base: 11
-        GrowthMinimum: 4
-        GrowthMaximum: 16
+        GrowthMinimum: 8
+        GrowthMaximum: 32
     SkillTree:
       - Skill: MH_MAGMA_FLOW
         MaxLevel: 5
