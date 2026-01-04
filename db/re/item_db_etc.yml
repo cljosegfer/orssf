@@ -220,7 +220,7 @@ Body:
     Name: Empty Bottle
     Type: Etc
     Buy: 8
-    Weight: 20
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 714
@@ -648,7 +648,7 @@ Body:
     Name: Stem
     Type: Etc
     Buy: 5
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 906
@@ -696,7 +696,7 @@ Body:
     Name: Scell
     Type: Etc
     Buy: 12
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 912
@@ -832,7 +832,7 @@ Body:
     Name: Immortal Heart
     Type: Etc
     Buy: 37
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 930
@@ -1152,7 +1152,7 @@ Body:
     Name: Alcohol
     Type: Etc
     Buy: 400
-    Weight: 30
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 971
@@ -1858,7 +1858,7 @@ Body:
     Name: Fabric
     Type: Etc
     Buy: 30
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 1060
@@ -2060,7 +2060,7 @@ Body:
     Name: Empty Test Tube
     Type: Etc
     Buy: 3
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 1093
@@ -2068,7 +2068,7 @@ Body:
     Name: Empty Potion Bottle
     Type: Etc
     Buy: 10
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 1094
@@ -24222,7 +24222,7 @@ Body:
     Name: Poison Spore
     Type: Etc
     Buy: 11
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 7034

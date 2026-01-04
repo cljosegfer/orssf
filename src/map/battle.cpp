@@ -5355,25 +5355,33 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 			skillratio += 50 * skill_lv;
 			break;
 		case NC_BOOSTKNUCKLE:
+			{int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+			ATK_ADD(wd->damage, wd->damage2, matk);
 			skillratio += -100 + 260 * skill_lv + sstatus->dex; // !TODO: What's the DEX bonus?
-			RE_LVL_DMOD(100);
+			RE_LVL_DMOD(100);}
 			break;
 		case NC_PILEBUNKER:
 			skillratio += 200 + 100 * skill_lv + status_get_str(src);
 			RE_LVL_DMOD(100);
 			break;
 		case NC_VULCANARM:
+			{int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+			ATK_ADD(wd->damage, wd->damage2, matk);
 			skillratio += -100 + 230 * skill_lv + sstatus->dex; // !TODO: What's the DEX bonus?
-			RE_LVL_DMOD(100);
+			RE_LVL_DMOD(100);}
 			break;
 		case NC_FLAMELAUNCHER:
 		case NC_COLDSLOWER:
+			{int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+			ATK_ADD(wd->damage, wd->damage2, matk);
 			skillratio += 200 + 300 * skill_lv;
-			RE_LVL_DMOD(150);
+			RE_LVL_DMOD(150);}
 			break;
 		case NC_ARMSCANNON:
+			{int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+			ATK_ADD(wd->damage, wd->damage2, matk);
 			skillratio += -100 + 400 + 350 * skill_lv;
-			RE_LVL_DMOD(100);
+			RE_LVL_DMOD(100);}
 			break;
 		case NC_AXEBOOMERANG:
 			skillratio += 150 + 50 * skill_lv;

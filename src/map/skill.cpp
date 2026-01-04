@@ -23463,6 +23463,10 @@ bool skill_produce_mix(map_session_data *sd, uint16 skill_id, t_itemid nameid, i
 			}
 		}
 
+		if (skill_id == AM_PHARMACY) {
+        	tmp_item.amount *= 100;
+    	}
+
 		if (skill_id == GN_CHANGEMATERIAL && tmp_item.amount) { //Success
 			int32 j, k = 0, l;
 			bool isStackable = itemdb_isstackable(tmp_item.nameid);

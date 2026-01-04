@@ -71037,6 +71037,7 @@ Body:
     Refineable: true
     Script: |
       bonus bUnbreakableArmor;
+      bonus2 bSkillAtk,"NC_ARMSCANNON",50;
       bonus2 bSubSize,Size_Small,10;
       bonus2 bSubSize,Size_Medium,10;
       .@r = getrefine();
@@ -80771,6 +80772,7 @@ Body:
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,(((BaseLevel-70)/10)*5)+(.@r<=15?pow(.@r,2):225);
+      bonus bMatk,(((BaseLevel-70)/10)*5)+(.@r<=15?pow(.@r,2):225);
   - Id: 16041
     AegisName: Sinister_Mace
     Name: Vicious Mind Mace
@@ -107621,6 +107623,8 @@ Body:
     ArmorLevel: 1
     EquipLevelMin: 1
     View: 1310
+    Script: |
+      bonus2 bAddMonsterDropItem,6919,10000;
   - Id: 20248
     AegisName: C_Black_Strong_Hair
     Name: Costume Black Strong Hair
@@ -110025,6 +110029,11 @@ Body:
     ArmorLevel: 1
     EquipLevelMin: 1
     View: 2
+    Script: |
+      skill "BS_GREED",1;
+      
+      bonus2 bAddMonsterDropItem,985,100;
+      bonus2 bAddMonsterDropItem,984,100;
   - Id: 20513
     AegisName: C_EXE_Backpack
     Name: Costume EXE Backpack
@@ -110685,6 +110694,11 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Script: |
+      skill "BS_GREED",1;
+      
+      bonus2 bAddMonsterDropItem,1059,2000;
+      bonus2 bAddMonsterDropItem,929,2000;
   - Id: 20576
     AegisName: C_Cat_Fork
     Name: Costume Cat Fork
@@ -111069,6 +111083,11 @@ Body:
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
+    Script: |
+      skill "BS_GREED",1;
+      
+      bonus2 bAddMonsterDropItem,509,1000;
+      bonus2 bAddMonsterDropItem,510,1000;
   - Id: 20617
     AegisName: C_Wing_Of_Eutaxy
     Name: Costume Wing of Eutaxy    # !todo check english name
@@ -128583,6 +128602,7 @@ Body:
     Script: |
       bonus bMaxHP,getrefine()*10;
       bonus bVit,2;
+      bonus3 bAutoSpellWhenHit,"SM_ENDURE",1,50*getrefine();
   - Id: 24389
     AegisName: Rebeginer_Shoes_S
     Name: Beginner's Shadow Shoes
@@ -142085,6 +142105,7 @@ Body:
     Script: |
       .@r = getrefine();
       bonus bBaseAtk,(((BaseLevel-70)/10)*5)+(.@r<=15?pow(.@r,2):225);
+      bonus bMatk,(((BaseLevel-70)/10)*5)+(.@r<=15?pow(.@r,2):225);
       bonus bUnbreakableWeapon;
   - Id: 28107
     AegisName: Sinister_Twohand_Axe
@@ -142196,18 +142217,25 @@ Body:
     Script: |
       if (getskilllv("BS_DAGGER") == 3)
          bonus bBaseAtk,10;
+         bonus bMatk,10;
       if (getskilllv("BS_SWORD") == 3)
          bonus bBaseAtk,10;
+         bonus bMatk,10;
       if (getskilllv("BS_TWOHANDSWORD") == 3)
          bonus bBaseAtk,10;
+         bonus bMatk,10;
       if (getskilllv("BS_KNUCKLE") == 3)
          bonus bBaseAtk,10;
+         bonus bMatk,10;
       if (getskilllv("BS_SPEAR") == 3)
          bonus bBaseAtk,10;
+         bonus bMatk,10;
       if (getskilllv("BS_AXE") == 3)
          bonus bBaseAtk,10;
+         bonus bMatk,10;
       if (getskilllv("BS_MACE") == 3)
          bonus bBaseAtk,10;
+         bonus bMatk,10;
       bonus bVit,2;
       bonus4 bAutoSpellOnSkill,"BS_HAMMERFALL","SM_MAGNUM",3,50;
   - Id: 28116
@@ -158510,6 +158538,8 @@ Body:
     ArmorLevel: 1
     EquipLevelMin: 1
     View: 1865
+    Script: |
+      bonus2 bAddMonsterDropItem,6752,10000;
   - Id: 31672
     AegisName: C_Mermaid_Wig
     Name: Costume Mermaid Wig

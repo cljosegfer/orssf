@@ -97,6 +97,8 @@ Body:
       item: true
       jobchange: true
       hlvl: true
+      baselevelup: true
+      joblevelup: true
       homshuffle: true
       guildlevelup: true
       homfriendly: true
@@ -104,6 +106,7 @@ Body:
       completequest: true
       setquest: true
       erasequest: true
+      set: true
       delitem: true
       identifyall: true 
     Permissions:
