@@ -511,7 +511,7 @@ bool mapif_parse_StorageLoad(int32 fd) {
 	switch (type) {
 		case TABLE_INVENTORY: res = inventory_fromsql(cid, &stor); break;
 		case TABLE_STORAGE:
-			if( !interServerDb.exists( stor_id ) ){
+			if( stor_id != 0 && !interServerDb.exists( stor_id ) ){
 				ShowError( "Invalid storage with id %d\n", stor_id );
 				return false;
 			}
@@ -550,7 +550,7 @@ bool mapif_parse_StorageSave(int32 fd) {
 	switch(type){
 		case TABLE_INVENTORY:	inventory_tosql(cid, &stor); break;
 		case TABLE_STORAGE:
-			if( !interServerDb.exists( stor.stor_id ) ){
+			if( stor.stor_id != 0 && !interServerDb.exists( stor.stor_id ) ){
 				ShowError( "Invalid storage with id %d\n", stor.stor_id );
 				return false;
 			}
