@@ -1,0 +1,126 @@
+//===== rAthena Script =======================================
+//= PoE Style Crafting Bench
+//===== By: ==================================================
+//= claudio
+//===== Description: =========================================
+//= Uses an "Exalted Orb" to add a random stat
+//= to an empty Random Option slot on the equipped weapon.
+//= Uses a "Scour Orb" to clear all random options.
+//============================================================
+
+alberta,122,57,3	script	Belton	2417,{
+	disable_items;
+
+	// Configuration - set these to valid item IDs in your database
+	.@orb_id = 998;       // Exalt orb (iron)
+	.@reset_orb_id = 1003; // Scour orb (coal)
+	.@orb_name$ = getitemname(.@orb_id);
+	.@reset_orb_name$ = getitemname(.@reset_orb_id);
+
+	mes "[Crafting Bench]";
+	mes "This bench lets you modify random properties on your equipped weapon.";
+	mes " ";
+	mes "^0000FF[Exalt]^000000 Add a random stat (costs 1x " + .@orb_name$ + ")";
+	mes "^FF0000[Scour]^000000 Remove all random stats (costs 1x " + .@reset_orb_name$ + ")";
+	next;
+
+	switch (select("Exalt Right-Hand Weapon:Scour Right-Hand Weapon:Cancel")) {
+	case 1:
+		if (!getequipisequiped(EQI_HAND_R)) {
+			mes "[Crafting Bench]";
+			mes "You must have a weapon equipped in your right hand.";
+			close;
+		}
+		if (countitem(.@orb_id) < 1) {
+			mes "[Crafting Bench]";
+			mes "You need 1x ^0000FF" + .@orb_name$ + "^000000 to Exalt.";
+			close;
+		}
+
+		// Find the first empty random option slot (indices 0-4)
+		.@found_slot = -1;
+		for (.@i = 0; .@i < 5; .@i++) {
+			if (getequiprandomoption(EQI_HAND_R, .@i, ROA_ID) == 0) {
+				.@found_slot = .@i;
+				break;
+			}
+		}
+		if (.@found_slot == -1) {
+			mes "[Crafting Bench]";
+			mes "This weapon already has 5 random properties (maximum).";
+			mes "Use a ^FF0000Scour Orb^000000 to reset it first.";
+			close;
+		}
+
+		// Roll a random stat (IDs 3-8 = STR/AGI/VIT/INT/DEX/LUK)
+		setarray .@stat_names$[0], "STR", "AGI", "VIT", "INT", "DEX", "LUK";
+		.@random_stat_id = rand(3, 8);
+		.@random_value = rand(1, 10);
+		.@stat_name$ = .@stat_names$[.@random_stat_id - 3];
+
+		mes "[Crafting Bench]";
+		mes "This will consume 1x ^0000FF" + .@orb_name$ + "^000000 and add a random stat to your weapon.";
+		mes "^FF0000This cannot be undone without a Scour Orb.^000000";
+		next;
+		if (select("Exalt it!:Cancel") == 2) close;
+
+		delitem .@orb_id, 1;
+		setrandomoption EQI_HAND_R, .@found_slot, .@random_stat_id, .@random_value, 0;
+
+		specialeffect2 EF_SUCCESS;
+		mes "[Crafting Bench]";
+		mes "Exalt successful!";
+		mes "Added: ^00FF00+" + .@random_value + " " + .@stat_name$ + "^000000";
+		close;
+
+	case 2:
+		if (!getequipisequiped(EQI_HAND_R)) {
+			mes "[Crafting Bench]";
+			mes "You must have a weapon equipped in your right hand.";
+			close;
+		}
+
+		// Check if there is anything to remove
+		.@has_options = 0;
+		for (.@i = 0; .@i < 5; .@i++) {
+			if (getequiprandomoption(EQI_HAND_R, .@i, ROA_ID) > 0) {
+				.@has_options = 1;
+				break;
+			}
+		}
+		if (!.@has_options) {
+			mes "[Crafting Bench]";
+			mes "This weapon has no random properties to remove.";
+			close;
+		}
+		if (countitem(.@reset_orb_id) < 1) {
+			mes "[Crafting Bench]";
+			mes "You need 1x ^0000FF" + .@reset_orb_name$ + "^000000 to Scour.";
+			close;
+		}
+
+		// Save item info before unequipping
+		.@equip_id = getequipid(EQI_HAND_R);
+		.@equip_refine = getequiprefinerycnt(EQI_HAND_R);
+		setarray .@equip_card[0], getequipcardid(EQI_HAND_R,0), getequipcardid(EQI_HAND_R,1), getequipcardid(EQI_HAND_R,2), getequipcardid(EQI_HAND_R,3);
+
+		mes "[Crafting Bench]";
+		mes "This will consume 1x ^0000FF" + .@reset_orb_name$ + "^000000 and remove ^FF0000ALL^000000 random properties from your weapon.";
+		next;
+		if (select("Scour it!:Cancel") == 2) close;
+
+		delitem .@reset_orb_id, 1;
+		// setrandomoption rejects ID=0, so we strip and recreate the item.
+		// getitem2 does not carry over random options, producing a clean item.
+		delequip EQI_HAND_R;
+		getitem2 .@equip_id, 1, 1, .@equip_refine, 0, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3];
+
+		specialeffect2 EF_REPAIRWEAPON;
+		mes "[Crafting Bench]";
+		mes "All random properties have been removed.";
+		close;
+
+	case 3:
+		close;
+	}
+}

@@ -109,6 +109,10 @@ Body:
       set: true
       delitem: true
       identifyall: true 
+      loadnpc: true
+      unloadnpc: true
+      # reload: true
+      reloadscript: true
     Permissions:
       attendance: false
   - Id: 2
