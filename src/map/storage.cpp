@@ -251,15 +251,15 @@ static int32 storage_additem(map_session_data* sd, struct s_storage *stor, struc
 	if( data->stack.storage && amount > data->stack.amount ) // item stack limitation
 		return 2;
 
-	if( !itemdb_canstore(it, pc_get_group_level(sd)) ) { // Check if item is storable. [Skotlex]
-		clif_displaymessage (sd->fd, msg_txt(sd,264));
-		return 1;
-	}
+	// if( !itemdb_canstore(it, pc_get_group_level(sd)) ) { // Check if item is storable. [Skotlex]
+	// 	clif_displaymessage (sd->fd, msg_txt(sd,264));
+	// 	return 1;
+	// }
 
-	if( (it->bound > BOUND_ACCOUNT) && !pc_can_give_bounded_items(sd) ) {
-		clif_displaymessage(sd->fd, msg_txt(sd,294));
-		return 1;
-	}
+	// if( (it->bound > BOUND_ACCOUNT) && !pc_can_give_bounded_items(sd) ) {
+	// 	clif_displaymessage(sd->fd, msg_txt(sd,294));
+	// 	return 1;
+	// }
 
 	if( itemdb_isstackable2(data) ) { // Stackable
 		for( i = 0; i < stor->max_amount; i++ ) {
