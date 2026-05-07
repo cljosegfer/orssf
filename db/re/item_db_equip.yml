@@ -45781,19 +45781,13 @@ Body:
     Locations:
       Head_Top: true
     ArmorLevel: 1
-    EquipLevelMin: 10
+    EquipLevelMin: 1
     View: 311
     Trade:
       NoDrop: true
     Script: |
-      bonus bLuk,2;
-      bonus bMaxHP,50;
-      bonus bMaxSP,50;
-      skill "TF_DOUBLE",2;
-      bonus2 bSubRace,RC_DemiHuman,3;
-      bonus2 bSubRace,RC_Player_Human,3;
-      bonus2 bSubRace,RC_Brute,3;
-      bonus2 bSubRace,RC_Player_Doram,3;
+      skill "TF_DOUBLE",10;
+      // skill "MO_TRIPLEATTACK",9;
   - Id: 5284
     AegisName: Water_Lily_Crown
     Name: Water Lily Crown
@@ -110031,9 +110025,9 @@ Body:
     View: 2
     Script: |
       skill "BS_GREED",1;
-      
-      bonus2 bAddMonsterDropItem,985,100;
-      bonus2 bAddMonsterDropItem,984,100;
+      bonus2 bAddMonsterDropItem,998,2;
+      bonus2 bAddMonsterDropItem,999,2;
+      bonus2 bAddMonsterDropItem,1003,1;
   - Id: 20513
     AegisName: C_EXE_Backpack
     Name: Costume EXE Backpack
