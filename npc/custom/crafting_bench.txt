@@ -17,9 +17,10 @@ alberta,122,57,3	script	Belton	2417,{
 	mes "^0055FF[Magic]^000000 1st-2nd mod: costs 1x " + getitemname(.orb_id);
 	mes "^FF8800[Rare]^000000  3rd-4th mod: costs 1x " + getitemname(.steel_orb_id);
 	mes "^FF0000[Scour]^000000 Remove all mods: costs 1x " + getitemname(.reset_orb_id);
+	mes "^AA00AA[Annul]^000000  Remove last mod: costs 1x " + getitemname(.annul_orb_id);
 	next;
 
-	switch (select("Exalt Equipment:Scour Equipment:Cancel")) {
+	switch (select("Exalt Equipment:Annul Equipment:Scour Equipment:Cancel")) {
 	case 1:
 		switch (select("Right Hand (Weapon):Body Armor:Left Hand (Shield):Garment:Shoes:Cancel")) {
 		case 1: callsub S_Exalt, EQI_HAND_R;
@@ -31,6 +32,15 @@ alberta,122,57,3	script	Belton	2417,{
 		}
 	case 2:
 		switch (select("Right Hand (Weapon):Body Armor:Left Hand (Shield):Garment:Shoes:Cancel")) {
+		case 1: callsub S_Annul, EQI_HAND_R;
+		case 2: callsub S_Annul, EQI_ARMOR;
+		case 3: callsub S_Annul, EQI_HAND_L;
+		case 4: callsub S_Annul, EQI_GARMENT;
+		case 5: callsub S_Annul, EQI_SHOES;
+		case 6: close;
+		}
+	case 3:
+		switch (select("Right Hand (Weapon):Body Armor:Left Hand (Shield):Garment:Shoes:Cancel")) {
 		case 1: callsub S_Scour, EQI_HAND_R;
 		case 2: callsub S_Scour, EQI_ARMOR;
 		case 3: callsub S_Scour, EQI_HAND_L;
@@ -38,7 +48,7 @@ alberta,122,57,3	script	Belton	2417,{
 		case 5: callsub S_Scour, EQI_SHOES;
 		case 6: close;
 		}
-	case 3:
+	case 4:
 		close;
 	}
 	end;
@@ -227,17 +237,84 @@ S_Scour:
 
 	delitem .reset_orb_id, 1;
 	delequip .@slot;
-	getitem2 .@equip_id, 1, 1, .@equip_refine, 0, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3];
+	getitem3 .@equip_id, 1, 1, .@equip_refine, 0, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3], .@zid, .@zval, .@zparam;
 
 	specialeffect2 EF_REPAIRWEAPON;
 	mes "[Crafting Bench]";
 	mes "All random properties have been removed from your " + .@slot_name$ + ".";
 	close;
 
+S_Annul:
+	.@slot = getarg(0);
+
+	if (.@slot == EQI_HAND_R)      .@slot_name$ = "Right Hand (Weapon)";
+	else if (.@slot == EQI_ARMOR)  .@slot_name$ = "Body Armor";
+	else if (.@slot == EQI_HAND_L) .@slot_name$ = "Left Hand (Shield)";
+	else if (.@slot == EQI_GARMENT).@slot_name$ = "Garment";
+	else if (.@slot == EQI_SHOES)  .@slot_name$ = "Shoes";
+
+	if (!getequipisequiped(.@slot)) {
+		mes "[Crafting Bench]";
+		mes "You have nothing equipped in the " + .@slot_name$ + " slot.";
+		close;
+	}
+
+	// Find the last filled random option slot (scan 3 → 0)
+	.@last_slot = -1;
+	for (.@i = 3; .@i >= 0; .@i--) {
+		if (getequiprandomoption(.@slot, .@i, ROA_ID) > 0) {
+			.@last_slot = .@i;
+			break;
+		}
+	}
+	if (.@last_slot == -1) {
+		mes "[Crafting Bench]";
+		mes "This item has no enchants to remove.";
+		close;
+	}
+
+	if (countitem(.annul_orb_id) < 1) {
+		mes "[Crafting Bench]";
+		mes "You need 1x ^0000FF" + getitemname(.annul_orb_id) + "^000000 to Annul.";
+		close;
+	}
+
+	// Read all 4 option slots
+	for (.@i = 0; .@i < 4; .@i++) {
+		.@opt_id[.@i]    = getequiprandomoption(.@slot, .@i, ROA_ID);
+		.@opt_val[.@i]   = getequiprandomoption(.@slot, .@i, ROA_VALUE);
+		.@opt_param[.@i] = getequiprandomoption(.@slot, .@i, ROA_PARAM);
+	}
+
+	// Zero out the last filled slot
+	.@opt_id[.@last_slot]    = 0;
+	.@opt_val[.@last_slot]   = 0;
+	.@opt_param[.@last_slot] = 0;
+
+	// Save item state
+	.@equip_id = getequipid(.@slot);
+	.@equip_refine = getequiprefinerycnt(.@slot);
+	setarray .@equip_card[0], getequipcardid(.@slot,0), getequipcardid(.@slot,1), getequipcardid(.@slot,2), getequipcardid(.@slot,3);
+
+	mes "[Crafting Bench]";
+	mes "This will consume 1x ^0000FF" + getitemname(.annul_orb_id) + "^000000 and remove the ^FF0000last^000000 random property from your " + .@slot_name$ + ".";
+	next;
+	if (select("Annul it!:Cancel") == 2) close;
+
+	delitem .annul_orb_id, 1;
+	delequip .@slot;
+	getitem3 .@equip_id, 1, 1, .@equip_refine, 0, .@equip_card[0], .@equip_card[1], .@equip_card[2], .@equip_card[3], .@opt_id, .@opt_val, .@opt_param;
+
+	specialeffect2 EF_REPAIRWEAPON;
+	mes "[Crafting Bench]";
+	mes "Last enchant removed from your " + .@slot_name$ + ".";
+	close;
+
 OnInit:
 	.orb_id = 998;
 	.steel_orb_id = 999;
 	.reset_orb_id = 1003;
+	.annul_orb_id = 1003;
 
 	// Tier level requirements (indices 0-6)
 	setarray .tier_lvl[0], 1, 10, 50, 99, 175, 200, 275;
@@ -270,11 +347,11 @@ OnInit:
 	setarray .ev_max[14],   5,  9, 36,  64,   93,  102,   111;  //  2 VAR_ATTMPOWER
 	setarray .ev_max[21],   2,  3,  5,   8,   10,   13,    25;  //  3 VAR_ATKPERCENT
 	setarray .ev_max[28],   2,  3,  5,   8,   10,   13,    25;  //  4 VAR_MAGICATKPERCENT
-	setarray .ev_max[35],   3,  3,  4,   5,    8,   17,    25;  //  5 VAR_PLUSASPDPERCENT
+	setarray .ev_max[35],   2,  3,  4,   5,    8,   17,    25;  //  5 VAR_PLUSASPDPERCENT
 	setarray .ev_max[42],   2,  3,  5,   8,   10,   13,    25;  //  6 CLASS_DAMAGE_NORMAL_TARGET
 	setarray .ev_max[49],   2,  3,  5,   8,   10,   13,    25;  //  7 CLASS_DAMAGE_BOSS_TARGET
 	setarray .ev_max[56],   2,  3,  5,   8,   10,   13,    25;  //  8 DAMAGE_SIZE_<size>_TARGET
-	setarray .ev_max[63],   3,  3,  4,   5,    8,   17,    25;  //  9 RANGE_ATTACK_DAMAGE_TARGET
+	setarray .ev_max[63],   2,  3,  4,   5,    8,   17,    25;  //  9 RANGE_ATTACK_DAMAGE_TARGET
 	setarray .ev_max[70],  12, 34, 638, 3103, 9559, 15094, 21383; // 10 VAR_MAXHPAMOUNT
 	setarray .ev_max[77],   6, 11, 45,  79,  116,  127,   139;  // 11 VAR_ITEMDEFPOWER
 	setarray .ev_max[84],   3, 13, 94, 252,  933, 1382,  1941;  // 12 VAR_MAXSPAMOUNT

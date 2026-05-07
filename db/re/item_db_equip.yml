@@ -110025,9 +110025,9 @@ Body:
     View: 2
     Script: |
       skill "BS_GREED",1;
-      bonus2 bAddMonsterDropItem,998,2;
-      bonus2 bAddMonsterDropItem,999,2;
-      bonus2 bAddMonsterDropItem,1003,1;
+      bonus2 bAddMonsterDropItem,998,1;
+      bonus2 bAddMonsterDropItem,999,1;
+      bonus2 bAddMonsterDropItem,1003,2;
   - Id: 20513
     AegisName: C_EXE_Backpack
     Name: Costume EXE Backpack
