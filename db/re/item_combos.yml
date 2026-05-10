@@ -5371,14 +5371,14 @@ Body:
           - Noblesse_Vulcan_Armor    # 450029
     Script: |
       .@r = getequiprefinerycnt(EQI_SHOES)+getequiprefinerycnt(EQI_GARMENT)+getequiprefinerycnt(EQI_ARMOR);
-      bonus bAspd,1;
-      bonus bLongAtkRate,5;
-      bonus2 bSkillAtk,"NC_VULCANARM",10;
-      if (.@r >= 27) {
-         bonus bAspd,1;
-         bonus bLongAtkRate,5;
-         bonus2 bSkillAtk,"NC_VULCANARM",10;
-      }
+    #   bonus bAspd,1;
+    #   bonus bLongAtkRate,5;
+    #   bonus2 bSkillAtk,"NC_VULCANARM",10;
+    #   if (.@r >= 27) {
+    #      bonus bAspd,1;
+    #      bonus bLongAtkRate,5;
+    #      bonus2 bSkillAtk,"NC_VULCANARM",10;
+    #   }
   - Combos:
       - Combo:
           - Noblesse_Attack_Boots    # 470016

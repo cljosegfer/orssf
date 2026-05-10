@@ -187720,7 +187720,15 @@ Body:
       if (.@r>=7)
          bonus bAspdRate,3;
       if (.@r>=9)
-         bonus bLongAtkRate,5;
+         bonus bLongAtkRate,5;      
+      bonus bAspd,1;
+      bonus bLongAtkRate,5;
+      bonus2 bSkillAtk,"NC_VULCANARM",10;
+      if (.@r>=10) {
+        bonus bAspd,1;
+        bonus bLongAtkRate,5;
+        bonus2 bSkillAtk,"NC_VULCANARM",10;
+      }
   - Id: 450030
     AegisName: Noblesse_Kart_Suit
     Name: Noblesse Cart Cannon Suit
