@@ -5400,6 +5400,7 @@ Body:
       NoDamage: true
     Flags:
       IsQuest: true
+      AllowOnMado: true
     Hit: Single
     HitCount: 1
     Duration1: -1

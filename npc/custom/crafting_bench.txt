@@ -21,46 +21,59 @@ alberta,122,57,3	script	Belton	2417,{
 	next;
 
 	switch (select("Exalt Equipment:Annul Equipment:Scour Equipment:Cancel")) {
-	case 1:
-		switch (select("Right Hand (Weapon):Body Armor:Left Hand (Shield):Garment:Shoes:Cancel")) {
-		case 1: callsub S_Exalt, EQI_HAND_R;
-		case 2: callsub S_Exalt, EQI_ARMOR;
-		case 3: callsub S_Exalt, EQI_HAND_L;
-		case 4: callsub S_Exalt, EQI_GARMENT;
-		case 5: callsub S_Exalt, EQI_SHOES;
-		case 6: close;
-		}
-	case 2:
-		switch (select("Right Hand (Weapon):Body Armor:Left Hand (Shield):Garment:Shoes:Cancel")) {
-		case 1: callsub S_Annul, EQI_HAND_R;
-		case 2: callsub S_Annul, EQI_ARMOR;
-		case 3: callsub S_Annul, EQI_HAND_L;
-		case 4: callsub S_Annul, EQI_GARMENT;
-		case 5: callsub S_Annul, EQI_SHOES;
-		case 6: close;
-		}
-	case 3:
-		switch (select("Right Hand (Weapon):Body Armor:Left Hand (Shield):Garment:Shoes:Cancel")) {
-		case 1: callsub S_Scour, EQI_HAND_R;
-		case 2: callsub S_Scour, EQI_ARMOR;
-		case 3: callsub S_Scour, EQI_HAND_L;
-		case 4: callsub S_Scour, EQI_GARMENT;
-		case 5: callsub S_Scour, EQI_SHOES;
-		case 6: close;
-		}
-	case 4:
+	case 1: .@op = 1; goto L_SlotMenu;
+	case 2: .@op = 2; goto L_SlotMenu;
+	case 3: .@op = 3; goto L_SlotMenu;
+	case 4: close;
+	}
+	end;
+
+L_SlotMenu:
+	.@menu$ = ""; .@n = 0;
+	if (getequipisequiped(EQI_HAND_R) && (.@op != 1 || getequiprandomoption(EQI_HAND_R, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_HAND_R, 0, ROA_ID) > 0))
+		{ .@menu$ += "Right Hand (Weapon):"; .@smap[.@n] = EQI_HAND_R; .@n++; }
+	if (getequipisequiped(EQI_ARMOR) && (.@op != 1 || getequiprandomoption(EQI_ARMOR, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_ARMOR, 0, ROA_ID) > 0))
+		{ .@menu$ += "Body Armor:"; .@smap[.@n] = EQI_ARMOR; .@n++; }
+	if (getequipisequiped(EQI_HAND_L) && (.@op != 1 || getequiprandomoption(EQI_HAND_L, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_HAND_L, 0, ROA_ID) > 0))
+		{ .@menu$ += "Left Hand (Shield):"; .@smap[.@n] = EQI_HAND_L; .@n++; }
+	if (getequipisequiped(EQI_GARMENT) && (.@op != 1 || getequiprandomoption(EQI_GARMENT, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_GARMENT, 0, ROA_ID) > 0))
+		{ .@menu$ += "Garment:"; .@smap[.@n] = EQI_GARMENT; .@n++; }
+	if (getequipisequiped(EQI_SHOES) && (.@op != 1 || getequiprandomoption(EQI_SHOES, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_SHOES, 0, ROA_ID) > 0))
+		{ .@menu$ += "Shoes:"; .@smap[.@n] = EQI_SHOES; .@n++; }
+	if (getequipisequiped(EQI_HEAD_TOP) && (.@op != 1 || getequiprandomoption(EQI_HEAD_TOP, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_HEAD_TOP, 0, ROA_ID) > 0))
+		{ .@menu$ += "Upper Headgear:"; .@smap[.@n] = EQI_HEAD_TOP; .@n++; }
+if (getequipisequiped(EQI_HEAD_LOW) && (.@op != 1 || getequiprandomoption(EQI_HEAD_LOW, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_HEAD_LOW, 0, ROA_ID) > 0))
+		{ .@menu$ += "Lower Headgear:"; .@smap[.@n] = EQI_HEAD_LOW; .@n++; }
+	if (getequipisequiped(EQI_ACC_L) && (.@op != 1 || getequiprandomoption(EQI_ACC_L, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_ACC_L, 0, ROA_ID) > 0))
+		{ .@menu$ += "Left Accessory:"; .@smap[.@n] = EQI_ACC_L; .@n++; }
+	if (getequipisequiped(EQI_ACC_R) && (.@op != 1 || getequiprandomoption(EQI_ACC_R, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_ACC_R, 0, ROA_ID) > 0))
+		{ .@menu$ += "Right Accessory:"; .@smap[.@n] = EQI_ACC_R; .@n++; }
+	if (!.@n) {
+		mes "[Crafting Bench]";
+		if (.@op == 1) mes "No eligible equipment (all slots are full or unequipped).";
+		else           mes "No equipment has enchants to remove.";
 		close;
 	}
+	.@menu$ += "Cancel";
+	.@pick = select(.@menu$) - 1;
+	if (.@pick >= .@n) close;
+	if (.@op == 1)      callsub S_Exalt, .@smap[.@pick];
+	else if (.@op == 2) callsub S_Annul, .@smap[.@pick];
+	else                callsub S_Scour, .@smap[.@pick];
 	end;
 
 S_Exalt:
 	.@slot = getarg(0);
 
-	if (.@slot == EQI_HAND_R)      .@slot_name$ = "Right Hand (Weapon)";
-	else if (.@slot == EQI_ARMOR)  .@slot_name$ = "Body Armor";
-	else if (.@slot == EQI_HAND_L) .@slot_name$ = "Left Hand (Shield)";
-	else if (.@slot == EQI_GARMENT).@slot_name$ = "Garment";
-	else if (.@slot == EQI_SHOES)  .@slot_name$ = "Shoes";
+	if (.@slot == EQI_HAND_R)       .@slot_name$ = "Right Hand (Weapon)";
+	else if (.@slot == EQI_ARMOR)   .@slot_name$ = "Body Armor";
+	else if (.@slot == EQI_HAND_L)  .@slot_name$ = "Left Hand (Shield)";
+	else if (.@slot == EQI_GARMENT) .@slot_name$ = "Garment";
+	else if (.@slot == EQI_SHOES)   .@slot_name$ = "Shoes";
+	else if (.@slot == EQI_HEAD_TOP) .@slot_name$ = "Upper Headgear";
+	else if (.@slot == EQI_HEAD_LOW) .@slot_name$ = "Lower Headgear";
+	else if (.@slot == EQI_ACC_L)   .@slot_name$ = "Left Accessory";
+	else if (.@slot == EQI_ACC_R)   .@slot_name$ = "Right Accessory";
 
 	if (!getequipisequiped(.@slot)) {
 		mes "[Crafting Bench]";
@@ -99,13 +112,17 @@ S_Exalt:
 	}
 
 	// === Weighted enchant type selection ===
-	// .ench_slot: 0=all slots, 1=weapon only, 2=armor only
+	// .ench_slot: 0=all, 1=weapon, 2=armor (body/shield/garment/shoes), 3=misc (headgear/accessory)
+	.@is_weapon = (.@slot == EQI_HAND_R);
+	.@is_misc   = (.@slot == EQI_HEAD_TOP || .@slot == EQI_HEAD_LOW || .@slot == EQI_ACC_L || .@slot == EQI_ACC_R);
+	.@is_armor  = (!.@is_weapon && !.@is_misc);
 	.@total_ench_weight = 0;
-	for (.@e = 0; .@e < 15; .@e++) {
+	for (.@e = 0; .@e < 23; .@e++) {
 		.@ew[.@e] = 0;
 		if (.ench_slot[.@e] == 0 ||
-		    (.ench_slot[.@e] == 1 && .@slot == EQI_HAND_R) ||
-		    (.ench_slot[.@e] == 2 && .@slot != EQI_HAND_R)) {
+		    (.ench_slot[.@e] == 1 && .@is_weapon) ||
+		    (.ench_slot[.@e] == 2 && .@is_armor)  ||
+		    (.ench_slot[.@e] == 3 && .@is_misc)) {
 			.@ew[.@e] = .ench_weight[.@e];
 			.@total_ench_weight += .@ew[.@e];
 		}
@@ -113,7 +130,7 @@ S_Exalt:
 	.@roll = rand(0, .@total_ench_weight - 1);
 	.@cum = 0;
 	.@ench = 0;
-	for (.@e = 0; .@e < 15; .@e++) {
+	for (.@e = 0; .@e < 23; .@e++) {
 		.@cum += .@ew[.@e];
 		if (.@roll < .@cum) { .@ench = .@e; break; }
 	}
@@ -159,6 +176,11 @@ S_Exalt:
 		.@random_stat_id = rand(26, 34);
 		setarray .@sn$[0], "Water", "Earth", "Fire", "Wind", "Poison", "Holy", "Dark", "Ghost", "Undead";
 		.@opt_name$ = "Resist " + .@sn$[.@random_stat_id - 26];
+	} else if (.@ench == 22) {
+		// DAMAGE_SIZE_<size>_USER: Small/Medium/Large reduce size dmg taken (IDs 160-162)
+		.@random_stat_id = rand(160, 162);
+		setarray .@sn$[0], "Small", "Medium", "Large";
+		.@opt_name$ = "Dmg from " + .@sn$[.@random_stat_id - 160] + " Size";
 	} else {
 		.@random_stat_id = .ench_opt[.@ench];
 		switch (.@ench) {
@@ -174,6 +196,13 @@ S_Exalt:
 		case 11: .@opt_name$ = "DEF"; break;
 		case 12: .@opt_name$ = "Max SP"; break;
 		case 13: .@opt_name$ = "MDEF"; break;
+		case 15: .@opt_name$ = "Max HP%"; break;
+		case 16: .@opt_name$ = "Max SP%"; break;
+		case 17: .@opt_name$ = "Flee"; break;
+		case 18: .@opt_name$ = "Cast Time"; break;
+		case 19: .@opt_name$ = "After-cast Delay"; break;
+		case 20: .@opt_name$ = "Dmg from Normal"; break;
+		case 21: .@opt_name$ = "Dmg from Boss"; break;
 		}
 	}
 
@@ -195,11 +224,15 @@ S_Exalt:
 S_Scour:
 	.@slot = getarg(0);
 
-	if (.@slot == EQI_HAND_R)      .@slot_name$ = "Right Hand (Weapon)";
-	else if (.@slot == EQI_ARMOR)  .@slot_name$ = "Body Armor";
-	else if (.@slot == EQI_HAND_L) .@slot_name$ = "Left Hand (Shield)";
-	else if (.@slot == EQI_GARMENT).@slot_name$ = "Garment";
-	else if (.@slot == EQI_SHOES)  .@slot_name$ = "Shoes";
+	if (.@slot == EQI_HAND_R)       .@slot_name$ = "Right Hand (Weapon)";
+	else if (.@slot == EQI_ARMOR)   .@slot_name$ = "Body Armor";
+	else if (.@slot == EQI_HAND_L)  .@slot_name$ = "Left Hand (Shield)";
+	else if (.@slot == EQI_GARMENT) .@slot_name$ = "Garment";
+	else if (.@slot == EQI_SHOES)   .@slot_name$ = "Shoes";
+	else if (.@slot == EQI_HEAD_TOP) .@slot_name$ = "Upper Headgear";
+	else if (.@slot == EQI_HEAD_LOW) .@slot_name$ = "Lower Headgear";
+	else if (.@slot == EQI_ACC_L)   .@slot_name$ = "Left Accessory";
+	else if (.@slot == EQI_ACC_R)   .@slot_name$ = "Right Accessory";
 
 	if (!getequipisequiped(.@slot)) {
 		mes "[Crafting Bench]";
@@ -247,11 +280,15 @@ S_Scour:
 S_Annul:
 	.@slot = getarg(0);
 
-	if (.@slot == EQI_HAND_R)      .@slot_name$ = "Right Hand (Weapon)";
-	else if (.@slot == EQI_ARMOR)  .@slot_name$ = "Body Armor";
-	else if (.@slot == EQI_HAND_L) .@slot_name$ = "Left Hand (Shield)";
-	else if (.@slot == EQI_GARMENT).@slot_name$ = "Garment";
-	else if (.@slot == EQI_SHOES)  .@slot_name$ = "Shoes";
+	if (.@slot == EQI_HAND_R)       .@slot_name$ = "Right Hand (Weapon)";
+	else if (.@slot == EQI_ARMOR)   .@slot_name$ = "Body Armor";
+	else if (.@slot == EQI_HAND_L)  .@slot_name$ = "Left Hand (Shield)";
+	else if (.@slot == EQI_GARMENT) .@slot_name$ = "Garment";
+	else if (.@slot == EQI_SHOES)   .@slot_name$ = "Shoes";
+	else if (.@slot == EQI_HEAD_TOP) .@slot_name$ = "Upper Headgear";
+	else if (.@slot == EQI_HEAD_LOW) .@slot_name$ = "Lower Headgear";
+	else if (.@slot == EQI_ACC_L)   .@slot_name$ = "Left Accessory";
+	else if (.@slot == EQI_ACC_R)   .@slot_name$ = "Right Accessory";
 
 	if (!getequipisequiped(.@slot)) {
 		mes "[Crafting Bench]";
@@ -335,10 +372,10 @@ OnInit:
 	// 12  VAR_MAXSPAMOUNT         armor    weight 3
 	// 13  VAR_MDEFPOWER           armor    weight 5
 	// 14  ATTR_TOLERACE_<ele>     armor    weight 1
-	setarray .ench_weight[0], 5, 5, 5, 3, 3, 5, 2, 1, 4, 3, 3, 5, 3, 5, 1;
-	setarray .ench_slot[0],   0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2;
+	setarray .ench_weight[0], 5, 5, 5, 3, 3, 5, 2, 1, 4, 3, 3, 5, 3, 5, 1,  5, 5, 3, 3, 3, 2, 1, 4;
+	setarray .ench_slot[0],   0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,  3, 3, 3, 3, 3, 3, 3, 3;
 	// Primary option ID (0 = multi-option, resolved at roll time)
-	setarray .ench_opt[0],    0, 17, 19, 13, 14, 16, 147, 148, 0, 166, 1, 20, 2, 21, 0;
+	setarray .ench_opt[0],    0, 17, 19, 13, 14, 16, 147, 148, 0, 166, 1, 20, 2, 21, 0,  9, 10, 23, 170, 171, 149, 150, 0;
 
 	// Value max table: .ev_max[enchant_idx * 7 + tier_idx]
 	// Min for tier 0 = 1; min for tier N = max of tier N-1
@@ -357,6 +394,14 @@ OnInit:
 	setarray .ev_max[84],   3, 13, 94, 252,  933, 1382,  1941;  // 12 VAR_MAXSPAMOUNT
 	setarray .ev_max[91],   6, 11, 45,  79,  116,  127,   139;  // 13 VAR_MDEFPOWER
 	setarray .ev_max[98],   2,  3,  5,  10,   15,   20,    25;  // 14 ATTR_TOLERACE_<ele>
+	setarray .ev_max[105],  2,  3,  5,  10,   15,   20,    25;  // 15 VAR_MAXHPPERCENT
+	setarray .ev_max[112],  2,  3,  5,  10,   15,   20,    25;  // 16 VAR_MAXSPPERCENT
+	setarray .ev_max[119],  2,  3,  5,  10,   15,   20,    25;  // 17 VAR_PLUSAVOIDSUCCESSVALUE
+	setarray .ev_max[126],  2,  3,  5,  10,   15,   20,    25;  // 18 DEC_SPELL_CAST_TIME
+	setarray .ev_max[133],  2,  3,  4,  5,   8,   10,    13;  // 19 DEC_SPELL_DELAY_TIME
+	setarray .ev_max[140],  2,  3,  4,   5,    8,   10,    13;  // 20 CLASS_DAMAGE_NORMAL_USER
+	setarray .ev_max[147],  2,  3,  4,   5,    8,   10,    13;  // 21 CLASS_DAMAGE_BOSS_USER
+	setarray .ev_max[154],  2,  3,  4,   5,    8,   10,    13;  // 22 DAMAGE_SIZE_<size>_USER
 
 	// Pre-compute exp(-i/85)*10000 for i=0..274  [e^(-1/85) ≈ 0.9883]
 	.exp_table[0] = 10000;

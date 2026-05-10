@@ -831,7 +831,7 @@ Body:
     AegisName: Immortal_Heart
     Name: Immortal Heart
     Type: Etc
-    Buy: 37
+    Buy: 374
     Weight: 0
     Flags:
       BuyingStore: true
@@ -1857,7 +1857,7 @@ Body:
     AegisName: Transparent_Cloth
     Name: Fabric
     Type: Etc
-    Buy: 30
+    Buy: 306
     Weight: 0
     Flags:
       BuyingStore: true
@@ -7277,7 +7277,6 @@ Body:
       BuyingStore: true
       DropEffect: CLIENT
     Script: |
-      bonus bVariableCastrate,30;
       bonus bNoCastCancel;
       bonus2 bSkillAtk,"MG_FIREWALL",5;
   - Id: 4328

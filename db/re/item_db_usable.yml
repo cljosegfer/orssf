@@ -174,7 +174,7 @@ Body:
     AegisName: White_Herb
     Name: White Herb
     Type: Healing
-    Buy: 120
+    Buy: 1200
     Weight: 0
     Flags:
       BuyingStore: true
@@ -184,7 +184,7 @@ Body:
     AegisName: Blue_Herb
     Name: Blue Herb
     Type: Healing
-    Buy: 60
+    Buy: 600
     Weight: 0
     Flags:
       BuyingStore: true

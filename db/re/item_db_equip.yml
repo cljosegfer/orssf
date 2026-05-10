@@ -45786,8 +45786,8 @@ Body:
     Trade:
       NoDrop: true
     Script: |
-      skill "TF_DOUBLE",10;
-      // skill "MO_TRIPLEATTACK",9;
+      skill "TF_DOUBLE",9;
+      skill "MO_TRIPLEATTACK",9;
   - Id: 5284
     AegisName: Water_Lily_Crown
     Name: Water Lily Crown
@@ -110690,9 +110690,8 @@ Body:
       NoAuction: true
     Script: |
       skill "BS_GREED",1;
-      
-      bonus2 bAddMonsterDropItem,1059,2000;
-      bonus2 bAddMonsterDropItem,929,2000;
+      bonus2 bAddMonsterDropItem,6223,100;
+      bonus2 bAddMonsterDropItem,6224,100;
   - Id: 20576
     AegisName: C_Cat_Fork
     Name: Costume Cat Fork
@@ -111079,9 +111078,10 @@ Body:
       NoAuction: true
     Script: |
       skill "BS_GREED",1;
-      
       bonus2 bAddMonsterDropItem,509,1000;
       bonus2 bAddMonsterDropItem,510,1000;
+      bonus2 bAddMonsterDropItem,1059,1000;
+      bonus2 bAddMonsterDropItem,929,1000;
   - Id: 20617
     AegisName: C_Wing_Of_Eutaxy
     Name: Costume Wing of Eutaxy    # !todo check english name
@@ -112331,12 +112331,8 @@ Body:
     View: 4
     Script: |
       skill "BS_GREED",1;
-      
       bonus2 bAddMonsterDropItem,985,100;
       bonus2 bAddMonsterDropItem,984,100;
-
-      bonus2 bAddMonsterDropItem,6223,100;
-      bonus2 bAddMonsterDropItem,6224,100;
   - Id: 20764
     AegisName: C_Fallen_Angel_Wing
     Name: Costume Fallen Angel Wing
