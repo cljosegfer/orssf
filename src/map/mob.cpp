@@ -3326,6 +3326,21 @@ int32 mob_dead(mob_data *md, block_list *src, int32 type)
 
 			drop_rate = mob_getdroprate(src, md->db, entry->rate, drop_modifier, md);
 
+			// DEBUG: log every card drop attempt so we can see what fires
+			// if (it->type == IT_CARD) {
+			// 	ShowDebug("CardDrop mob=%s(id=%d) bosstype=%d master=%d nameid=%u base_rate=%d\n",
+			// 		md->name, md->mob_id, (int)md->get_bosstype(), md->master_id,
+			// 		(unsigned)entry->nameid, drop_rate);
+			// }
+
+			// mvps drop their card at 10%
+			if (!md->master_id && md->get_bosstype() == BOSSTYPE_MVP && it->type == IT_CARD){
+				drop_rate = 1000;
+				ShowDebug("mvp drop mob=%s(id=%d) bosstype=%d master=%d nameid=%u base_rate=%d\n",
+					md->name, md->mob_id, (int)md->get_bosstype(), md->master_id,
+					(unsigned)entry->nameid, drop_rate);
+			}
+
 			// attempt to drop the item
 			if (rnd() % 10000 >= drop_rate)
 				continue;
@@ -3469,7 +3484,11 @@ int32 mob_dead(mob_data *md, block_list *src, int32 type)
 
 			char flag = pc_additem(mvp_sd, &new_item, 1, LOG_TYPE_MVP);
 			if (flag) {map_addflooritem(&new_item, 1, mvp_sd->m, mvp_sd->x, mvp_sd->y, 0, 0, 0, 4, 0);}
-			clif_displaymessage(mvp_sd->fd, "You have received a Diário de Aventuras for defeating an MVP!");
+
+			new_item.nameid = 12210;
+			flag = pc_additem(mvp_sd, &new_item, 1, LOG_TYPE_MVP);
+			if (flag) {map_addflooritem(&new_item, 1, mvp_sd->m, mvp_sd->x, mvp_sd->y, 0, 0, 0, 4, 0);}
+			clif_displaymessage(mvp_sd->fd, "You have received a Diário de Aventuras and a Goma de Mascar for defeating an MVP!");
 		}
 
 		if( !(map_getmapflag(m, MF_NOMVPLOOT) || type&1) ) {
