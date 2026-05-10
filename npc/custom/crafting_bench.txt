@@ -18,40 +18,60 @@ alberta,122,57,3	script	Belton	2417,{
 	mes "^FF8800[Rare]^000000  3rd-4th mod: costs 1x " + getitemname(.steel_orb_id);
 	mes "^FF0000[Scour]^000000 Remove all mods: costs 1x " + getitemname(.reset_orb_id);
 	mes "^AA00AA[Annul]^000000  Remove last mod: costs 1x " + getitemname(.annul_orb_id);
+	mes "^008800[Fossil]^000000  Add a restricted mod: costs 1x fossil item";
 	next;
 
-	switch (select("Exalt Equipment:Annul Equipment:Scour Equipment:Cancel")) {
+	switch (select("Exalt Equipment:Use Fossil:Annul Equipment:Scour Equipment:Cancel")) {
 	case 1: .@op = 1; goto L_SlotMenu;
-	case 2: .@op = 2; goto L_SlotMenu;
-	case 3: .@op = 3; goto L_SlotMenu;
-	case 4: close;
+	case 2: .@op = 4; goto L_FossilMenu;
+	case 3: .@op = 2; goto L_SlotMenu;
+	case 4: .@op = 3; goto L_SlotMenu;
+	case 5: close;
 	}
 	end;
 
+L_FossilMenu:
+	.@menu$ = ""; .@n = 0;
+	if (countitem(.stat_fossil_id)     > 0) { .@menu$ += "Stat Fossil ("      + countitem(.stat_fossil_id)     + "x):"; .@fmap[.@n] = 0; .@n++; }
+	if (countitem(.size_fossil_id)     > 0) { .@menu$ += "Size Fossil ("      + countitem(.size_fossil_id)     + "x):"; .@fmap[.@n] = 1; .@n++; }
+	if (countitem(.fire_fossil_id)     > 0) { .@menu$ += "Fire Fossil ("      + countitem(.fire_fossil_id)     + "x):"; .@fmap[.@n] = 2; .@n++; }
+	if (countitem(.water_fossil_id)    > 0) { .@menu$ += "Water Fossil ("     + countitem(.water_fossil_id)    + "x):"; .@fmap[.@n] = 3; .@n++; }
+	if (countitem(.wind_fossil_id)     > 0) { .@menu$ += "Wind Fossil ("      + countitem(.wind_fossil_id)     + "x):"; .@fmap[.@n] = 4; .@n++; }
+	if (countitem(.earth_fossil_id)    > 0) { .@menu$ += "Earth Fossil ("     + countitem(.earth_fossil_id)    + "x):"; .@fmap[.@n] = 5; .@n++; }
+	if (countitem(.otherele_fossil_id) > 0) { .@menu$ += "Mixed Ele Fossil (" + countitem(.otherele_fossil_id) + "x):"; .@fmap[.@n] = 6; .@n++; }
+	if (!.@n) { mes "[Crafting Bench]"; mes "You have no fossils."; close; }
+	.@menu$ += "Cancel";
+	.@pick = select(.@menu$) - 1;
+	if (.@pick >= .@n) close;
+	.@fossil_type = .@fmap[.@pick];
+	.@fossil_allow_weapon = (.@fossil_type <= 1);
+	.@fossil_allow_misc   = (.@fossil_type == 0);
+	goto L_SlotMenu;
+
 L_SlotMenu:
 	.@menu$ = ""; .@n = 0;
-	if (getequipisequiped(EQI_HAND_R) && (.@op != 1 || getequiprandomoption(EQI_HAND_R, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_HAND_R, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_HAND_R) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_HAND_R, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_HAND_R, 0, ROA_ID) > 0) && (.@op != 4 || .@fossil_allow_weapon))
 		{ .@menu$ += "Right Hand (Weapon):"; .@smap[.@n] = EQI_HAND_R; .@n++; }
-	if (getequipisequiped(EQI_ARMOR) && (.@op != 1 || getequiprandomoption(EQI_ARMOR, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_ARMOR, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_ARMOR) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_ARMOR, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_ARMOR, 0, ROA_ID) > 0))
 		{ .@menu$ += "Body Armor:"; .@smap[.@n] = EQI_ARMOR; .@n++; }
-	if (getequipisequiped(EQI_HAND_L) && (.@op != 1 || getequiprandomoption(EQI_HAND_L, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_HAND_L, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_HAND_L) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_HAND_L, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_HAND_L, 0, ROA_ID) > 0))
 		{ .@menu$ += "Left Hand (Shield):"; .@smap[.@n] = EQI_HAND_L; .@n++; }
-	if (getequipisequiped(EQI_GARMENT) && (.@op != 1 || getequiprandomoption(EQI_GARMENT, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_GARMENT, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_GARMENT) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_GARMENT, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_GARMENT, 0, ROA_ID) > 0))
 		{ .@menu$ += "Garment:"; .@smap[.@n] = EQI_GARMENT; .@n++; }
-	if (getequipisequiped(EQI_SHOES) && (.@op != 1 || getequiprandomoption(EQI_SHOES, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_SHOES, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_SHOES) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_SHOES, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_SHOES, 0, ROA_ID) > 0))
 		{ .@menu$ += "Shoes:"; .@smap[.@n] = EQI_SHOES; .@n++; }
-	if (getequipisequiped(EQI_HEAD_TOP) && (.@op != 1 || getequiprandomoption(EQI_HEAD_TOP, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_HEAD_TOP, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_HEAD_TOP) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_HEAD_TOP, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_HEAD_TOP, 0, ROA_ID) > 0) && (.@op != 4 || .@fossil_allow_misc))
 		{ .@menu$ += "Upper Headgear:"; .@smap[.@n] = EQI_HEAD_TOP; .@n++; }
-if (getequipisequiped(EQI_HEAD_LOW) && (.@op != 1 || getequiprandomoption(EQI_HEAD_LOW, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_HEAD_LOW, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_HEAD_LOW) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_HEAD_LOW, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_HEAD_LOW, 0, ROA_ID) > 0) && (.@op != 4 || .@fossil_allow_misc))
 		{ .@menu$ += "Lower Headgear:"; .@smap[.@n] = EQI_HEAD_LOW; .@n++; }
-	if (getequipisequiped(EQI_ACC_L) && (.@op != 1 || getequiprandomoption(EQI_ACC_L, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_ACC_L, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_ACC_L) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_ACC_L, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_ACC_L, 0, ROA_ID) > 0) && (.@op != 4 || .@fossil_allow_misc))
 		{ .@menu$ += "Left Accessory:"; .@smap[.@n] = EQI_ACC_L; .@n++; }
-	if (getequipisequiped(EQI_ACC_R) && (.@op != 1 || getequiprandomoption(EQI_ACC_R, 3, ROA_ID) == 0) && (.@op == 1 || getequiprandomoption(EQI_ACC_R, 0, ROA_ID) > 0))
+	if (getequipisequiped(EQI_ACC_R) && ((.@op != 1 && .@op != 4) || getequiprandomoption(EQI_ACC_R, 3, ROA_ID) == 0) && (.@op == 1 || .@op == 4 || getequiprandomoption(EQI_ACC_R, 0, ROA_ID) > 0) && (.@op != 4 || .@fossil_allow_misc))
 		{ .@menu$ += "Right Accessory:"; .@smap[.@n] = EQI_ACC_R; .@n++; }
 	if (!.@n) {
 		mes "[Crafting Bench]";
-		if (.@op == 1) mes "No eligible equipment (all slots are full or unequipped).";
-		else           mes "No equipment has enchants to remove.";
+		if (.@op == 1 || .@op == 4) mes "No eligible equipment (all slots are full or incompatible).";
+		else                         mes "No equipment has enchants to remove.";
 		close;
 	}
 	.@menu$ += "Cancel";
@@ -59,6 +79,7 @@ if (getequipisequiped(EQI_HEAD_LOW) && (.@op != 1 || getequiprandomoption(EQI_HE
 	if (.@pick >= .@n) close;
 	if (.@op == 1)      callsub S_Exalt, .@smap[.@pick];
 	else if (.@op == 2) callsub S_Annul, .@smap[.@pick];
+	else if (.@op == 4) callsub S_Fossil, .@smap[.@pick], .@fossil_type;
 	else                callsub S_Scour, .@smap[.@pick];
 	end;
 
@@ -117,7 +138,7 @@ S_Exalt:
 	.@is_misc   = (.@slot == EQI_HEAD_TOP || .@slot == EQI_HEAD_LOW || .@slot == EQI_ACC_L || .@slot == EQI_ACC_R);
 	.@is_armor  = (!.@is_weapon && !.@is_misc);
 	.@total_ench_weight = 0;
-	for (.@e = 0; .@e < 23; .@e++) {
+	for (.@e = 0; .@e < 24; .@e++) {
 		.@ew[.@e] = 0;
 		if (.ench_slot[.@e] == 0 ||
 		    (.ench_slot[.@e] == 1 && .@is_weapon) ||
@@ -130,7 +151,7 @@ S_Exalt:
 	.@roll = rand(0, .@total_ench_weight - 1);
 	.@cum = 0;
 	.@ench = 0;
-	for (.@e = 0; .@e < 23; .@e++) {
+	for (.@e = 0; .@e < 24; .@e++) {
 		.@cum += .@ew[.@e];
 		if (.@roll < .@cum) { .@ench = .@e; break; }
 	}
@@ -203,6 +224,7 @@ S_Exalt:
 		case 19: .@opt_name$ = "After-cast Delay"; break;
 		case 20: .@opt_name$ = "Dmg from Normal"; break;
 		case 21: .@opt_name$ = "Dmg from Boss"; break;
+		case 23: .@opt_name$ = "All Ele Resist"; break;
 		}
 	}
 
@@ -217,8 +239,232 @@ S_Exalt:
 
 	specialeffect2 EF_SUCCESS;
 	mes "[Crafting Bench]";
-	mes "Exalt successful!";
-	mes "Added: ^00FF00+" + .@random_value + " " + .@opt_name$ + "^000000";
+	mes "Exalt successful! Mods on your " + .@slot_name$ + ":";
+	for (.@i = 0; .@i < 4; .@i++) {
+		.@mid  = getequiprandomoption(.@slot, .@i, ROA_ID);
+		.@mval = getequiprandomoption(.@slot, .@i, ROA_VALUE);
+		if (.@mid == 0) continue;
+		switch (.@mid) {
+		case 1:   .@mname$ = "Max HP"; break;
+		case 2:   .@mname$ = "Max SP"; break;
+		case 3:   .@mname$ = "STR"; break;
+		case 4:   .@mname$ = "AGI"; break;
+		case 5:   .@mname$ = "VIT"; break;
+		case 6:   .@mname$ = "INT"; break;
+		case 7:   .@mname$ = "DEX"; break;
+		case 8:   .@mname$ = "LUK"; break;
+		case 9:   .@mname$ = "Max HP%"; break;
+		case 10:  .@mname$ = "Max SP%"; break;
+		case 13:  .@mname$ = "ATK%"; break;
+		case 14:  .@mname$ = "MATK%"; break;
+		case 16:  .@mname$ = "ASPD%"; break;
+		case 17:  .@mname$ = "ATK"; break;
+		case 19:  .@mname$ = "MATK"; break;
+		case 20:  .@mname$ = "DEF"; break;
+		case 21:  .@mname$ = "MDEF"; break;
+		case 23:  .@mname$ = "Flee"; break;
+		case 25:  .@mname$ = "Neutral Resist"; break;
+		case 26:  .@mname$ = "Water Resist"; break;
+		case 27:  .@mname$ = "Earth Resist"; break;
+		case 28:  .@mname$ = "Fire Resist"; break;
+		case 29:  .@mname$ = "Wind Resist"; break;
+		case 30:  .@mname$ = "Poison Resist"; break;
+		case 31:  .@mname$ = "Holy Resist"; break;
+		case 32:  .@mname$ = "Dark Resist"; break;
+		case 33:  .@mname$ = "Ghost Resist"; break;
+		case 34:  .@mname$ = "Undead Resist"; break;
+		case 35:  .@mname$ = "All Ele Resist"; break;
+		case 147: .@mname$ = "DMG vs Normal"; break;
+		case 148: .@mname$ = "DMG vs Boss"; break;
+		case 149: .@mname$ = "Dmg from Normal"; break;
+		case 150: .@mname$ = "Dmg from Boss"; break;
+		case 157: .@mname$ = "DMG vs Small Size"; break;
+		case 158: .@mname$ = "DMG vs Medium Size"; break;
+		case 159: .@mname$ = "DMG vs Large Size"; break;
+		case 160: .@mname$ = "Dmg from Small Size"; break;
+		case 161: .@mname$ = "Dmg from Medium Size"; break;
+		case 162: .@mname$ = "Dmg from Large Size"; break;
+		case 166: .@mname$ = "Ranged DMG"; break;
+		case 170: .@mname$ = "Cast Time"; break;
+		case 171: .@mname$ = "After-cast Delay"; break;
+		default:  .@mname$ = "Unknown"; break;
+		}
+		if (.@i == .@found_slot)
+			mes "^00FF00[NEW] +" + .@mval + " " + .@mname$ + "^000000";
+		else
+			mes "+" + .@mval + " " + .@mname$;
+	}
+	close;
+
+S_Fossil:
+	.@slot  = getarg(0);
+	.@ftype = getarg(1);
+
+	if      (.@slot == EQI_HAND_R)   .@slot_name$ = "Right Hand (Weapon)";
+	else if (.@slot == EQI_ARMOR)    .@slot_name$ = "Body Armor";
+	else if (.@slot == EQI_HAND_L)   .@slot_name$ = "Left Hand (Shield)";
+	else if (.@slot == EQI_GARMENT)  .@slot_name$ = "Garment";
+	else if (.@slot == EQI_SHOES)    .@slot_name$ = "Shoes";
+	else if (.@slot == EQI_HEAD_TOP) .@slot_name$ = "Upper Headgear";
+	else if (.@slot == EQI_HEAD_LOW) .@slot_name$ = "Lower Headgear";
+	else if (.@slot == EQI_ACC_L)    .@slot_name$ = "Left Accessory";
+	else if (.@slot == EQI_ACC_R)    .@slot_name$ = "Right Accessory";
+
+	if (!getequipisequiped(.@slot)) {
+		mes "[Crafting Bench]";
+		mes "You have nothing equipped in the " + .@slot_name$ + " slot.";
+		close;
+	}
+
+	.@found_slot = -1;
+	for (.@i = 0; .@i < 4; .@i++) {
+		if (getequiprandomoption(.@slot, .@i, ROA_ID) == 0) { .@found_slot = .@i; break; }
+	}
+	if (.@found_slot == -1) {
+		mes "[Crafting Bench]";
+		mes "This item already has 4 random properties (maximum).";
+		mes "Use a ^FF0000Scour Orb^000000 to reset it first.";
+		close;
+	}
+
+	switch (.@ftype) {
+	case 0: .@fossil_item_id = .stat_fossil_id;     break;
+	case 1: .@fossil_item_id = .size_fossil_id;     break;
+	case 2: .@fossil_item_id = .fire_fossil_id;     break;
+	case 3: .@fossil_item_id = .water_fossil_id;    break;
+	case 4: .@fossil_item_id = .wind_fossil_id;     break;
+	case 5: .@fossil_item_id = .earth_fossil_id;    break;
+	case 6: .@fossil_item_id = .otherele_fossil_id; break;
+	}
+	if (countitem(.@fossil_item_id) < 1) {
+		mes "[Crafting Bench]";
+		mes "You need 1x ^0000FF" + getitemname(.@fossil_item_id) + "^000000 to use this fossil.";
+		close;
+	}
+
+	// Resolve enchant index, option ID, and display name
+	if (.@ftype == 0) {
+		.@ench = 0;
+		.@random_stat_id = rand(3, 8);
+		setarray .@sn$[0], "STR", "AGI", "VIT", "INT", "DEX", "LUK";
+		.@opt_name$ = .@sn$[.@random_stat_id - 3];
+	} else if (.@ftype == 1) {
+		if (.@slot == EQI_HAND_R) {
+			.@ench = 8;
+			.@random_stat_id = rand(157, 159);
+			setarray .@sn$[0], "Small", "Medium", "Large";
+			.@opt_name$ = "DMG vs " + .@sn$[.@random_stat_id - 157] + " Size";
+		} else {
+			.@ench = 22;
+			.@random_stat_id = rand(160, 162);
+			setarray .@sn$[0], "Small", "Medium", "Large";
+			.@opt_name$ = "Dmg from " + .@sn$[.@random_stat_id - 160] + " Size";
+		}
+	} else if (.@ftype == 6) {
+		.@ench = 14;
+		.@idx = rand(0, 5);
+		setarray .@rids[0],    25,  30,  31,  32,  33,  34;
+		setarray .@rnames$[0], "Neutral Resist", "Poison Resist", "Holy Resist", "Dark Resist", "Ghost Resist", "Undead Resist";
+		.@random_stat_id = .@rids[.@idx];
+		.@opt_name$ = .@rnames$[.@idx];
+	} else {
+		.@ench = 14;
+		switch (.@ftype) {
+		case 2: .@random_stat_id = 28; .@opt_name$ = "Fire Resist";  break;
+		case 3: .@random_stat_id = 26; .@opt_name$ = "Water Resist"; break;
+		case 4: .@random_stat_id = 29; .@opt_name$ = "Wind Resist";  break;
+		case 5: .@random_stat_id = 27; .@opt_name$ = "Earth Resist"; break;
+		}
+	}
+
+	// Softmax tier selection
+	.@total_weight = 0;
+	for (.@t = 0; .@t < 7; .@t++) {
+		.@w[.@t] = 0;
+		if (BaseLevel >= .tier_lvl[.@t]) {
+			.@delta = BaseLevel - .tier_lvl[.@t];
+			.@w[.@t] = .exp_table[.@delta];
+			.@total_weight += .@w[.@t];
+		}
+	}
+	.@roll = rand(0, .@total_weight - 1); .@cum = 0; .@tier = 0;
+	for (.@t = 0; .@t < 7; .@t++) {
+		.@cum += .@w[.@t];
+		if (.@roll < .@cum) { .@tier = .@t; break; }
+	}
+
+	if (.@tier == 0)
+		.@val_min = 1;
+	else
+		.@val_min = .ev_max[.@ench * 7 + .@tier - 1];
+	.@random_value = rand(.@val_min, .ev_max[.@ench * 7 + .@tier]);
+
+	mes "[Crafting Bench]";
+	mes "This will consume 1x ^0000FF" + getitemname(.@fossil_item_id) + "^000000 and add a restricted mod to your " + .@slot_name$ + ".";
+	mes "^FF0000This cannot be undone without a Scour Orb.^000000";
+	next;
+	if (select("Apply Fossil!:Cancel") == 2) close;
+
+	delitem .@fossil_item_id, 1;
+	setrandomoption .@slot, .@found_slot, .@random_stat_id, .@random_value, 0;
+
+	specialeffect2 EF_SUCCESS;
+	mes "[Crafting Bench]";
+	mes "Fossil applied! Mods on your " + .@slot_name$ + ":";
+	for (.@i = 0; .@i < 4; .@i++) {
+		.@mid  = getequiprandomoption(.@slot, .@i, ROA_ID);
+		.@mval = getequiprandomoption(.@slot, .@i, ROA_VALUE);
+		if (.@mid == 0) continue;
+		switch (.@mid) {
+		case 1:   .@mname$ = "Max HP"; break;
+		case 2:   .@mname$ = "Max SP"; break;
+		case 3:   .@mname$ = "STR"; break;
+		case 4:   .@mname$ = "AGI"; break;
+		case 5:   .@mname$ = "VIT"; break;
+		case 6:   .@mname$ = "INT"; break;
+		case 7:   .@mname$ = "DEX"; break;
+		case 8:   .@mname$ = "LUK"; break;
+		case 9:   .@mname$ = "Max HP%"; break;
+		case 10:  .@mname$ = "Max SP%"; break;
+		case 13:  .@mname$ = "ATK%"; break;
+		case 14:  .@mname$ = "MATK%"; break;
+		case 16:  .@mname$ = "ASPD%"; break;
+		case 17:  .@mname$ = "ATK"; break;
+		case 19:  .@mname$ = "MATK"; break;
+		case 20:  .@mname$ = "DEF"; break;
+		case 21:  .@mname$ = "MDEF"; break;
+		case 23:  .@mname$ = "Flee"; break;
+		case 25:  .@mname$ = "Neutral Resist"; break;
+		case 26:  .@mname$ = "Water Resist"; break;
+		case 27:  .@mname$ = "Earth Resist"; break;
+		case 28:  .@mname$ = "Fire Resist"; break;
+		case 29:  .@mname$ = "Wind Resist"; break;
+		case 30:  .@mname$ = "Poison Resist"; break;
+		case 31:  .@mname$ = "Holy Resist"; break;
+		case 32:  .@mname$ = "Dark Resist"; break;
+		case 33:  .@mname$ = "Ghost Resist"; break;
+		case 34:  .@mname$ = "Undead Resist"; break;
+		case 35:  .@mname$ = "All Ele Resist"; break;
+		case 147: .@mname$ = "DMG vs Normal"; break;
+		case 148: .@mname$ = "DMG vs Boss"; break;
+		case 149: .@mname$ = "Dmg from Normal"; break;
+		case 150: .@mname$ = "Dmg from Boss"; break;
+		case 157: .@mname$ = "DMG vs Small Size"; break;
+		case 158: .@mname$ = "DMG vs Medium Size"; break;
+		case 159: .@mname$ = "DMG vs Large Size"; break;
+		case 160: .@mname$ = "Dmg from Small Size"; break;
+		case 161: .@mname$ = "Dmg from Medium Size"; break;
+		case 162: .@mname$ = "Dmg from Large Size"; break;
+		case 166: .@mname$ = "Ranged DMG"; break;
+		case 170: .@mname$ = "Cast Time"; break;
+		case 171: .@mname$ = "After-cast Delay"; break;
+		default:  .@mname$ = "Unknown"; break;
+		}
+		if (.@i == .@found_slot)
+			mes "^00FF00[NEW] +" + .@mval + " " + .@mname$ + "^000000";
+		else
+			mes "+" + .@mval + " " + .@mname$;
+	}
 	close;
 
 S_Scour:
@@ -352,56 +598,124 @@ OnInit:
 	.steel_orb_id = 999;
 	.reset_orb_id = 1003;
 	.annul_orb_id = 1003;
+	.stat_fossil_id     = 1001;
+	.size_fossil_id     = 1000;
+	.fire_fossil_id     = 994;
+	.water_fossil_id    = 995;
+	.wind_fossil_id     = 996;
+	.earth_fossil_id    = 997;
+	.otherele_fossil_id = 714;
 
 	// Tier level requirements (indices 0-6)
 	setarray .tier_lvl[0], 1, 10, 50, 99, 175, 200, 275;
 
-	// Enchant pool (15 types, indices 0-14):
-	//  0  VAR_<stat>AMOUNT        all      weight 5
-	//  1  VAR_ATTPOWER            weapon   weight 5
-	//  2  VAR_ATTMPOWER           weapon   weight 5
-	//  3  VAR_ATKPERCENT          weapon   weight 3
-	//  4  VAR_MAGICATKPERCENT     weapon   weight 3
-	//  5  VAR_PLUSASPDPERCENT     weapon   weight 5
-	//  6  CLASS_DAMAGE_NORMAL     weapon   weight 2
-	//  7  CLASS_DAMAGE_BOSS       weapon   weight 1
-	//  8  DAMAGE_SIZE_<size>      weapon   weight 4
-	//  9  RANGE_ATTACK_DAMAGE     weapon   weight 3
-	// 10  VAR_MAXHPAMOUNT         armor    weight 3
-	// 11  VAR_ITEMDEFPOWER        armor    weight 5
-	// 12  VAR_MAXSPAMOUNT         armor    weight 3
-	// 13  VAR_MDEFPOWER           armor    weight 5
-	// 14  ATTR_TOLERACE_<ele>     armor    weight 1
-	setarray .ench_weight[0], 5, 5, 5, 3, 3, 5, 2, 1, 4, 3, 3, 5, 3, 5, 1,  5, 5, 3, 3, 3, 2, 1, 4;
-	setarray .ench_slot[0],   0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,  3, 3, 3, 3, 3, 3, 3, 3;
-	// Primary option ID (0 = multi-option, resolved at roll time)
-	setarray .ench_opt[0],    0, 17, 19, 13, 14, 16, 147, 148, 0, 166, 1, 20, 2, 21, 0,  9, 10, 23, 170, 171, 149, 150, 0;
+	// === Enchant Configuration ===
+	// Slot codes: 0=all  1=weapon  2=armor (body/shield/garment/shoes)  3=misc (headgear/accessory)
+	// Tier levels (T1-T7): 1  10  50  99  175  200  275
+	// opt=0 means multi-option resolved at runtime (see S_Exalt multi-option blocks)
+	// ev_max values: T1  T2  T3  T4  T5  T6  T7  (min for T0=1; min for TN = max of T(N-1))
 
-	// Value max table: .ev_max[enchant_idx * 7 + tier_idx]
-	// Min for tier 0 = 1; min for tier N = max of tier N-1
-	setarray .ev_max[0],    7,  8, 17,  25,   33,   35,    35;  //  0 VAR_<stat>AMOUNT
-	setarray .ev_max[7],    5,  9, 36,  64,   93,  102,   111;  //  1 VAR_ATTPOWER
-	setarray .ev_max[14],   5,  9, 36,  64,   93,  102,   111;  //  2 VAR_ATTMPOWER
-	setarray .ev_max[21],   2,  3,  5,   8,   10,   13,    25;  //  3 VAR_ATKPERCENT
-	setarray .ev_max[28],   2,  3,  5,   8,   10,   13,    25;  //  4 VAR_MAGICATKPERCENT
-	setarray .ev_max[35],   2,  3,  4,   5,    8,   17,    25;  //  5 VAR_PLUSASPDPERCENT
-	setarray .ev_max[42],   2,  3,  5,   8,   10,   13,    25;  //  6 CLASS_DAMAGE_NORMAL_TARGET
-	setarray .ev_max[49],   2,  3,  5,   8,   10,   13,    25;  //  7 CLASS_DAMAGE_BOSS_TARGET
-	setarray .ev_max[56],   2,  3,  5,   8,   10,   13,    25;  //  8 DAMAGE_SIZE_<size>_TARGET
-	setarray .ev_max[63],   2,  3,  4,   5,    8,   17,    25;  //  9 RANGE_ATTACK_DAMAGE_TARGET
-	setarray .ev_max[70],  12, 34, 638, 3103, 9559, 15094, 21383; // 10 VAR_MAXHPAMOUNT
-	setarray .ev_max[77],   6, 11, 45,  79,  116,  127,   139;  // 11 VAR_ITEMDEFPOWER
-	setarray .ev_max[84],   3, 13, 94, 252,  933, 1382,  1941;  // 12 VAR_MAXSPAMOUNT
-	setarray .ev_max[91],   6, 11, 45,  79,  116,  127,   139;  // 13 VAR_MDEFPOWER
-	setarray .ev_max[98],   2,  3,  5,  10,   15,   20,    25;  // 14 ATTR_TOLERACE_<ele>
-	setarray .ev_max[105],  2,  3,  5,  10,   15,   20,    25;  // 15 VAR_MAXHPPERCENT
-	setarray .ev_max[112],  2,  3,  5,  10,   15,   20,    25;  // 16 VAR_MAXSPPERCENT
-	setarray .ev_max[119],  2,  3,  5,  10,   15,   20,    25;  // 17 VAR_PLUSAVOIDSUCCESSVALUE
-	setarray .ev_max[126],  2,  3,  5,  10,   15,   20,    25;  // 18 DEC_SPELL_CAST_TIME
-	setarray .ev_max[133],  2,  3,  4,  5,   8,   10,    13;  // 19 DEC_SPELL_DELAY_TIME
-	setarray .ev_max[140],  2,  3,  4,   5,    8,   10,    13;  // 20 CLASS_DAMAGE_NORMAL_USER
-	setarray .ev_max[147],  2,  3,  4,   5,    8,   10,    13;  // 21 CLASS_DAMAGE_BOSS_USER
-	setarray .ev_max[154],  2,  3,  4,   5,    8,   10,    13;  // 22 DAMAGE_SIZE_<size>_USER
+	// ── idx  0: VAR_<stat>AMOUNT ──────── slot=all    weight=5
+	.ench_opt[0] = 0; .ench_slot[0] = 0; .ench_weight[0] = 5;
+	setarray .ev_max[0*7],   7,  8, 17,  25,  33,  35,  36;
+
+	// ------------------------------------------------------------------ weapon
+
+	// ── idx  1: VAR_ATTPOWER ─────────── slot=weapon  weight=5
+	.ench_opt[1] = 17; .ench_slot[1] = 1; .ench_weight[1] = 5;
+	setarray .ev_max[1*7],   5,  9, 36,  64,  93, 102, 111;
+
+	// ── idx  2: VAR_ATTMPOWER ────────── slot=weapon  weight=5
+	.ench_opt[2] = 19; .ench_slot[2] = 1; .ench_weight[2] = 5;
+	setarray .ev_max[2*7],   5,  9, 36,  64,  93, 102, 111;
+
+	// ── idx  3: VAR_ATKPERCENT ────────── slot=weapon  weight=3
+	.ench_opt[3] = 13; .ench_slot[3] = 1; .ench_weight[3] = 3;
+	setarray .ev_max[3*7],   2,  3,  5,   8,  10,  13,  25;
+
+	// ── idx  4: VAR_MAGICATKPERCENT ───── slot=weapon  weight=3
+	.ench_opt[4] = 14; .ench_slot[4] = 1; .ench_weight[4] = 3;
+	setarray .ev_max[4*7],   2,  3,  5,   8,  10,  13,  25;
+
+	// ── idx  5: VAR_PLUSASPDPERCENT ───── slot=weapon  weight=5
+	.ench_opt[5] = 16; .ench_slot[5] = 1; .ench_weight[5] = 5;
+	setarray .ev_max[5*7],   2,  3,  4,   5,   8,  17,  25;
+
+	// ── idx  6: CLASS_DAMAGE_NORMAL_TARGET  slot=weapon  weight=2
+	.ench_opt[6] = 147; .ench_slot[6] = 1; .ench_weight[6] = 2;
+	setarray .ev_max[6*7],   2,  3,  5,   8,  10,  13,  25;
+
+	// ── idx  7: CLASS_DAMAGE_BOSS_TARGET ─ slot=weapon  weight=1
+	.ench_opt[7] = 148; .ench_slot[7] = 1; .ench_weight[7] = 1;
+	setarray .ev_max[7*7],   2,  3,  5,   8,  10,  13,  25;
+
+	// ── idx  8: DAMAGE_SIZE_<size>_TARGET  slot=weapon  weight=4  (opt=0: IDs 157-159)
+	.ench_opt[8] = 0; .ench_slot[8] = 1; .ench_weight[8] = 4;
+	setarray .ev_max[8*7],   2,  3,  5,   8,  10,  13,  25;
+
+	// ── idx  9: RANGE_ATTACK_DAMAGE_TARGET  slot=weapon  weight=3
+	.ench_opt[9] = 166; .ench_slot[9] = 1; .ench_weight[9] = 3;
+	setarray .ev_max[9*7],   2,  3,  4,   5,   8,  17,  25;
+
+	// ------------------------------------------------------------------------- armor
+
+	// ── idx 10: VAR_MAXHPAMOUNT ───────── slot=armor   weight=3
+	.ench_opt[10] = 1; .ench_slot[10] = 2; .ench_weight[10] = 3;
+	setarray .ev_max[10*7],  12, 34, 638, 3103, 9559, 15094, 21383;
+
+	// ── idx 11: VAR_ITEMDEFPOWER ──────── slot=armor   weight=5
+	.ench_opt[11] = 20; .ench_slot[11] = 2; .ench_weight[11] = 5;
+	setarray .ev_max[11*7],   6, 11,  45,  79,  116,  127,  139;
+
+	// ── idx 12: VAR_MAXSPAMOUNT ───────── slot=armor   weight=3
+	.ench_opt[12] = 2; .ench_slot[12] = 2; .ench_weight[12] = 3;
+	setarray .ev_max[12*7],   3, 13,  94, 252,  933, 1382, 1941;
+
+	// ── idx 13: VAR_MDEFPOWER ─────────── slot=armor   weight=5
+	.ench_opt[13] = 21; .ench_slot[13] = 2; .ench_weight[13] = 5;
+	setarray .ev_max[13*7],   6, 11,  45,  79,  116,  127,  139;
+
+	// ── idx 14: ATTR_TOLERACE_<ele> ───── slot=armor   weight=1  (opt=0: IDs 26-34)
+	.ench_opt[14] = 0; .ench_slot[14] = 2; .ench_weight[14] = 3;
+	setarray .ev_max[14*7],   2,  3,   5,  10,   15,   20,   25;
+
+	// ── idx 22: DAMAGE_SIZE_<size>_USER ── slot=armor  weight=4  (opt=0: IDs 160-162)
+	.ench_opt[22] = 0; .ench_slot[22] = 2; .ench_weight[22] = 4;
+	setarray .ev_max[22*7],   2,  3,   4,   5,    8,   10,   12;
+
+	// -------------------------------------------------------------------------- misc
+
+	// ── idx 15: VAR_MAXHPPERCENT ──────── slot=misc    weight=5
+	.ench_opt[15] = 9; .ench_slot[15] = 3; .ench_weight[15] = 5;
+	setarray .ev_max[15*7],   2,  3,   5,  10,   15,   20,   25;
+
+	// ── idx 16: VAR_MAXSPPERCENT ──────── slot=misc    weight=5
+	.ench_opt[16] = 10; .ench_slot[16] = 3; .ench_weight[16] = 5;
+	setarray .ev_max[16*7],   2,  3,   5,  10,   15,   20,   25;
+
+	// ── idx 17: VAR_PLUSAVOIDSUCCESSVALUE  slot=misc   weight=3
+	.ench_opt[17] = 23; .ench_slot[17] = 3; .ench_weight[17] = 3;
+	setarray .ev_max[17*7],   2,  3,   5,  10,   15,   20,   25;
+
+	// ── idx 18: DEC_SPELL_CAST_TIME ───── slot=misc    weight=3
+	.ench_opt[18] = 170; .ench_slot[18] = 3; .ench_weight[18] = 3;
+	setarray .ev_max[18*7],   2,  3,   5,  10,   15,   20,   25;
+
+	// ── idx 19: DEC_SPELL_DELAY_TIME ──── slot=misc    weight=3
+	.ench_opt[19] = 171; .ench_slot[19] = 3; .ench_weight[19] = 3;
+	setarray .ev_max[19*7],   2,  3,   5,  10,   15,   20,   25;
+
+	// ── idx 20: CLASS_DAMAGE_NORMAL_USER  slot=misc    weight=2
+	.ench_opt[20] = 149; .ench_slot[20] = 3; .ench_weight[20] = 2;
+	setarray .ev_max[20*7],   2,  3,   4,   5,    8,   10,   12;
+
+	// ── idx 21: CLASS_DAMAGE_BOSS_USER ─── slot=misc   weight=1
+	.ench_opt[21] = 150; .ench_slot[21] = 3; .ench_weight[21] = 1;
+	setarray .ev_max[21*7],   2,  3,   4,   5,    8,   10,   12;
+
+	// ── idx 23: ATTR_TOLERACE_ALLBUTNOTHING ──────── slot=misc   weight=1
+	.ench_opt[23] = 35; .ench_slot[23] = 3; .ench_weight[23] = 1;
+	setarray .ev_max[23*7],   2,  3,   4,   5,    8,    10,   12;
 
 	// Pre-compute exp(-i/85)*10000 for i=0..274  [e^(-1/85) ≈ 0.9883]
 	.exp_table[0] = 10000;
