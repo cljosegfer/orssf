@@ -107617,8 +107617,6 @@ Body:
     ArmorLevel: 1
     EquipLevelMin: 1
     View: 1310
-    Script: |
-      bonus2 bAddMonsterDropItem,6919,10000;
   - Id: 20248
     AegisName: C_Black_Strong_Hair
     Name: Costume Black Strong Hair
@@ -109978,6 +109976,9 @@ Body:
     ArmorLevel: 1
     EquipLevelMin: 1
     View: 16
+    Script: |
+      skill "BS_GREED",1;
+      bonus2 bAddMonsterDropItem,6919,1000;
   - Id: 20508
     AegisName: C_Poster_Girl_Hat
     Name: Costume Poster Girl Hat
@@ -110027,7 +110028,7 @@ Body:
       skill "BS_GREED",1;
       bonus2 bAddMonsterDropItem,998,1;
       bonus2 bAddMonsterDropItem,999,1;
-      bonus2 bAddMonsterDropItem,1003,2;
+      bonus2 bAddMonsterDropItem,1003,10;
   - Id: 20513
     AegisName: C_EXE_Backpack
     Name: Costume EXE Backpack
@@ -110690,8 +110691,6 @@ Body:
       NoAuction: true
     Script: |
       skill "BS_GREED",1;
-      bonus2 bAddMonsterDropItem,6223,100;
-      bonus2 bAddMonsterDropItem,6224,100;
   - Id: 20576
     AegisName: C_Cat_Fork
     Name: Costume Cat Fork
@@ -112342,6 +112341,8 @@ Body:
     ArmorLevel: 1
     EquipLevelMin: 1
     View: 3
+    Script: |
+      bonus3 bAddMonsterDropItem,7621,1;
   - Id: 20765
     AegisName: C_Archangel_Wing
     Name: Costume Archangel Wing
@@ -112352,7 +112353,7 @@ Body:
     EquipLevelMin: 1
     View: 1
     Script: |
-      bonus3 bAddMonsterDropItem,607,RC_Demon,100;
+      bonus3 bAddMonsterDropItem,607,1;
   - Id: 20766
     AegisName: Beam_Of_Light_Manteau
     Name: Radiance Manteau
@@ -208557,6 +208558,8 @@ Body:
       Costume_Garment: true
     ArmorLevel: 1
     View: 107
+    Script: |
+      skill "BS_GREED",1;
   - Id: 480111
     AegisName: C_Flower_Wing
     Name: Costume Flower Wing
@@ -208920,6 +208923,10 @@ Body:
       Costume_Garment: true
     ArmorLevel: 1
     View: 118
+    Script: |
+      skill "BS_GREED",1;
+      bonus2 bAddMonsterDropItem,6223,100;
+      bonus2 bAddMonsterDropItem,6224,100;
   - Id: 480138
     AegisName: ST_Servival_Cloak
     Name: Engraved Survival Manteau
@@ -212386,6 +212393,17 @@ Body:
       Costume_Garment: true
     ArmorLevel: 1
     View: 189
+    Script: |
+      skill "BS_GREED",1;
+      bonus2 bAddMonsterDropItem,1001,1;
+      bonus2 bAddMonsterDropItem,1000,1;
+
+      bonus2 bAddMonsterDropItem,994,1;
+      bonus2 bAddMonsterDropItem,995,1;
+      bonus2 bAddMonsterDropItem,996,1;
+      bonus2 bAddMonsterDropItem,997,1;
+      
+      bonus2 bAddMonsterDropItem,714,1;
   - Id: 480345
     AegisName: Season_Hood_Spring
     Name: "Manteau of Mystical Beast: Spring"
