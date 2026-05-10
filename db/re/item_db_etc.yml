@@ -7052,8 +7052,7 @@ Body:
       BuyingStore: true
       DropEffect: CLIENT
     Script: |
-      bonus2 bSubEle,Ele_Dark,15;
-      bonus2 bSubEle,Ele_Undead,15;
+      bonus2 bSubEle,Ele_Holy,15;
   - Id: 4312
     AegisName: Fur_Seal_Card
     Name: Seal Card
