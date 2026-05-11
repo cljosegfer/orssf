@@ -5367,7 +5367,8 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 		case NC_VULCANARM:
 			{int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
 			ATK_ADD(wd->damage, wd->damage2, matk);
-			skillratio += -100 + 230 * skill_lv + sstatus->dex; // !TODO: What's the DEX bonus?
+			// skillratio += -100 + 230 * skill_lv + sstatus->dex; // !TODO: What's the DEX bonus?
+			skillratio += -100 + 230 + sstatus->dex; // hit count
 			RE_LVL_DMOD(100);}
 			break;
 		case NC_FLAMELAUNCHER:

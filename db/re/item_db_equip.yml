@@ -109977,7 +109977,7 @@ Body:
     EquipLevelMin: 1
     View: 16
     Script: |
-      skill "BS_GREED",1;
+      skill "MG_FIREWALL",1;
       bonus2 bAddMonsterDropItem,6919,1000;
   - Id: 20508
     AegisName: C_Poster_Girl_Hat
@@ -112342,7 +112342,8 @@ Body:
     EquipLevelMin: 1
     View: 3
     Script: |
-      bonus3 bAddMonsterDropItem,7621,1;
+      skill "MG_FIREWALL",1;
+      bonus2 bAddMonsterDropItem,7621,1;
   - Id: 20765
     AegisName: C_Archangel_Wing
     Name: Costume Archangel Wing
@@ -112353,7 +112354,8 @@ Body:
     EquipLevelMin: 1
     View: 1
     Script: |
-      bonus3 bAddMonsterDropItem,607,1;
+      skill "MG_FIREWALL",1;
+      bonus2 bAddMonsterDropItem,607,1;
   - Id: 20766
     AegisName: Beam_Of_Light_Manteau
     Name: Radiance Manteau

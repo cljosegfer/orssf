@@ -21,10 +21,10 @@ alberta,122,57,3	script	Belton	2417,{
 	mes "^008800[Fossil]^000000  Add a restricted mod: costs 1x fossil item";
 	next;
 
-	switch (select("Exalt Equipment:Use Fossil:Annul Equipment:Scour Equipment:Cancel")) {
+	switch (select("Exalt Equipment:Annul Equipment:Use Fossil:Scour Equipment:Cancel")) {
 	case 1: .@op = 1; goto L_SlotMenu;
-	case 2: .@op = 4; goto L_FossilMenu;
-	case 3: .@op = 2; goto L_SlotMenu;
+	case 3: .@op = 4; goto L_FossilMenu;
+	case 2: .@op = 2; goto L_SlotMenu;
 	case 4: .@op = 3; goto L_SlotMenu;
 	case 5: close;
 	}
