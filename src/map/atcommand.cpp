@@ -622,10 +622,10 @@ ACMD_FUNC(mapmove)
 		if (!map_search_freecell(nullptr, m, &x, &y, 10, 10, 1))
 			x = y = 0; //Invalid cell, use random spot.
 	}
-	if ((map_getmapflag(m, MF_NOWARPTO) && !pc_has_permission(sd, PC_PERM_WARP_ANYWHERE)) || !pc_job_can_entermap((enum e_job)sd->status.class_, m, pc_get_group_level(sd))) {
-		clif_displaymessage(fd, msg_txt(sd,247)); // You are not authorized to warp to this map.
-		return -1;
-	}
+	// if ((map_getmapflag(m, MF_NOWARPTO) && !pc_has_permission(sd, PC_PERM_WARP_ANYWHERE)) || !pc_job_can_entermap((enum e_job)sd->status.class_, m, pc_get_group_level(sd))) {
+	// 	clif_displaymessage(fd, msg_txt(sd,247)); // You are not authorized to warp to this map.
+	// 	return -1;
+	// }
 	if (sd->m >= 0 && map_getmapflag(sd->m, MF_NOWARP) && !pc_has_permission(sd, PC_PERM_WARP_ANYWHERE)) {
 		clif_displaymessage(fd, msg_txt(sd,248)); // You are not authorized to warp from your current map.
 		return -1;
