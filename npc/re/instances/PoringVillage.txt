@@ -10,7 +10,7 @@
 // Enchant
 prt_fild05,174,238,7	script	Veggie Enchanter#0	4_F_02,2,2,{
 	mes "[Veggie Enchanter]";
-	mes "50 Jellopies and 20,000 zeny are all you need to get special effect on your green onion or carrot!";
+	mes "625 Jellopies and 250,000 zeny are all you need to get special effect on your green onion or carrot!";
 	next;
 	mes "[Veggie Enchanter]";
 	mes "Enchant and reset have ^ff000030% of failure.^000000 Invest in your veggie and luck!";
@@ -24,7 +24,7 @@ prt_fild05,174,238,7	script	Veggie Enchanter#0	4_F_02,2,2,{
 		mes "I do enchant to the fresh vegetable.";
 		next;
 		mes "[Veggie Enchanter]";
-		mes "Enchant or Reset requires 20,000z and 50 Jellopy! It's not bad, is it?";
+		mes "Enchant or Reset requires 250,000z and 625 Jellopy! It's not bad, is it?";
 		next;
 		mes "[Veggie Enchanter]";
 		mes "Well... As you know, it's a vegetable any way. So sometimes it can be broken.";
@@ -50,30 +50,33 @@ prt_fild05,174,238,7	script	Veggie Enchanter#0	4_F_02,2,2,{
 			mes "This vegetable cannot be enchanted anymore.";
 			close;
 		}
-		if (countitem(909) < 50 || Zeny < 20000) {
+		if (countitem(909) < 625 || Zeny < 250000) {
 			mes "[Veggie Enchanter]";
-			mes "This enchant requires 50 Jellopy and 20,000z..... But... you don't have them.";
+			mes "This enchant requires 625 Jellopy and 250,000z..... But... you don't have them.";
 			close;
 		}
 		delequip EQI_HEAD_LOW;
-		delitem 909,50;	// Jellopy
-		Zeny -= 20000;
+		delitem 909,625;	// Jellopy
+		Zeny -= 250000;
 
 		if (rand(100) < 70) {
-			.@r = rand(5356);
-			if (.@r < 160) .@card = 4795;	// HP100
-			else if (.@r < 200) .@card = 4796;	// HP200
-			else if (.@r < 1000) .@card = 4928;	// SP10
-			else if (.@r < 1400) .@card = 4870;	// SP25
-			else if (.@r < 1480) .@card = 4800;	// SP50
-			else if (.@r < 1880) .@card = 4700;	// Strength1
-			else if (.@r < 2280) .@card = 4730;	// Agility1
-			else if (.@r < 3410) .@card = 4740;	// Vitality1
-			else if (.@r < 3810) .@card = 4710;	// Inteligence1
-			else if (.@r < 4210) .@card = 4720;	// Dexterity1
-			else if (.@r < 5340) .@card = 4750;	// Luck1
-			else if (.@r < 5348) .@card = 4992;	// HPdrain1
-			else if (.@r < 5356) .@card = 4993;	// SPdrain1
+			// .@r = rand(5356);
+			// if (.@r < 160) .@card = 4795;	// HP100
+			// else if (.@r < 200) .@card = 4796;	// HP200
+			// else if (.@r < 1000) .@card = 4928;	// SP10
+			// else if (.@r < 1400) .@card = 4870;	// SP25
+			// else if (.@r < 1480) .@card = 4800;	// SP50
+			// else if (.@r < 1880) .@card = 4700;	// Strength1
+			// else if (.@r < 2280) .@card = 4730;	// Agility1
+			// else if (.@r < 3410) .@card = 4740;	// Vitality1
+			// else if (.@r < 3810) .@card = 4710;	// Inteligence1
+			// else if (.@r < 4210) .@card = 4720;	// Dexterity1
+			// else if (.@r < 5340) .@card = 4750;	// Luck1
+			// else if (.@r < 5348) .@card = 4992;	// HPdrain1
+			// else if (.@r < 5356) .@card = 4993;	// SPdrain1
+			.@r = rand(100);
+			if (.@r < 50) .@card = 4992;	// HPdrain1
+			else if (.@r < 50) .@card = 4993;	// SPdrain1
 
 			getitem2 .@equip_id,1,1,0,0,0,0,0,.@card;
 			mes "[Veggie Enchanter]";
