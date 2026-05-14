@@ -32,6 +32,10 @@
 	specialeffect2 EF_HEAL2;
 	percentheal 100,100;
 	identifyall;
+	.@i = 1;
+	while (getbrokenid(.@i) != 0) .@i++;
+	.@i--;
+	while (.@i) { repair(.@i); .@i--; }
 	if (.@Buffs) {
 		specialeffect2 EF_INCAGILITY;
 		sc_start SC_INCREASEAGI,240000,10;
