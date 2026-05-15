@@ -76,7 +76,7 @@ prt_fild05,174,238,7	script	Veggie Enchanter#0	4_F_02,2,2,{
 			// else if (.@r < 5356) .@card = 4993;	// SPdrain1
 			.@r = rand(100);
 			if (.@r < 50) .@card = 4992;	// HPdrain1
-			else if (.@r < 50) .@card = 4993;	// SPdrain1
+			else .@card = 4993;	// SPdrain1
 
 			getitem2 .@equip_id,1,1,0,0,0,0,0,.@card;
 			mes "[Veggie Enchanter]";
