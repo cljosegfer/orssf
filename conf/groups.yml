@@ -113,6 +113,7 @@ Body:
       unloadnpc: true
       # reload: true
       reloadscript: true
+      mobsearch: true
     Permissions:
       attendance: false
   - Id: 2
