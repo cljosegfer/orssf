@@ -213297,6 +213297,9 @@ Body:
       Costume_Garment: true
     ArmorLevel: 1
     View: 199
+    Script: |
+      skill "MG_FIREWALL",1;
+      bonus2 bAddMonsterDropItem,25271,1000;
   - Id: 480401
     AegisName: Z_Boost_Set1_Hood_01
     Name: Boosting Cloak Type A
