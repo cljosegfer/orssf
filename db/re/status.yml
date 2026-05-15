@@ -59,7 +59,6 @@ Body:
     Opt1: Stone
     Flags:
       SendOption: true
-      BossResist: true
       StopAttacking: true
       StopCasting: true
       RemoveOnDamaged: true
@@ -87,7 +86,6 @@ Body:
     Opt1: StoneWait
     Flags:
       SendOption: true
-      BossResist: true
       StopAttacking: true
     Fail:
       Whiteimprison: true
@@ -111,7 +109,6 @@ Body:
     Opt1: Freeze
     Flags:
       SendOption: true
-      BossResist: true
       StopAttacking: true
       StopCasting: true
       RemoveOnDamaged: true
@@ -139,7 +136,6 @@ Body:
     Opt1: Stun
     Flags:
       SendOption: true
-      BossResist: true
       StopAttacking: true
       StopCasting: true
     Fail:
@@ -157,7 +153,6 @@ Body:
     Opt1: Sleep
     Flags:
       SendOption: true
-      BossResist: true
       StopAttacking: true
       StopCasting: true
       RemoveOnDamaged: true
@@ -177,7 +172,6 @@ Body:
       Poison: true
     Flags:
       SendOption: true
-      BossResist: true
       StopAttacking: true
       SpreadEffect: true
     Fail:
@@ -197,7 +191,6 @@ Body:
       Curse: true
     Flags:
       SendOption: true
-      BossResist: true
       SpreadEffect: true
     Fail:
       Refresh: true
@@ -213,7 +206,6 @@ Body:
       Silence: true
     Flags:
       SendOption: true
-      BossResist: true
       StopCasting: true
       SpreadEffect: true
     Fail:
@@ -228,7 +220,6 @@ Body:
       Confusion: true
     Flags:
       SendOption: true
-      BossResist: true
       StopWalking: true
       SpreadEffect: true
     Fail:
@@ -246,7 +237,6 @@ Body:
       Blind: true
     Flags:
       SendOption: true
-      BossResist: true
       SpreadEffect: true
     Fail:
       Refresh: true
@@ -264,7 +254,6 @@ Body:
       Bleeding: true
     Flags:
       SendOption: true
-      BossResist: true
       NoSave: true
       NoClearance: true
       SpreadEffect: true
@@ -283,7 +272,6 @@ Body:
       Dpoison: true
     Flags:
       SendOption: true
-      BossResist: true
     Fail:
       Refresh: true
       Inspiration: true
@@ -296,7 +284,6 @@ Body:
       Batk: true
       Watk: true
     Flags:
-      BossResist: true
       Debuff: true
       NoSaveInfinite: true
       RemoveOnHermode: true
@@ -451,7 +438,6 @@ Body:
       Dex: true
       Hit: true
     Flags:
-      BossResist: true
       TaekwonAngel: true
       RemoveOnHermode: true
   - Status: Signumcrucis
@@ -486,7 +472,6 @@ Body:
       Agi: true
       Speed: true
     Flags:
-      BossResist: true
       NoSave: true
       Debuff: true
       RemoveOnHermode: true
@@ -820,7 +805,6 @@ Body:
       Watk: true
     Flags:
       Debuff: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -833,7 +817,6 @@ Body:
       Def: true
     Flags:
       Debuff: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -846,7 +829,6 @@ Body:
       Vit: true
     Flags:
       Debuff: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -859,7 +841,6 @@ Body:
       Int: true
     Flags:
       Debuff: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -1469,7 +1450,6 @@ Body:
     Icon: EFST_FOGWALL
     DurationLookup: PF_FOGWALL
     Flags:
-      BossResist: true
       NoSave: true
       NoClearance: true
       RemoveOnHermode: true
@@ -1753,7 +1733,6 @@ Body:
       NoSave: true
       NoRemoveOnDead: true
       RemoveOnChangeMap: true
-      BossResist: true
   - Status: Closeconfine2
     Icon: EFST_RG_CCONFINE_S
     DurationLookup: RG_CLOSECONFINE
@@ -1767,7 +1746,6 @@ Body:
       NoSave: true
       NoRemoveOnDead: true
       RemoveOnChangeMap: true
-      BossResist: true
     Fail:
       Closeconfine2: true
   - Status: Dancing
@@ -1802,7 +1780,6 @@ Body:
     Icon: EFST_RICHMANKIM
     DurationLookup: BD_RICHMANKIM
     Flags:
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -1872,7 +1849,6 @@ Body:
     States:
       NoCast: true
     Flags:
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -2095,8 +2071,6 @@ Body:
   - Status: Coma
     DurationLookup: NPC_DARKBLESSING
     Flags:
-      BossResist: true
-      MvpResist: true
   - Status: Intravision
     Icon: EFST_CLAIRVOYANCE
     Flags:
@@ -2555,7 +2529,6 @@ Body:
       Agi: true
       Speed: true
     Flags:
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -3111,7 +3084,6 @@ Body:
       Flee: true
       Hit: true
     Flags:
-      BossResist: true
       StopWalking: true
       Debuff: true
     Fail:
@@ -3128,7 +3100,6 @@ Body:
       SendOption: true
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       Debuff: true
       SpreadEffect: true
     MinDuration: 10000
@@ -3148,7 +3119,6 @@ Body:
       DisplayPc: true
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3272,7 +3242,6 @@ Body:
       Agi: true
       Speed: true
     Flags:
-      BossResist: true
       Debuff: true
     EndOnStart:
       Decreaseagi: true
@@ -3345,7 +3314,6 @@ Body:
     Opt1: Imprison
     Flags:
       SendOption: true
-      BossResist: true
       SetStand: true
       StopWalking: true
       StopAttacking: true
@@ -3362,7 +3330,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3465,7 +3432,6 @@ Body:
     States:
       NoMove: true
     Flags:
-      BossResist: true
       StopWalking: true
       NoDispell: true
       NoBanishingBuster: true
@@ -3548,7 +3514,6 @@ Body:
       NoMove: true
     Flags:
       MadoEndCancel: true
-      BossResist: true
       StopWalking: true
       NoDispell: true
       NoBanishingBuster: true
@@ -3706,7 +3671,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3722,7 +3686,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3745,7 +3708,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3768,7 +3730,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3791,7 +3752,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3814,7 +3774,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3839,7 +3798,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3860,7 +3818,6 @@ Body:
     Flags:
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       Debuff: true
@@ -3950,7 +3907,6 @@ Body:
   - Status: Banding_Defence
     Icon: EFST_BANDING_DEFENCE
     Flags:
-      BossResist: true
     Fail:
       Banding_Defence: true
   - Status: Earthdrive
@@ -3996,7 +3952,6 @@ Body:
       SendOption: true
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       StopAttacking: true
       StopWalking: true
       StopCasting: true
@@ -4029,7 +3984,6 @@ Body:
     Icon: EFST_VACUUM_EXTREME
     DurationLookup: SO_VACUUM_EXTREME
     Flags:
-      BossResist: true
       StopWalking: true
       StopAttacking: true
       NoDispell: true
@@ -4181,7 +4135,6 @@ Body:
       DisplayPc: true
       RemoveOnRefresh: true
       RemoveOnLuxAnima: true
-      BossResist: true
       StopWalking: true
       StopAttacking: true
       StopCasting: true
@@ -4406,7 +4359,6 @@ Body:
     Flags:
       BlEffect: true
       DisplayPc: true
-      BossResist: true
       StopWalking: true
       Debuff: true
     Fail:
@@ -4415,7 +4367,6 @@ Body:
     Icon: EFST_CRESCENTELBOW
     DurationLookup: SR_CRESCENTELBOW
     Flags:
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -4555,7 +4506,6 @@ Body:
       Hit: true
       Flee: true
     Flags:
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -4828,7 +4778,6 @@ Body:
       Batk: true
       Watk: true
     Flags:
-      BossResist: true
       NoBanishingBuster: true
       NoClearance: true
       SendVal2: true
@@ -4842,7 +4791,6 @@ Body:
       Aspd: true
       Hit: true
     Flags:
-      BossResist: true
       NoBanishingBuster: true
       NoClearance: true
       SendVal3: true
@@ -4855,7 +4803,6 @@ Body:
     States:
       NoCast: true
     Flags:
-      BossResist: true
       NoBanishingBuster: true
       NoClearance: true
     Fail:
@@ -4868,7 +4815,6 @@ Body:
       Flee: true
       Speed: true
     Flags:
-      BossResist: true
       NoBanishingBuster: true
       NoClearance: true
       SendVal3: true
@@ -4882,7 +4828,6 @@ Body:
       Cri: true
       Flee2: true
     Flags:
-      BossResist: true
       NoBanishingBuster: true
       NoClearance: true
       SendVal3: true
@@ -4895,7 +4840,6 @@ Body:
     CalcFlags:
       MaxHp: true
     Flags:
-      BossResist: true
       NoBanishingBuster: true
       NoClearance: true
       SendVal2: true
@@ -5710,7 +5654,6 @@ Body:
     CalcFlags:
       Def2: true
     Flags:
-      BossResist: true
       StopWalking: true
       NoRemoveOnDead: true
       NoDispell: true
@@ -6138,7 +6081,6 @@ Body:
       All_Riding: true
   - Status: Teargas_Sob
     Flags:
-      BossResist: true
   - Status: _Feintbomb
     DurationLookup: SC_FEINTBOMB
     States:
@@ -6527,7 +6469,6 @@ Body:
     CalcFlags:
       All: true
     Flags:
-      BossResist: true
   - Status: Sv_Roottwist
     Icon: EFST_SV_ROOTTWIST
     DurationLookup: SU_SV_ROOTTWIST
@@ -6536,14 +6477,12 @@ Body:
     Flags:
       BlEffect: true
       DisplayPc: true
-      BossResist: true
       StopWalking: true
       NoSave: true
   - Status: Bitescar
     Icon: EFST_BITESCAR
     DurationLookup: SU_SCAROFTAROU
     Flags:
-      BossResist: true
       NoClearbuff: true
       NoDispell: true
       NoBanishingBuster: true
@@ -6567,7 +6506,6 @@ Body:
     Icon: EFST_FRESHSHRIMP
     DurationLookup: SU_FRESHSHRIMP
     Flags:
-      BossResist: true
   - Status: Active_Monster_Transform
     Icon: EFST_ACTIVE_MONSTER_TRANSFORM
     Flags:
@@ -7405,7 +7343,6 @@ Body:
     CalcFlags:
       Speed: true
     Flags:
-      BossResist: true
       NoDispell: true
       NoBanishingBuster: true
       NoClearance: true
@@ -8256,7 +8193,6 @@ Body:
       Res: true
       Mres: true
     Flags:
-      BossResist: true
       NoClearbuff: true
       Debuff: true
       NoBanishingBuster: true
@@ -8947,19 +8883,16 @@ Body:
     CalcFlags:
       Speed: true
     Flags:
-      BossResist: true
   - Status: Mistyfrost
     Icon: EFST_MISTYFROST
     DurationLookup: HN_JACK_FROST_NOVA
     Flags:
-      BossResist: true
   - Status: Groundgravity
     Icon: EFST_GROUNDGRAVITY
     DurationLookup: HN_GROUND_GRAVITATION
     CalcFlags:
       Speed: true
     Flags:
-      BossResist: true
   - Status: Breakinglimit
     Icon: EFST_BREAKINGLIMIT
     DurationLookup: HN_BREAKINGLIMIT
@@ -9796,7 +9729,6 @@ Body:
       NoSave: true
       StopAttacking: true
       StopCasting: true
-      BossResist: true
   - Status: C_Buff_3
     Icon: EFST_C_BUFF_3
     Flags:
