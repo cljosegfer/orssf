@@ -11945,7 +11945,7 @@ Body:
       DropEffect: CLIENT
     Script: |
       bonus bVit,3;
-      bonus3 bAddEffWhenHit,Eff_Stun,10000,ATF_MAGIC;
+      bonus3 bAddEffWhenHit,Eff_Stun,10000,ATF_WEAPON|ATF_MAGIC|ATF_MISC;
   - Id: 4651
     AegisName: IFN_Tao_Gunka_Card
     Name: Infinite Tao Gunka Card
