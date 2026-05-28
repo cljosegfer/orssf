@@ -1881,7 +1881,6 @@ int32 skill_additional_effect( block_list* src, block_list *bl, uint16 skill_id,
 		break;
 	case NC_FLAMELAUNCHER:
 		sc_start(src, bl, SC_BURNING, 33 * skill_lv, skill_lv, skill_get_time(skill_id, skill_lv));
-		sc_start(src, bl, SC_FEAR, 33 * skill_lv, skill_lv, skill_get_time(skill_id, skill_lv));
 		sc_start(src, bl, SC_ASH, 33 * skill_lv, skill_lv, skill_get_time(skill_id, skill_lv));
 		break;
 	case NC_COLDSLOWER:
@@ -1889,7 +1888,6 @@ int32 skill_additional_effect( block_list* src, block_list *bl, uint16 skill_id,
 		// The skill first trys to give the frozen status to targets that are hit
 		sc_start(src, bl, SC_FREEZE, skill_lv * 33, skill_lv, skill_get_time(skill_id, skill_lv));
 		sc_start(src, bl, SC_FREEZING, skill_lv * 33, skill_lv, skill_get_time(skill_id, skill_lv));
-		sc_start(src, bl, SC_CRYSTALIZE, skill_lv * 33, skill_lv, skill_get_time2(skill_id, skill_lv));
 		// if (!tsc->getSCE(SC_FREEZE)) // If it fails to give the frozen status, it will attempt to give the freezing status
 		// 	sc_start(src, bl, SC_FREEZING, 20 + skill_lv * 10, skill_lv, skill_get_time2(skill_id, skill_lv));
 		break;

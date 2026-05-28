@@ -455,16 +455,18 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 			close;
 		}
 		mes "[Illusion Enchanter]";
-		mes "Your resetting chance varies, depending on the amount of Zeny you pay. What would you like to do?";
+		mes "Your resetting chance is certain. What would you like to do?";
 		next;
-		.@s = select( "I'll come back later.", "100,000 Zeny (50%)", "200,000 Zeny (60%)", "300,000 Zeny (70%)", "400,000 Zeny (80%)", "500,000 Zeny (90%)" ) - 1;
+		.@s = select( "I'll come back later.", "Yes.") - 1;
 		if (.@s == 0) {
 			mes "[Illusion Enchanter]";
 			mes "No problem. Come back if you change your mind.";
 			close;
 		}
-		.@cost = 100000 * .@s;
-		.@rate = 40 + 10 * .@s;
+		.@cost = 0;
+		.@rate = 100 * .@s;
+		.@item_req = 25271;	// IllusionStone
+		.@item_req_count = 5;
 
 		if (Zeny < .@cost) {
 			mes "[Illusion Enchanter]";
@@ -477,6 +479,7 @@ prontera,90,115,5	script	Illusion Enchanter#0	4_GEFFEN_09,3,3,{
 			close;
 
 		Zeny -= .@cost;
+		delitem .@item_req, .@item_req_count;
 		delequip .@loc;
 		if (rand(100) < .@rate) {
 			getitem2 .@eq_id,1,1,.@refine,0,.@card[0],.@card[1],0,0;
@@ -621,22 +624,22 @@ S_Enchant:
 		case 3:
 			// <item ID>, <rate>
 			setarray .@item[0],
-				4700, 700,	// Strength1
-				4701, 600,	// Strength2
-				4702, 500,	// Strength3
-				4703, 200,	// Strength4
-				4740, 700,	// Vitality1
-				4741, 600,	// Vitality2
-				4742, 500,	// Vitality3
-				4743, 200,	// Vitality4
-				4710, 700,	// Inteligence1
-				4711, 600,	// Inteligence2
-				4712, 500,	// Inteligence3
-				4713, 200,	// Inteligence4
-				4750, 700,	// Luck1
-				4751, 600,	// Luck2
-				4752, 500,	// Luck3
-				4753, 200,	// Luck4
+				// 4700, 700,	// Strength1
+				// 4701, 600,	// Strength2
+				// 4702, 500,	// Strength3
+				// 4703, 200,	// Strength4
+				// 4740, 700,	// Vitality1
+				// 4741, 600,	// Vitality2
+				// 4742, 500,	// Vitality3
+				// 4743, 200,	// Vitality4
+				// 4710, 700,	// Inteligence1
+				// 4711, 600,	// Inteligence2
+				// 4712, 500,	// Inteligence3
+				// 4713, 200,	// Inteligence4
+				// 4750, 700,	// Luck1
+				// 4751, 600,	// Luck2
+				// 4752, 500,	// Luck3
+				// 4753, 200,	// Luck4
 				4994, 10,	// Rune of Strength Lv 1
 				4995, 10,	// Rune of Strength Lv 2
 				4997, 10,	// Rune of Agility Lv 1
@@ -649,10 +652,10 @@ S_Enchant:
 				29004, 10,	// Rune of Dexterity Lv 2
 				29006, 10,	// Rune of Luck Lv 1
 				29007, 10,	// Rune of Luck Lv 2
-				4861, 700,	// MHP1
-				4862, 600,	// MHP2
-				4867, 440,	// MHP3
-				4868, 100,	// MHP4
+				// 4861, 700,	// MHP1
+				// 4862, 600,	// MHP2
+				// 4867, 440,	// MHP3
+				// 4868, 100,	// MHP4
 				4992, 10,	// HPAbsorb1_Supplement_Reactor
 				4993, 10,	// SPAbsorb1_Supplement_Reactor
 				29208, 10,	// SP_Absorption_2
