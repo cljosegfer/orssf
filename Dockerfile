@@ -10,11 +10,17 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     git \
     build-essential \
-    default-libmysqlclient-dev \
+    libmariadb-dev \
     zlib1g-dev \
     libcurl4-openssl-dev \
     mariadb-client \
     && rm -rf /var/lib/apt/lists/*
+
+# Ubuntu's libmariadb-dev omits the mysql_config/libmysqlclient.so compat
+# symlinks that rAthena's ./configure script expects (it hardcodes a check
+# for -lmysqlclient and the mysql_config binary), so provide them manually.
+RUN ln -sf "$(command -v mariadb_config)" /usr/bin/mysql_config \
+    && ln -sf libmariadb.so.3 /usr/lib/x86_64-linux-gnu/libmysqlclient.so
 
 # Set the working directory where we will mount our source code
 WORKDIR /usr/src/rathena

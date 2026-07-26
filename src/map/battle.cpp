@@ -9944,16 +9944,18 @@ struct Damage battle_calc_misc_attack(block_list *src,block_list *target,uint16 
 			// Fall through
 #else
 		case CR_ACIDDEMONSTRATION:
-			struct Damage atk = battle_calc_weapon_attack(src, target, skill_id, skill_lv, 0);
-			struct Damage matk = battle_calc_magic_attack(src, target, skill_id, skill_lv, 0);
-			
-			if(tstatus->vit+sstatus->int_) //crash fix
-				md.damage = (int32)((int64)7*tstatus->vit*sstatus->int_*sstatus->int_ / (10*(tstatus->vit+sstatus->int_)));
-			else
-				md.damage = 0;
-			md.damage += (atk.damage + matk.damage);
-			if (tsd)
-				md.damage /= 2;
+			{
+				struct Damage atk = battle_calc_weapon_attack(src, target, skill_id, skill_lv, 0);
+				struct Damage matk = battle_calc_magic_attack(src, target, skill_id, skill_lv, 0);
+
+				if(tstatus->vit+sstatus->int_) //crash fix
+					md.damage = (int32)((int64)7*tstatus->vit*sstatus->int_*sstatus->int_ / (10*(tstatus->vit+sstatus->int_)));
+				else
+					md.damage = 0;
+				md.damage += (atk.damage + matk.damage);
+				if (tsd)
+					md.damage /= 2;
+			}
 #endif
 			break;
 		case NJ_ZENYNAGE:
