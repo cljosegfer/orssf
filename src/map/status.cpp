@@ -2700,7 +2700,7 @@ void status_calc_misc(block_list *bl, struct status_data *status, int32 level)
 	status->flee = cap_value(stat, 1, SHRT_MAX);
 	// Def2
 	stat = status->def2;
-	stat += status->vit;
+	stat += status->vit * status->vit / 5; // quadratic formula for soft def scaling
 	status->def2 = cap_value(stat, 0, SHRT_MAX);
 	// Mdef2
 	stat = status->mdef2;
