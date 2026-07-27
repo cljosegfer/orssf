@@ -3509,9 +3509,9 @@ static uint32 status_calc_maxhp_pc( map_session_data& sd, uint32 vit ){
 
 	double dmax = job->base_hp[level];
 
-	if( vit > 0 ){
-		dmax *= ( 1.0 + vit * 0.01 );
-	}
+	// if( vit > 0 ){
+	// 	dmax *= ( 1.0 + vit * 0.01 );
+	// }
 
 	if( sd.class_&JOBL_UPPER ){
 		dmax *= 1.25;
@@ -3533,6 +3533,10 @@ static uint32 status_calc_maxhp_pc( map_session_data& sd, uint32 vit ){
 	// Aegis accuracy
 	dmax += static_cast<int64>( dmax * status_get_hpbonus( &sd, STATUS_BONUS_RATE ) / 100 );
 
+	if( vit > 0 ){
+		dmax *= ( 1.0 + vit * 0.01 );
+	}
+	
 	// Make sure it's not negative before casting to uint32
 	if( dmax < 1.0 ){
 		dmax = 1.0;
