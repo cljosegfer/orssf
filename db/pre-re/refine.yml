@@ -183,7 +183,7 @@ Body:
             Bonus: 200
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 9900
                 Price: 50
                 Material: Phracon
               - Type: Enriched
@@ -194,7 +194,7 @@ Body:
             Bonus: 400
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 9500
                 Price: 50
                 Material: Phracon
               - Type: Enriched
@@ -205,7 +205,7 @@ Body:
             Bonus: 600
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 9000
                 Price: 50
                 Material: Phracon
               - Type: Enriched
@@ -216,7 +216,7 @@ Body:
             Bonus: 800
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 8500
                 Price: 50
                 Material: Phracon
               - Type: Enriched
@@ -227,7 +227,7 @@ Body:
             Bonus: 1000
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 8000
                 Price: 50
                 Material: Phracon
               - Type: Enriched
@@ -238,7 +238,7 @@ Body:
             Bonus: 1200
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 7500
                 Price: 50
                 Material: Phracon
               - Type: Enriched
@@ -249,7 +249,7 @@ Body:
             Bonus: 1400
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 7000
                 Price: 50
                 Material: Phracon
               - Type: Enriched
@@ -265,7 +265,7 @@ Body:
                 Rate: 6000
                 Price: 50
                 Material: Phracon
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 9000
                 Price: 2000
@@ -280,7 +280,7 @@ Body:
                 Rate: 4000
                 Price: 50
                 Material: Phracon
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 7000
                 Price: 2000
@@ -295,7 +295,7 @@ Body:
                 Rate: 2000
                 Price: 50
                 Material: Phracon
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 3000
                 Price: 2000
