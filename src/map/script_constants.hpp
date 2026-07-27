@@ -608,6 +608,12 @@
 	export_constant2("bInt",SP_INT);
 	export_constant2("bDex",SP_DEX);
 	export_constant2("bLuk",SP_LUK);
+	export_constant2("bStrPlus",SP_STRPLUS);
+	export_constant2("bAgiPlus",SP_AGIPLUS);
+	export_constant2("bVitPlus",SP_VITPLUS);
+	export_constant2("bIntPlus",SP_INTPLUS);
+	export_constant2("bDexPlus",SP_DEXPLUS);
+	export_constant2("bLukPlus",SP_LUKPLUS);
 	export_constant2("bPow",SP_POW);
 	export_constant2("bSta",SP_STA);
 	export_constant2("bWis",SP_WIS);

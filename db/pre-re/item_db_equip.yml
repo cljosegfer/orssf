@@ -41029,7 +41029,7 @@ Body:
     Script: |
       bonus bStr,2;
 
-      .@int = readparam(bInt);
+      .@int = readparam(bInt)+readparam(bIntPlus);
       bonus bBaseAtk,(.@int/8)*5;
       bonus bHealPower,.@int/8;
       bonus bVariableCastrate,-.@int/8;

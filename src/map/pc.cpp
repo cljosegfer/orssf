@@ -10206,6 +10206,12 @@ int64 pc_readparam(map_session_data* sd,int64 type)
 		case SP_INT:             val = sd->status.int_; break;
 		case SP_DEX:             val = sd->status.dex; break;
 		case SP_LUK:             val = sd->status.luk; break;
+		case SP_STRPLUS:         val = sd->battle_status.str - sd->status.str; break;
+		case SP_AGIPLUS:         val = sd->battle_status.agi - sd->status.agi; break;
+		case SP_VITPLUS:         val = sd->battle_status.vit - sd->status.vit; break;
+		case SP_INTPLUS:         val = sd->battle_status.int_ - sd->status.int_; break;
+		case SP_DEXPLUS:         val = sd->battle_status.dex - sd->status.dex; break;
+		case SP_LUKPLUS:         val = sd->battle_status.luk - sd->status.luk; break;
 		case SP_POW:             val = sd->status.pow; break;
 		case SP_STA:             val = sd->status.sta; break;
 		case SP_WIS:             val = sd->status.wis; break;

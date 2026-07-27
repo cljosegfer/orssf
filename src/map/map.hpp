@@ -532,6 +532,9 @@ enum _sp {
 	SP_TRAITPOINT, SP_AP, SP_MAXAP,	// 231-233
 	SP_UPOW=247, SP_USTA, SP_UWIS, SP_USPL, SP_UCON, SP_UCRT,	// 247-252
 
+	// Bonus-only stat readers (battle_status - status; matches the "+n" shown in the client status window)
+	SP_STRPLUS=253, SP_AGIPLUS, SP_VITPLUS, SP_INTPLUS, SP_DEXPLUS, SP_LUKPLUS,	// 253-258
+
 	// original 1000-
 	SP_ATTACKRANGE=1000,	SP_ATKELE,SP_DEFELE,	// 1000-1002
 	SP_CASTRATE, SP_MAXHPRATE, SP_MAXSPRATE, SP_SPRATE, // 1003-1006
