@@ -41091,3 +41091,16 @@ Body:
     ArmorLevel: 1
     EquipLevelMin: 1
     View: 654
+  - Id: 20507
+    AegisName: C_Poring_Bag
+    Name: Costume Poring Bag
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 16
+    Script: |
+      skill "MG_FIREWALL",1;
+      bonus2 bAddMonsterDropItem,1010,100;
+      bonus2 bAddMonsterDropItem,1011,100;
