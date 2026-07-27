@@ -2752,7 +2752,7 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      bonus2 bAddEff,Eff_Stun,500;
+      bonus2 bAddEff,Eff_Stun,2000;
   - Id: 4018
     AegisName: Andre_Larva_Card
     Name: Andre Larva Card

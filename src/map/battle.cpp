@@ -4879,6 +4879,18 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 #endif
 			}
 			break;
+		case MC_CARTREVOLUTION:
+			{
+			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+			ATK_ADD(wd->damage, wd->damage2, matk);
+			}
+			break;
+		case MC_MAMMONITE:
+			{
+			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+			ATK_ADD(wd->damage, wd->damage2, matk);
+			}
+			break;
 		case MO_FINGEROFFENSIVE:
 #ifdef RENEWAL
 			skillratio += 500 + skill_lv * 200;
