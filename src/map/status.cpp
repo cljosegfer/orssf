@@ -3973,6 +3973,13 @@ int32 status_calc_pc_sub(map_session_data* sd, uint8 opt)
 					wa->matk += ( ( ( info->bonus / 100 ) * enchantgrade_info->bonus ) / 100 );
 				}
 			}
+#else
+			// Custom: give weapon refine a magic attack bonus in pre-renewal too.
+			// wa->matk doesn't exist pre-RENEWAL, so route it through the flat,
+			// non-displayed matk bonus that status_calc_bl_main() already adds in.
+			if( info != nullptr && sd->weapontype1 != W_BOW ){
+				sd->bonus.ematk_hidden += info->bonus / 100;
+			}
 #endif
 			// Overrefine bonus.
 			if( info != nullptr ){
