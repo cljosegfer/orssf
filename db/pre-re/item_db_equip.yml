@@ -41015,6 +41015,27 @@ Body:
       bonus bInt,2;
       bonus2 bMagicAddRace,RC_Undead,15;
       bonus2 bMagicAddRace,RC_Demon,15;
+  - Id: 19138
+    AegisName: SeraphimCoronet
+    Name: Seraphim Coronet
+    Type: Armor
+    Buy: 20
+    Weight: 30
+    Locations:
+      Head_Mid: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 1487
+    Script: |
+      bonus bStr,2;
+
+      .@int = readparam(bInt);
+      bonus bBaseAtk,(.@int/8)*5;
+      bonus bHealPower,.@int/8;
+      bonus bVariableCastrate,-.@int/8;
+
+      .@bwatk = readparam(bWeaponAtk);
+      bonus bMatk,.@bwatk;
   - Id: 19500
     AegisName: T_Mr_Smile
     Name: T Mr Smile
