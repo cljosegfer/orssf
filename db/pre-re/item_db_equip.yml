@@ -41102,5 +41102,5 @@ Body:
     View: 16
     Script: |
       skill "MG_FIREWALL",1;
-      bonus2 bAddMonsterDropItem,1010,100;
-      bonus2 bAddMonsterDropItem,1011,100;
+      bonus2 bAddMonsterDropItem,1010,1000;
+      bonus2 bAddMonsterDropItem,1011,1000;

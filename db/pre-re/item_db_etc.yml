@@ -1438,7 +1438,7 @@ Body:
     Name: Phracon
     Type: Etc
     Buy: 200
-    Weight: 200
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 1011
@@ -1446,7 +1446,7 @@ Body:
     Name: Emveretarcon
     Type: Etc
     Buy: 1000
-    Weight: 200
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 1012
@@ -3210,7 +3210,7 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      skill "AL_HEAL",1;
+      skill "AL_HEAL",10;
       bonus bUseSPrate,25;
   - Id: 4054
     AegisName: Angeling_Card
