@@ -4494,6 +4494,7 @@ Body:
     Script: |
       bonus bBaseAtk,5;
       bonus2 bAddDamageClass,1266,30;
+      bonus bAtkEle,Ele_Water;
   - Id: 4154
     AegisName: Rice_Cake_Boy_Card
     Name: Dumpling Child Card
@@ -4533,6 +4534,7 @@ Body:
     Script: |
       bonus bCritAtkRate,10;
       bonus2 bCriticalAddRace,RC_Formless,7;
+      bonus bAtkEle,Ele_Wind;
   - Id: 4157
     AegisName: Goblin_Archer_Card
     Name: Goblin Archer Card
@@ -4630,6 +4632,7 @@ Body:
       bonus bCritical,7;
       if (BaseClass == Job_Swordman)
          bonus3 bAutoSpell,"KN_BOWLINGBASH",5,10;
+      bonus bAtkEle,Ele_Holy;
   - Id: 4164
     AegisName: Gullinbursti_Card
     Name: Gullinbursti Card
@@ -4738,6 +4741,7 @@ Body:
       bonus2 bSPVanishRate,50,10;
       if (BaseJob == Job_Sage)
          bonus bSPDrainValue,1;
+      bonus bAtkEle,Ele_Undead;
   - Id: 4172
     AegisName: The_Paper_Card
     Name: The Paper Card
@@ -5023,6 +5027,7 @@ Body:
     Script: |
       bonus bCritAtkRate,10;
       bonus2 bCriticalAddRace,RC_Fish,7;
+      bonus bAtkEle,Ele_Wind;
   - Id: 4193
     AegisName: Lude_Card
     Name: Lude Card
@@ -5309,6 +5314,7 @@ Body:
     Script: |
       bonus bCritAtkRate,10;
       bonus2 bCriticalAddRace,RC_Insect,7;
+      bonus bAtkEle,Ele_Shadow;
   - Id: 4215
     AegisName: Blazzer_Card
     Name: Blazer Card
@@ -6361,6 +6367,7 @@ Body:
     Script: |
       bonus bCritAtkRate,10;
       bonus2 bCriticalAddRace,RC_Plant,7;
+      bonus bAtkEle,Ele_Fire;
   - Id: 4293
     AegisName: Cookie_Card
     Name: Cookie Card
@@ -6569,6 +6576,7 @@ Body:
       BuyingStore: true
     Script: |
       bonus2 bSPGainRace,RC_Formless,5;
+      bonus bAtkEle,Ele_Earth;
     UnEquipScript: |
       heal 0,-5;
   - Id: 4309
@@ -6597,6 +6605,7 @@ Body:
     Script: |
       bonus bCritAtkRate,10;
       bonus2 bCriticalAddRace,RC_Demon,7;
+      bonus bAtkEle,Ele_Wind;
   - Id: 4311
     AegisName: Permeter_Card
     Name: Permeter Card
@@ -8202,6 +8211,7 @@ Body:
          bonus bCritical,5;
          bonus2 bSkillAtk,62,25;
       }
+      bonus bAtkEle,Ele_Ghost;
   - Id: 4428
     AegisName: Bow_Guardian_Card
     Name: Bow Guardian Card
@@ -8218,6 +8228,7 @@ Body:
          bonus bCritical,5;
          bonus2 bSkillAtk,47,50;
       }
+      bonus bAtkEle,Ele_Ghost;
   - Id: 4429
     AegisName: Salamander_Card
     Name: Salamander Card
@@ -8552,6 +8563,7 @@ Body:
     Script: |
       bonus bInt,1;
       bonus bMatk,3;
+      bonus bAtkEle,Ele_Poison;
   - Id: 4453
     AegisName: Hilsrion_Card
     Name: Hillsrion Card
