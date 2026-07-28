@@ -2700,7 +2700,7 @@ void status_calc_misc(block_list *bl, struct status_data *status, int32 level)
 	status->flee = cap_value(stat, 1, SHRT_MAX);
 	// Def2
 	stat = status->def2;
-	stat += bl->type == BL_PC ? (status->vit * status->vit / 5) : status->vit; // quadratic soft def scaling for players, linear for monsters
+	stat += bl->type == BL_PC ? (status->vit * status->vit / 6) : status->vit; // quadratic soft def scaling for players, linear for monsters
 	status->def2 = cap_value(stat, 0, SHRT_MAX);
 	// Mdef2
 	stat = status->mdef2;
@@ -3653,7 +3653,8 @@ bool status_calc_weight(map_session_data *sd, enum e_status_calc_weight_opt flag
 	sc = &sd->sc;
 	b_max_weight = sd->max_weight; // Store max weight for later comparison
 	b_weight = sd->weight; // Store current weight for later comparison
-	sd->max_weight = job_db.get_maxWeight(pc_mapid2jobid(sd->class_, sd->status.sex)) + sd->status.str * 300; // Recalculate max weight
+	// sd->max_weight = job_db.get_maxWeight(pc_mapid2jobid(sd->class_, sd->status.sex)) + sd->status.str * 300; // Recalculate max weight
+	sd->max_weight = job_db.get_maxWeight(pc_mapid2jobid(sd->class_, sd->status.sex)) + sd->status.str * (590 + 10 * sd->status.str) / 2; // arithmetic progression
 
 	if (flag&CALCWT_ITEM) {
 		sd->weight = 0; // Reset current weight
