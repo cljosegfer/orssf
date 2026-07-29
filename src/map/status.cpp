@@ -2704,7 +2704,8 @@ void status_calc_misc(block_list *bl, struct status_data *status, int32 level)
 	status->def2 = cap_value(stat, 0, SHRT_MAX);
 	// Mdef2
 	stat = status->mdef2;
-	stat += status->int_ + (status->vit / 2);
+	// stat += status->int_ + (status->vit / 2);
+	stat += bl->type == BL_PC ? (status->int_ * status->vit / 12) : status->int_ + (status->vit / 2); // quadratic soft def scaling for players, linear for monsters
 	status->mdef2 = cap_value(stat, 0, SHRT_MAX);
 #endif
 
