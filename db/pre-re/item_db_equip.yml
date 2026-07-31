@@ -41104,3 +41104,16 @@ Body:
       skill "MG_FIREWALL",1;
       bonus2 bAddMonsterDropItem,1010,1000;
       bonus2 bAddMonsterDropItem,1011,1000;
+  - Id: 20763
+    AegisName: C_Amistr_Bag
+    Name: Costume Amistr Bag
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    EquipLevelMin: 1
+    View: 4
+    Script: |
+      skill "MG_FIREWALL",1;
+      bonus2 bAddMonsterDropItem,756,100;
+      bonus2 bAddMonsterDropItem,757,100;

@@ -1036,7 +1036,7 @@ Body:
     Name: Fly Wing
     Type: Delayconsume
     Buy: 60
-    Weight: 50
+    Weight: 30
     Flags:
       BuyingStore: true
     Script: |

@@ -574,7 +574,7 @@ Body:
     Name: Rough Oridecon
     Type: Etc
     Buy: 550
-    Weight: 200
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 757
@@ -582,7 +582,7 @@ Body:
     Name: Rough Elunium
     Type: Etc
     Buy: 650
-    Weight: 200
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 901
