@@ -5242,6 +5242,7 @@ Body:
     TargetType: Attack
     DamageFlags:
       Splash: true
+      IgnoreFlee: true
     Flags:
       IsQuest: true
       TargetTrap: true

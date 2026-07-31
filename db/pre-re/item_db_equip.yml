@@ -16245,8 +16245,8 @@ Body:
     Weight: 300
     Defense: 5
     Locations:
-      Head_Low: true
-      Head_Mid: true
+      # Head_Low: true
+      # Head_Mid: true
       Head_Top: true
     ArmorLevel: 1
     View: 51

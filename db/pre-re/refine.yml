@@ -54,7 +54,7 @@ Body:
             Bonus: 70
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 9900
                 Price: 2000
                 Material: Elunium
               - Type: Enriched
@@ -65,7 +65,7 @@ Body:
             Bonus: 140
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 9000
                 Price: 2000
                 Material: Elunium
               - Type: Enriched
@@ -76,7 +76,7 @@ Body:
             Bonus: 210
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 8100
                 Price: 2000
                 Material: Elunium
               - Type: Enriched
@@ -87,7 +87,7 @@ Body:
             Bonus: 280
             Chances:
               - Type: Normal
-                Rate: 10000
+                Rate: 7200
                 Price: 2000
                 Material: Elunium
               - Type: Enriched
@@ -98,10 +98,10 @@ Body:
             Bonus: 350
             Chances:
               - Type: Normal
-                Rate: 6000
+                Rate: 6300
                 Price: 2000
                 Material: Elunium
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 9000
                 Price: 2000
@@ -111,10 +111,10 @@ Body:
             Bonus: 420
             Chances:
               - Type: Normal
-                Rate: 4000
+                Rate: 5900
                 Price: 2000
                 Material: Elunium
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 7000
                 Price: 2000
@@ -124,10 +124,10 @@ Body:
             Bonus: 490
             Chances:
               - Type: Normal
-                Rate: 4000
+                Rate: 4900
                 Price: 2000
                 Material: Elunium
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 7000
                 Price: 2000
@@ -138,10 +138,10 @@ Body:
             BlacksmithBlessingAmount: 1
             Chances:
               - Type: Normal
-                Rate: 2000
+                Rate: 1900
                 Price: 2000
                 Material: Elunium
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 4000
                 Price: 2000
@@ -152,10 +152,10 @@ Body:
             BlacksmithBlessingAmount: 2
             Chances:
               - Type: Normal
-                Rate: 2000
+                Rate: 1400
                 Price: 2000
                 Material: Elunium
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 4000
                 Price: 2000
@@ -166,10 +166,10 @@ Body:
             BlacksmithBlessingAmount: 4
             Chances:
               - Type: Normal
-                Rate: 1000
+                Rate: 900
                 Price: 2000
                 Material: Elunium
-                BreakingRate: 10000
+                # BreakingRate: 10000
               - Type: Enriched
                 Rate: 2000
                 Price: 2000
