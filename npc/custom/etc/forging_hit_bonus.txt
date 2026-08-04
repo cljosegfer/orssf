@@ -1,0 +1,17 @@
+//===== rAthena Script =======================================
+//= Blacksmith Forging Hit Bonus
+//===== Description: =========================================
+//= Grants +3 Hit per skill level in each Blacksmith forging
+//= skill (Dagger/Sword/Two-Handed Sword/Knuckle/Spear/Axe/
+//= Mace Research), regardless of equipped weapon. Recalculated
+//= on login and map change so skill resets take effect without
+//= requiring a relog.
+//============================================================
+-	script	Forging Hit Bonus	-1,{
+OnPCLoginEvent:
+OnPCLoadMapEvent:
+	.@hit = (getskilllv("BS_DAGGER") + getskilllv("BS_SWORD") + getskilllv("BS_TWOHANDSWORD") + getskilllv("BS_KNUCKLE") + getskilllv("BS_SPEAR") + getskilllv("BS_AXE") + getskilllv("BS_MACE")) * 3;
+	if (.@hit > 0)
+		bonus_script "{ bonus bHit," + .@hit + "; }",86400,1032;
+	end;
+}

@@ -95,8 +95,8 @@
 33,1519,2,102,2,999,45
 //-- Morning Star <-- BS_MACE & 85 Steel, 1 1 Carat Diamond
 34,1513,3,102,3,999,85,730,1
-//-- Sword Mace <-- BS_MACE & 100 Steel, 20 Sharp Scale
-35,1516,3,102,3,999,100,963,20
+//-- Sword Mace <-- BS_MACE & 8 Oridecon, 10 Steel, 20 Sharp Scale
+35,1516,3,102,3,984,8,999,10,963,20
 //-- Stunner <-- BS_MACE & 120 Steel, 1 Heroic Emblem
 36,1522,3,102,3,999,120,968,1
 //----------------------------------------------
