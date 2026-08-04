@@ -4603,7 +4603,8 @@ static TIMER_FUNC(skill_timerskill){
 					sc_start(src, target, SC_BLIND, skl->type, skl->skill_lv, skill_get_time2(skl->skill_id, skl->skill_lv));
 					break;
 				case BS_HAMMERFALL:
-					sc_start(src, target, SC_STUN, skl->type, skl->skill_lv, skill_get_time2(skl->skill_id, skl->skill_lv));
+					// SCSTART_NORATEDEF: stun chance ignores VIT/LUK resistance, only duration is still reduced
+					status_change_start(src, target, SC_STUN, 100 * skl->type, skl->skill_lv, 0, 0, 0, skill_get_time2(skl->skill_id, skl->skill_lv), SCSTART_NORATEDEF);
 					break;
 				case MER_LEXDIVINA:
 					sc_start(src, target, SC_SILENCE, skl->type, skl->skill_lv, skill_get_time2(skl->skill_id, skl->skill_lv));
@@ -8955,7 +8956,7 @@ int32 skill_castend_nodamage_id (block_list *src, block_list *bl, uint16 skill_i
 		break;
 
 	case BS_HAMMERFALL:
-		skill_addtimerskill(src, tick+1000, bl->id, 0, 0, skill_id, skill_lv, min(20+10*skill_lv, 50+5*skill_lv), flag);
+		skill_addtimerskill(src, tick+1000, bl->id, 0, 0, skill_id, skill_lv, 20*skill_lv, flag);
 		break;
 
 	case RG_RAID:

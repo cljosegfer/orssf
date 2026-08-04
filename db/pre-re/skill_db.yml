@@ -3950,7 +3950,7 @@ Body:
       - Level: 2
         Time: 60000
       - Level: 3
-        Time: 90000
+        Time: -1
       - Level: 4
         Time: 120000
       - Level: 5
@@ -3992,7 +3992,7 @@ Body:
       - Level: 2
         Time: 20000
       - Level: 3
-        Time: 30000
+        Time: -1
       - Level: 4
         Time: 40000
       - Level: 5

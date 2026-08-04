@@ -589,6 +589,8 @@ Body:
     DurationLookup: BS_OVERTHRUST
     Opt3:
       OverThrust: true
+    CalcFlags:
+      Str: true
     Flags:
       MadoCancel: true
       RemoveOnHermode: true

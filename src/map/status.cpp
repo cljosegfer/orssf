@@ -6770,6 +6770,8 @@ static uint16 status_calc_str(block_list *bl, status_change *sc, int32 str)
 	}
 	if(sc->getSCE(SC_INCALLSTATUS))
 		str += sc->getSCE(SC_INCALLSTATUS)->val1;
+	if(sc->getSCE(SC_OVERTHRUST))
+		str += str * sc->getSCE(SC_OVERTHRUST)->val3 / 100;
 	if(sc->getSCE(SC_CHASEWALK2))
 		str += sc->getSCE(SC_CHASEWALK2)->val1;
 	if(sc->getSCE(SC_BATTLEORDERS))
@@ -11580,7 +11582,7 @@ static bool status_change_start_post_delay(block_list* src, block_list* bl, sc_t
 #endif
 				}
 				else if (type == SC_ADRENALINE2 || type == SC_ADRENALINE) {
-					val3 = (val2) ? 300 : 200; // Aspd increase
+					val3 = (val2 ? 300 : 200) + status_get_agi(bl); // Aspd increase, scales with target's current AGI
 				}
 				if (s_sd && pc_checkskill(s_sd, BS_HILTBINDING) > 0)
 					tick += tick / 10; //If caster has Hilt Binding, duration increases by 10%

@@ -4660,8 +4660,6 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 #endif
 		if (sd != nullptr)
 			skillratio += sd->bonus.skill_ratio;
-		if(sc->getSCE(SC_OVERTHRUST))
-			skillratio += sc->getSCE(SC_OVERTHRUST)->val3;
 		if(sc->getSCE(SC_MAXOVERTHRUST))
 			skillratio += sc->getSCE(SC_MAXOVERTHRUST)->val2;
 		if(sc->getSCE(SC_BERSERK))
