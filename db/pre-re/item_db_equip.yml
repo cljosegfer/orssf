@@ -8138,7 +8138,7 @@ Body:
     Weight: 1200
     Attack: 130
     Range: 1
-    Slots: 1
+    Slots: 2
     Jobs:
       Acolyte: true
       Alchemist: true
@@ -27626,6 +27626,7 @@ Body:
     Locations:
       Head_Top: true
     ArmorLevel: 1
+    Refineable: true
     View: 226
     Script: |
       bonus2 bSubRace,RC_DemiHuman,10;

@@ -3898,7 +3898,7 @@ Body:
     Description: Hammer Fall
     MaxLevel: 5
     Type: Weapon
-    TargetType: Ground
+    TargetType: Self
     DamageFlags:
       NoDamage: true
       Splash: true
@@ -3913,11 +3913,11 @@ Body:
       - Level: 2
         Area: 2
       - Level: 3
-        Area: 2
+        Area: 3
       - Level: 4
-        Area: 2
+        Area: 4
       - Level: 5
-        Area: 2
+        Area: 5
       - Level: 6
         Area: 12
     Duration2: 5000

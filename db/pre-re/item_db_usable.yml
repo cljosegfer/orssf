@@ -166,7 +166,7 @@ Body:
     Name: White Herb
     Type: Healing
     Buy: 120
-    Weight: 70
+    Weight: 0
     Flags:
       BuyingStore: true
     Script: |
@@ -176,7 +176,7 @@ Body:
     Name: Blue Herb
     Type: Healing
     Buy: 60
-    Weight: 70
+    Weight: 0
     Flags:
       BuyingStore: true
     Script: |

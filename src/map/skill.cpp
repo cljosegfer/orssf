@@ -8956,7 +8956,13 @@ int32 skill_castend_nodamage_id (block_list *src, block_list *bl, uint16 skill_i
 		break;
 
 	case BS_HAMMERFALL:
-		skill_addtimerskill(src, tick+1000, bl->id, 0, 0, skill_id, skill_lv, 20*skill_lv, flag);
+		if (flag & 1) // Recursed for one enemy caught in the splash around the caster
+			skill_addtimerskill(src, tick+1000, bl->id, 0, 0, skill_id, skill_lv, 20*skill_lv, flag);
+		else {
+			clif_skill_nodamage(src, *bl, skill_id, skill_lv);
+			map_foreachinrange(skill_area_sub, bl, skill_get_splash(skill_id, skill_lv), BL_CHAR,
+				src, skill_id, skill_lv, tick, flag|BCT_ENEMY|1, skill_castend_nodamage_id);
+		}
 		break;
 
 	case RG_RAID:
