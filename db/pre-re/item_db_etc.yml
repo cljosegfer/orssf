@@ -1230,7 +1230,7 @@ Body:
     Name: Oridecon
     Type: Etc
     Buy: 1100
-    Weight: 200
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 985
@@ -1238,7 +1238,7 @@ Body:
     Name: Elunium
     Type: Etc
     Buy: 1100
-    Weight: 200
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 986

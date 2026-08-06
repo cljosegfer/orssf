@@ -3885,7 +3885,7 @@ Body:
     Range: 2
     Hit: Single
     HitCount: 1
-    CastTime: 7500
+    # CastTime: 7500
     Requires:
       SpCost: 30
   - Id: 109

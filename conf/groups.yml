@@ -114,6 +114,7 @@ Body:
       # reload: true
       reloadscript: true
       mobsearch: true
+      skillpoint: true
     Permissions:
       attendance: false
   - Id: 2
