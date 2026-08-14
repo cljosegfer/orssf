@@ -6359,7 +6359,7 @@ Body:
     TargetType: Ground
     DamageFlags:
       NoDamage: true
-      IgnoreAtkCard: true
+      # IgnoreAtkCard: true
     Flags:
       IgnoreAutoGuard: true
       IgnoreCicada: true
@@ -6395,7 +6395,7 @@ Body:
       Target: Enemy
       Flag:
         NoReiteration: true
-        NoFootSet: true
+        # NoFootSet: true
   - Id: 230
     Name: AM_ACIDTERROR
     Description: Acid Terror
@@ -6403,7 +6403,7 @@ Body:
     Type: Weapon
     TargetType: Attack
     DamageFlags:
-      IgnoreAtkCard: true
+      # IgnoreAtkCard: true
       IgnoreDefense: true
       IgnoreFlee: true
     Flags:
@@ -13089,8 +13089,8 @@ Body:
     MaxLevel: 10
     Type: Weapon
     TargetType: Attack
-    DamageFlags:
-      IgnoreAtkCard: true
+    # DamageFlags:
+    #   IgnoreAtkCard: true
     Flags:
       AllowOnMado: true
       IgnoreAutoGuard: true
@@ -13104,25 +13104,25 @@ Body:
       SpCost: 15
       ZenyCost:
         - Level: 1
-          Amount: 600
+          Amount: 60
         - Level: 2
-          Amount: 700
+          Amount: 70
         - Level: 3
-          Amount: 800
+          Amount: 80
         - Level: 4
-          Amount: 900
+          Amount: 90
         - Level: 5
-          Amount: 1000
+          Amount: 100
         - Level: 6
-          Amount: 1100
+          Amount: 110
         - Level: 7
-          Amount: 1200
+          Amount: 120
         - Level: 8
-          Amount: 1300
+          Amount: 130
         - Level: 9
-          Amount: 1400
+          Amount: 140
         - Level: 10
-          Amount: 1500
+          Amount: 150
       Weapon:
         Fist: true
         Dagger: true

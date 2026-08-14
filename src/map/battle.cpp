@@ -5082,14 +5082,18 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 				skillratio += skillratio * 50 / 100;
 			break;
 		case WS_CARTTERMINATION:
+			{
 			i = 10 * (16 - skill_lv);
+			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+			ATK_ADD(wd->damage, wd->damage2, matk);	
 			if (i < 1) i = 1;
+			skillratio += 80000 / i - 100;
 			//Preserve damage ratio when max cart weight is changed.
-			if (sd && sd->cart_weight)
-				// skillratio += sd->cart_weight / i * 80000 / battle_config.max_cart_weight - 100;
-				skillratio += sd->cart_weight / i - 100;
-			else if (!sd)
-				skillratio += 80000 / i - 100;
+			// if (sd && sd->cart_weight)
+			// 	skillratio += sd->cart_weight / i * 80000 / battle_config.max_cart_weight - 100;
+			// else if (!sd)
+			// 	skillratio += 80000 / i - 100;
+			}
 			break;
 		case TK_DOWNKICK:
 		case TK_STORMKICK:

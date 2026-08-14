@@ -16080,7 +16080,7 @@ Body:
       bonus bMdef,3;
       bonus bAgi,1;
       bonus bLuk,1;
-      bonus2 bSubRace,RC_Demon,3;
+      bonus2 bSubRace,RC_Demon,10;
   - Id: 2255
     AegisName: Satanic_Chain
     Name: Evil Wing
