@@ -133,9 +133,9 @@ Body:
     Race: Brute
     Status:
       - Type: Hp
-        Base: 320
-        GrowthMinimum: 80
-        GrowthMaximum: 130
+        Base: 640
+        GrowthMinimum: 160
+        GrowthMaximum: 260
         EvolutionMinimum: 10
         EvolutionMaximum: 20
       - Type: Sp

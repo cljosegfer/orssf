@@ -4859,21 +4859,21 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 			{
 			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
         	ATK_ADD(wd->damage, wd->damage2, matk);
-			skillratio += 20 * skill_lv;
+			skillratio += 60 * skill_lv;
 			}
 			break;
 		case AM_ACIDTERROR:
 			{
-#ifdef RENEWAL
 			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
         	ATK_ADD(wd->damage, wd->damage2, matk);
+#ifdef RENEWAL
 			skillratio += -100 + 200 * skill_lv;
 			ShowError("0 enemies targeted by, divide per 0 avoided!\n");
 			ShowDebug("0 enemies targeted by, divide per 0 avoided!\n");
 			if (sd && pc_checkskill(sd, AM_LEARNINGPOTION))
 				skillratio += 100; // !TODO: What's this bonus increase?
 #else
-			skillratio += -50 + 50 * skill_lv;
+			skillratio += 100 * skill_lv;
 #endif
 			}
 			break;
@@ -5018,15 +5018,18 @@ static int32 battle_calc_attack_skill_ratio(struct Damage* wd, block_list *src,b
 			skillratio += 100 + 50 * skill_lv;
 #endif
 			break;
-#ifdef RENEWAL
+// #ifdef RENEWAL
 		case CR_ACIDDEMONSTRATION:
-			skillratio += -100 + 200 * skill_lv + sstatus->int_ + tstatus->vit; // !TODO: Confirm status bonus
-			// skillratio += (sstatus->matk_min + sstatus->matk_max) / 2;
-			skillratio += sstatus->smatk;
-			if (target->type == BL_PC)
-				skillratio /= 2;
+			{
+			int64 matk = (sstatus->matk_min + sstatus->matk_max) / 2;
+        	ATK_ADD(wd->damage, wd->damage2, matk);
+			// skillratio += -100 + 200 * skill_lv + sstatus->int_ + tstatus->vit; // !TODO: Confirm status bonus
+			skillratio += skill_lv * (sstatus-> int_ + tstatus->vit) / 2;
+			// if (target->type == BL_PC)
+			// 	skillratio /= 2;
+			}
 			break;
-#endif
+// #endif
 		case CG_ARROWVULCAN:
 #ifdef RENEWAL
 			skillratio += 400 + 100 * skill_lv;

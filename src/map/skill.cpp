@@ -9880,8 +9880,11 @@ int32 skill_castend_nodamage_id (block_list *src, block_list *bl, uint16 skill_i
 			if (bl->type == BL_HOM)
 				hp *= 3; // Heal effectiveness is 3x for Homunculus
 			hp *= 3;
+#else
+			if (bl->type == BL_HOM)
+				hp *= 2; // Heal effectiveness is 3x for Homunculus
+			hp *= 1.5;
 #endif
-
 			clif_skill_nodamage(src,*bl,skill_id,skill_lv);
 			if( hp > 0 || (skill_id == AM_POTIONPITCHER && sp <= 0) )
 				clif_skill_nodamage(nullptr,*bl,AL_HEAL,hp,1);

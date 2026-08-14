@@ -238,7 +238,7 @@ Body:
     Name: Empty Bottle
     Type: Etc
     Buy: 6
-    Weight: 20
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 714
@@ -622,7 +622,7 @@ Body:
     Name: Stem
     Type: Etc
     Buy: 46
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 906
@@ -806,7 +806,7 @@ Body:
     Name: Immortal Heart
     Type: Etc
     Buy: 374
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 930
@@ -1830,7 +1830,7 @@ Body:
     Name: Fabric
     Type: Etc
     Buy: 306
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 1060
@@ -2031,7 +2031,7 @@ Body:
     Name: Empty Test Tube
     Type: Etc
     Buy: 3
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 1093
@@ -2039,7 +2039,7 @@ Body:
     Name: Empty Potion Bottle
     Type: Etc
     Buy: 10
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 1094
@@ -3512,7 +3512,6 @@ Body:
       BuyingStore: true
     Script: |
       bonus bNoCastCancel;
-      bonus bCastrate,25;
   - Id: 4078
     AegisName: Savage_Card
     Name: Savage Card
@@ -12756,7 +12755,7 @@ Body:
     Name: Poison Spore
     Type: Etc
     Buy: 114
-    Weight: 10
+    Weight: 0
     Flags:
       BuyingStore: true
   - Id: 7034

@@ -348,9 +348,9 @@
 //-- Deadly Poison Bottle <-- ASC_CDP & 1 Venom Canine, 1 Cactus Needle, 1 Bee Sting, 1 Poison Spore, 1 Karvodailnirol, 1 Berserk Potion, 1 Empty Bottle
 127,678,22,407,1,937,1,952,1,939,1,7033,1,972,1,657,1,713,1
 //-- Bottle Grenade <-- AM_PHARMACY & Bottle Grenade Creation Guide & 1 Alcohol, 1 Fabric, 1 Empty Bottle
-128,7135,22,228,1,7128,0,970,1,1059,1,713,1
+128,7135,22,228,1,7128,0,970,100,1059,100,713,100
 //-- Acid Bottle <-- AM_PHARMACY & Acid Bottle Creation Guide & 1 Empty Bottle, 1 Immortal Heart
-129,7136,22,228,1,7129,0,713,1,929,1
+129,7136,22,228,1,7129,0,713,100,929,100
 //-- Plant Bottle <-- AM_PHARMACY & Plant Bottle Creation Guide & 1 Empty Bottle, 2 Maneater Blossom
 130,7137,22,228,1,7130,0,713,1,1032,2
 //-- Marine Sphere Bottle <-- AM_PHARMACY & Marine Sphere Creation Guide & 1 Empty Bottle, 1 Tendon, 1 Detonator
@@ -376,7 +376,7 @@
 //-- Aloevera <-- AM_PHARMACY & Potion Creation Guide & 1 Aloe, 1 Honey, 1 Empty Bottle
 138,606,22,228,1,7144,0,704,1,518,1,713,1
 //-- Alcohol <-- AM_PHARMACY & Alcohol Creation Guide & 1 Empty Bottle, 5 Poison Spore, 5 Stem, 1 Empty Testtube
-139,970,22,228,1,7127,0,713,1,7033,5,905,5,1092,1
+139,970,22,228,1,7127,0,713,100,7033,500,905,500,1092,100
 //-- Embryo <-- AM_PHARMACY & Potion Creation Guide & 1 Seed of Life, 1 Morning Dew of Yggdrasil, 1 Glass Tube
 140,7142,22,228,1,7144,0,7140,1,7141,1,7143,1
 //----------------------------------------------

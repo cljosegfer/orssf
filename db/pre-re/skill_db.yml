@@ -6366,12 +6366,12 @@ Body:
     Range: 9
     Hit: Single
     HitCount: 1
-    Element: Fire
+    Element: Weapon
     CopyFlags:
       Skill:
         Plagiarism: true
         Reproduce: true
-    CastTime: 1000
+    CastTime: 500
     Duration1:
       - Level: 1
         Time: 40000
@@ -6390,8 +6390,8 @@ Body:
           Amount: 1
     Unit:
       Id: Demonstration
-      Range: 1
-      Interval: 1000
+      Range: 5
+      Interval: 500
       Target: Enemy
       Flag:
         NoReiteration: true
@@ -6412,11 +6412,12 @@ Body:
     Range: 9
     Hit: Single
     HitCount: 1
+    Element: Weapon
     CopyFlags:
       Skill:
         Plagiarism: true
         Reproduce: true
-    CastTime: 1000
+    CastTime: 250
     Duration1:
       - Level: 1
         Time: 3
@@ -13294,7 +13295,7 @@ Body:
     Name: CR_ACIDDEMONSTRATION
     Description: Acid Demonstration
     MaxLevel: 10
-    Type: Misc
+    Type: Weapon
     TargetType: Attack
     DamageFlags:
       IgnoreFlee: true
@@ -13321,6 +13322,7 @@ Body:
         Count: 9
       - Level: 10
         Count: 10
+    Element: Weapon
     CastTime: 1000
     AfterCastActDelay: 1000
     Requires:
@@ -30547,7 +30549,6 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    AfterCastActDelay: 30000
     AfterCastWalkDelay: 1000
     Duration1:
       - Level: 1
@@ -30559,7 +30560,8 @@ Body:
       - Level: 4
         Time: 25000
       - Level: 5
-        Time: 20000
+        Time: -1
+    Cooldown: 30000
     Requires:
       SpCost:
         - Level: 1
@@ -30584,13 +30586,13 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    AfterCastActDelay:
+    Cooldown:
       - Level: 1
         Time: 300000
       - Level: 2
-        Time: 600000
+        Time: 300000
       - Level: 3
-        Time: 900000
+        Time: 300000
     AfterCastWalkDelay: 1000
     Duration1:
       - Level: 1

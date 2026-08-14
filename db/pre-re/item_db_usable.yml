@@ -156,7 +156,7 @@ Body:
     Name: Yellow Herb
     Type: Healing
     Buy: 40
-    Weight: 50
+    Weight: 0
     Flags:
       BuyingStore: true
     Script: |

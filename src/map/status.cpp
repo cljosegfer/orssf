@@ -2700,12 +2700,12 @@ void status_calc_misc(block_list *bl, struct status_data *status, int32 level)
 	status->flee = cap_value(stat, 1, SHRT_MAX);
 	// Def2
 	stat = status->def2;
-	stat += bl->type == BL_PC ? (status->vit * status->vit / 6) : status->vit; // quadratic soft def scaling for players, linear for monsters
+	stat += (bl->type == BL_PC) || (bl->type == BL_HOM) ? (status->vit * status->vit / 6) : status->vit; // quadratic soft def scaling for players, linear for monsters
 	status->def2 = cap_value(stat, 0, SHRT_MAX);
 	// Mdef2
 	stat = status->mdef2;
 	// stat += status->int_ + (status->vit / 2);
-	stat += bl->type == BL_PC ? (status->int_ * status->vit / 12) : status->int_ + (status->vit / 2); // quadratic soft def scaling for players, linear for monsters
+	stat += (bl->type == BL_PC) || (bl->type == BL_HOM) ? (status->int_ * status->vit / 12) : status->int_ + (status->vit / 2); // quadratic soft def scaling for players, linear for monsters
 	status->mdef2 = cap_value(stat, 0, SHRT_MAX);
 #endif
 
