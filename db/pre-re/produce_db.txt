@@ -356,7 +356,7 @@
 //-- Marine Sphere Bottle <-- AM_PHARMACY & Marine Sphere Creation Guide & 1 Empty Bottle, 1 Tendon, 1 Detonator
 131,7138,22,228,1,7131,0,713,1,1050,1,1051,1
 //-- Glistening Coat <-- AM_PHARMACY & Glistening Coat Creation Guide & 1 Alcohol, 1 Heart of Mermaid, 1 Zenorcs Fang, 1 Empty Bottle
-132,7139,22,228,1,7132,0,970,1,950,1,1044,1,713,1
+132,7139,22,228,1,7132,0,970,100,950,100,1044,100,713,100
 //----------------------------------------------
 
 //---- Elemental-resist Potions ----------------
