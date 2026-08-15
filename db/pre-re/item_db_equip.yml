@@ -15757,13 +15757,7 @@ Body:
     Defense: 3
     Slots: 1
     Jobs:
-      Acolyte: true
-      Mage: true
-      Monk: true
-      Priest: true
-      Sage: true
-      SoulLinker: true
-      Wizard: true
+      All: true
     Locations:
       Head_Top: true
     ArmorLevel: 1
@@ -16066,7 +16060,7 @@ Body:
     Type: Armor
     Buy: 20
     Weight: 100
-    Defense: 2
+    Defense: 5
     Jobs:
       All: true
       Novice: false
@@ -16087,7 +16081,7 @@ Body:
     Type: Armor
     Buy: 20
     Weight: 100
-    Defense: 3
+    Defense: 5
     Jobs:
       All: true
       Novice: false
@@ -16100,7 +16094,7 @@ Body:
     Script: |
       bonus bMdef,2;
       bonus bStr,1;
-      bonus2 bSubRace,RC_Angel,3;
+      bonus2 bSubRace,RC_Angel,10;
   - Id: 2256
     AegisName: Magestic_Goat
     Name: Majestic Goat
@@ -16664,12 +16658,13 @@ Body:
       Merchant: true
     Locations:
       Head_Low: true
-      Head_Mid: true
+      # Head_Mid: true
     ArmorLevel: 1
     EquipLevelMin: 50
     View: 79
     Script: |
       bonus2 bSubEle,Ele_Fire,10;
+      bonus2 bSubEle,Ele_Neutral,2;
   - Id: 2293
     AegisName: Pretend_Murdered
     Name: Pretend Murdered
@@ -27623,6 +27618,7 @@ Body:
     Type: Armor
     Buy: 30000
     Weight: 700
+    Defense: 5
     Locations:
       Head_Top: true
     ArmorLevel: 1

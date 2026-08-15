@@ -6980,7 +6980,8 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      bonus bVit,readparam(bDex)/18;
+      .@dex = readparam(bDex)+readparam(bDexPlus);
+      bonus bVit,.@dex/9;
   - Id: 4339
     AegisName: Mineral_Card
     Name: Mineral Card
@@ -7085,7 +7086,7 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      bonus bStr,readparam(bInt)/18;
+      bonus bStr,readparam(bInt)/9;
   - Id: 4347
     AegisName: Armaia_Card
     Name: Armeyer Dinze Card
@@ -7409,7 +7410,7 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      bonus bLuk,readparam(bAgi)/18;
+      bonus bLuk,readparam(bAgi)/9;
   - Id: 4370
     AegisName: Dimik_Card
     Name: Dimik Card
@@ -7667,7 +7668,7 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      bonus bAgi,readparam(bLuk)/18;
+      bonus bAgi,readparam(bLuk)/9;
   - Id: 4388
     AegisName: Deathword_Card
     Name: Death Word Card
@@ -7735,7 +7736,7 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      bonus bDex,readparam(bVit)/18;
+      bonus bDex,readparam(bVit)/9;
   - Id: 4393
     AegisName: Shelter_Card
     Name: Mistress of Shelter Card
@@ -7747,7 +7748,7 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      bonus bInt,readparam(bStr)/18;
+      bonus bInt,readparam(bStr)/9;
   - Id: 4394
     AegisName: Solace_Card
     Name: Lady Solace Card
@@ -8312,6 +8313,7 @@ Body:
       BuyingStore: true
     Script: |
       bonus2 bAddRace,RC_Formless,5;
+      bonus2 bSubRace,RC_Formless,5;
       bonus3 bAddMonsterDropItem,756,RC_Formless,10;
       bonus3 bAddMonsterDropItem,757,RC_Formless,10;
   - Id: 4435

@@ -16,10 +16,10 @@ OnPCLoadMapEvent:
 	.@research = getskilllv("BS_WEAPONRESEARCH");
 	.@atk = .@research * 2;
 	.@hit += .@research * 2;
-	.@script = "{ bonus bHit," + .@hit + "; bonus bBaseAtk," + .@atk + "; ";
+	.@script$ = "{ bonus bHit," + .@hit + "; bonus bBaseAtk," + .@atk + "; ";
 	if (getskilllv("BS_REPAIRWEAPON") > 0)
-		.@script += "bonus bUnbreakableWeapon; bonus bUnbreakableArmor; ";
-	.@script += "}";
-	bonus_script .@script,86400,1032;
+		.@script$ += "bonus bUnbreakableWeapon; bonus bUnbreakableArmor; ";
+	.@script$ += "}";
+	bonus_script .@script$,86400,1032;
 	end;
 }
