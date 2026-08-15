@@ -1,12 +1,13 @@
 //===== rAthena Script =======================================
 //= Blacksmith Forging Hit Bonus
 //===== Description: =========================================
-//= Grants +2 Hit per skill level in each Blacksmith forging
+//= Grants +3 Hit per skill level in each Blacksmith forging
 //= skill (Dagger/Sword/Two-Handed Sword/Knuckle/Spear/Axe/
 //= Mace Research), regardless of equipped weapon. Also grants
-//= +2 Atk and +2 Hit per skill level of Weapon Research.
-//= Recalculated on login and map change so skill resets take
-//= effect without requiring a relog.
+//= +2 Atk and +2 Hit per skill level of Weapon Research, and
+//= makes equipped weapon/armor unbreakable while Repair Weapon
+//= is known. Recalculated on login and map change so skill
+//= resets take effect without requiring a relog.
 //============================================================
 -	script	Forging Hit Bonus	-1,{
 OnPCLoginEvent:
@@ -15,7 +16,10 @@ OnPCLoadMapEvent:
 	.@research = getskilllv("BS_WEAPONRESEARCH");
 	.@atk = .@research * 2;
 	.@hit += .@research * 2;
-	if (.@hit > 0 || .@atk > 0)
-		bonus_script "{ bonus bHit," + .@hit + "; bonus bBaseAtk," + .@atk + "; }",86400,1032;
+	.@script = "{ bonus bHit," + .@hit + "; bonus bBaseAtk," + .@atk + "; ";
+	if (getskilllv("BS_REPAIRWEAPON") > 0)
+		.@script += "bonus bUnbreakableWeapon; bonus bUnbreakableArmor; ";
+	.@script += "}";
+	bonus_script .@script,86400,1032;
 	end;
 }

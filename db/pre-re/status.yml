@@ -1330,6 +1330,7 @@ Body:
     DurationLookup: WS_CARTBOOST
     CalcFlags:
       Speed: true
+      Aspd: true
     Flags:
       MadoCancel: true
       NoRemoveOnDead: true

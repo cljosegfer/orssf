@@ -8546,6 +8546,8 @@ static int16 status_calc_aspd_rate(block_list *bl, status_change *sc, int32 aspd
 		aspd_rate -= 100;
 	if (sc->getSCE(SC_STARSTANCE))
 		aspd_rate -= 10 * sc->getSCE(SC_STARSTANCE)->val2;
+	if (sc->getSCE(SC_CARTBOOST))
+		aspd_rate -= 200; // Custom: WS_CARTBOOST grants 20% ASPD
 
 	return (int16)cap_value(aspd_rate,0,SHRT_MAX);
 }
