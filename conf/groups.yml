@@ -114,6 +114,7 @@ Body:
       # reload: true
       reloadscript: true
       mobsearch: true
+      showmobs: true
       skillpoint: true
     Permissions:
       attendance: false

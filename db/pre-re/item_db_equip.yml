@@ -16243,6 +16243,7 @@ Body:
       # Head_Mid: true
       Head_Top: true
     ArmorLevel: 1
+    Refineable: true
     View: 51
     Script: |
       bonus2 bSubRace,RC_Undead,10;

@@ -6411,13 +6411,13 @@ Body:
       IgnoreCicada: true
     Range: 9
     Hit: Single
-    HitCount: 1
+    HitCount: 3
     Element: Weapon
     CopyFlags:
       Skill:
         Plagiarism: true
         Reproduce: true
-    CastTime: 250
+    CastTime: 333
     Duration1:
       - Level: 1
         Time: 3

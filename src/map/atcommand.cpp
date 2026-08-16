@@ -8160,10 +8160,10 @@ ACMD_FUNC(showmobs)
 		return 0;
 	}
 
-	if(status_has_mode(&mob->status,MD_STATUSIMMUNE) && !pc_has_permission(sd, PC_PERM_SHOW_BOSS)){	// If player group does not have access to boss mobs.
-		clif_displaymessage(fd, msg_txt(sd,1251)); // Can't show boss mobs!
-		return 0;
-	}
+	// if(status_has_mode(&mob->status,MD_STATUSIMMUNE) && !pc_has_permission(sd, PC_PERM_SHOW_BOSS)){	// If player group does not have access to boss mobs.
+	// 	clif_displaymessage(fd, msg_txt(sd,1251)); // Can't show boss mobs!
+	// 	return 0;
+	// }
 
 	if(mob_id == strtol(mob_name, nullptr, 10) && !mob->jname.empty())
 		strcpy(mob_name, mob->jname.c_str());    // --ja--
