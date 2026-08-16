@@ -3978,6 +3978,7 @@
 	export_constant(SCSTART_LOADED);
 	export_constant(SCSTART_NORATEDEF);
 	export_constant(SCSTART_NOICON);
+	export_constant(SCSTART_NOHITBREAK);
 
 	/* unit control - mob */
 	export_constant(UMOB_SIZE);

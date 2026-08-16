@@ -3160,6 +3160,7 @@ enum e_status_change_start_flags : uint8 {
 	SCSTART_LOADED     = 0x04, /// When sc_data loaded (fetched from table), no values (val1 ~ val4) have to be altered/recalculate
 	SCSTART_NORATEDEF  = 0x08, /// Rate should not be reduced (by statuses or bonuses)
 	SCSTART_NOICON     = 0x10, /// Status icon won't be sent to client
+	SCSTART_NOHITBREAK = 0x20, /// SC_ENDURE: hit-count is not reduced by damage (unbreakable, like the Eddga Card bonus, but still timed)
 };
 
 /// Enum for status_change_clear_buffs

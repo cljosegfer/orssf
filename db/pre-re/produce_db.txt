@@ -372,9 +372,9 @@
 
 //---- Misc ------------------------------------
 //-- Anodyne <-- AM_PHARMACY & Potion Creation Guide & 1 Ment, 1 Alcohol, 1 Empty Bottle
-137,605,22,228,1,7144,0,708,1,970,1,713,1
+137,605,22,228,1,7144,0,708,100,970,100,713,100
 //-- Aloevera <-- AM_PHARMACY & Potion Creation Guide & 1 Aloe, 1 Honey, 1 Empty Bottle
-138,606,22,228,1,7144,0,704,1,518,1,713,1
+138,606,22,228,1,7144,0,704,100,970,100,713,100 // honey -> Alcohol
 //-- Alcohol <-- AM_PHARMACY & Alcohol Creation Guide & 1 Empty Bottle, 5 Poison Spore, 5 Stem, 1 Empty Testtube
 139,970,22,228,1,7127,0,713,100,7033,500,905,500,1092,100
 //-- Embryo <-- AM_PHARMACY & Potion Creation Guide & 1 Seed of Life, 1 Morning Dew of Yggdrasil, 1 Glass Tube

@@ -1,14 +1,1 @@
-(base) remote@remote:~/Documents/git$ sudo ufw status
-[sudo] password for remote: 
-Status: inactive
-(base) remote@remote:~/Documents/git$ sudo ufw allow 6900/tcp
-Skipping adding existing rule
-Skipping adding existing rule (v6)
-(base) remote@remote:~/Documents/git$ sudo ufw allow 6121/tcp
-Skipping adding existing rule
-Skipping adding existing rule (v6)
-(base) remote@remote:~/Documents/git$ sudo ufw allow 5121/tcp
-Skipping adding existing rule
-Skipping adding existing rule (v6)
-(base) remote@remote:~/Documents/git$ sudo ufw status
-Status: inactive
+this repository is a local server of pre-renewal rAthena (https://github.com/rathena/rathena). 

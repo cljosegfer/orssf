@@ -1082,11 +1082,11 @@ Body:
     Flags:
       BuyingStore: true
     Script: |
-      itemskill "SM_ENDURE",1;
+      sc_start SC_ENDURE,10000,1,100,SCSTART_NOAVOID|SCSTART_NOHITBREAK;
   - Id: 606
     AegisName: Aloebera
     Name: Aloevera
-    Type: Delayconsume
+    Type: Healing
     Buy: 1500
     Weight: 100
     Flags:
@@ -1094,7 +1094,12 @@ Body:
     NoUse:
       Sitting: true
     Script: |
-      itemskill "SM_SELFPROVOKE",1;
+      sc_end SC_Poison;
+      sc_end SC_Silence;
+      sc_end SC_Blind;
+      sc_end SC_Confusion;
+      sc_end SC_Curse;
+      sc_end SC_Hallucination;
   - Id: 607
     AegisName: Yggdrasilberry
     Name: Yggdrasil Berry
