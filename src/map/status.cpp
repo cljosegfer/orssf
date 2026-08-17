@@ -5077,6 +5077,7 @@ int32 status_calc_homunculus_(homun_data *hd, uint8 opt)
 		status->speed = DEFAULT_WALK_SPEED;
 		if (battle_config.hom_setting&HOMSET_COPY_SPEED && hd->master)
 			status->speed = status_get_speed(hd->master);
+		status->speed = cap_value(status->speed * 100 / battle_config.hom_speed_rate, MIN_WALK_SPEED, MAX_WALK_SPEED);
 
 		status->hp = 1;
 		status->sp = 1;
@@ -6117,10 +6118,8 @@ void status_calc_bl_main(block_list& bl, std::bitset<SCB_MAX> flag)
 		case BL_HOM:{
 			homun_data* hd = reinterpret_cast<homun_data*>(&bl);
 
-			if (hd->master != nullptr) {
-				// if (battle_config.hom_setting & HOMSET_COPY_SPEED)
-				// 	status->speed = status_get_speed(hd->master);
-				status->speed = status_get_speed(hd->master);
+			if (hd->master != nullptr && battle_config.hom_setting&HOMSET_COPY_SPEED) {
+				status->speed = cap_value(status_get_speed(hd->master) * 100 / battle_config.hom_speed_rate, MIN_WALK_SPEED, MAX_WALK_SPEED);
 
 				// Homunculus speed buff/debuffs applies over the current speed
 				status->speed = status_calc_speed(&bl, &hd->sc, status->speed);

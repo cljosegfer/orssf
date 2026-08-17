@@ -2530,13 +2530,13 @@ Body:
         MaxLevel: 5
         Requires:
           - Name: AM_CP_WEAPON
-            Level: 5
+            Level: 3
           - Name: AM_CP_SHIELD
-            Level: 5
+            Level: 3
           - Name: AM_CP_ARMOR
-            Level: 5
+            Level: 3
           - Name: AM_CP_HELM
-            Level: 5
+            Level: 3
       - Name: CR_ACIDDEMONSTRATION
         MaxLevel: 10
         Requires:

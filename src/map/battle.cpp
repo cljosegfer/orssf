@@ -12084,6 +12084,7 @@ static const struct _battle_data {
 	{ "debuff_on_logout",                   &battle_config.debuff_on_logout,                0,      0,      1|2,            },
 	{ "monster_ai",                         &battle_config.mob_ai,                          0x0000, 0x0000, 0x3FFF,         },
 	{ "hom_setting",                        &battle_config.hom_setting,                     0xFFFF, 0x0000, 0xFFFF,         },
+	{ "hom_speed_rate",                     &battle_config.hom_speed_rate,                  100,    10,     1000,           },
 	{ "dynamic_mobs",                       &battle_config.dynamic_mobs,                    1,      0,      1,              },
 	{ "mob_remove_damaged",                 &battle_config.mob_remove_damaged,              1,      0,      1,              },
 	{ "show_hp_sp_drain",                   &battle_config.show_hp_sp_drain,                0,      0,      1,              },
