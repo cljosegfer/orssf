@@ -8141,8 +8141,6 @@ ACMD_FUNC(showmobs)
 {
 	char mob_name[100];
 	int32 mob_id;
-	int32 number = 0;
-	struct s_mapiterator* it;
 
 	nullpo_retr(-1, sd);
 
@@ -8173,26 +8171,9 @@ ACMD_FUNC(showmobs)
 		mob_name, mapindex_id2name(sd->mapindex));
 	clif_displaymessage(fd, atcmd_output);
 
-	it = mapit_geteachmob();
-	for(;;)
-	{
-		TBL_MOB* md = (TBL_MOB*)mapit_next(it);
-		if( md == nullptr )
-			break;// no more mobs
-
-		if( md->m != sd->m )
-			continue;
-		if( mob_id != -1 && md->mob_id != mob_id )
-			continue;
-		if( md->special_state.ai || md->master_id )
-			continue; // hide slaves and player summoned mobs
-		if( md->spawn_timer != INVALID_TIMER )
-			continue; // hide mobs waiting for respawn
-
-		++number;
-		clif_viewpoint( *sd, 1, 0, md->x, md->y, number, 0xFFFFFF );
-	}
-	mapit_free(it);
+	sd->showmobs_id = mob_id;
+	sd->showmobs_tick = gettick();
+	pc_showmobs_display(*sd, mob_id);
 
 	return 0;
 }

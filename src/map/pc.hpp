@@ -548,6 +548,9 @@ public:
 	t_tick ks_floodprotect_tick; // [Kill Steal Protection]
 	t_tick equipswitch_tick; // Equip switch
 
+	int32 showmobs_id; // Mob id of last @showmobs search, used to redisplay minimap marks after a same-map teleport (client clears them on any teleport)
+	t_tick showmobs_tick; // Timestamp of the last @showmobs search
+
 	struct s_item_delay {
 		t_itemid nameid;
 		t_tick tick;
@@ -1433,6 +1436,7 @@ enum e_setpos{
 };
 
 enum e_setpos pc_setpos(map_session_data* sd, uint16 mapindex, int32 x, int32 y, clr_type clrtype);
+void pc_showmobs_display(map_session_data& sd, int32 mob_id);
 enum e_setpos pc_setpos_savepoint( map_session_data& sd, clr_type clrtype = CLR_TELEPORT );
 void pc_setsavepoint(map_session_data *sd, int16 mapindex,int32 x,int32 y);
 char pc_randomwarp(map_session_data *sd,clr_type type,bool ignore_mapflag = false);

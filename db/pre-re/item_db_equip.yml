@@ -40534,10 +40534,12 @@ Body:
     EquipLevelMin: 50
     Refineable: true
     Script: |
-      bonus2 bSkillAtk,"AM_ACIDTERROR",20;
-      bonus2 bSkillAtk,"AM_DEMONSTRATION",20;
+      bonus2 bSkillAtk,"AM_ACIDTERROR",30;
+      bonus2 bSkillAtk,"AM_DEMONSTRATION",30;
+      bonus2 bSkillAtk,"CR_ACIDDEMONSTRATION",15;
       bonus bMaxSP,50;
       bonus bHealPower,10;
+      bonus2 bAddEff,Eff_Curse,500;
   - Id: 16001
     AegisName: Red_Square_Bag
     Name: Red Square Bag
@@ -40567,15 +40569,10 @@ Body:
     Refineable: true
     Script: |
       bonus bMaxHP,200;
-      bonus2 bSkillAtk,"AM_ACIDTERROR",20;
-      bonus2 bSkillAtk,"AM_DEMONSTRATION",20;
-      bonus2 bAddMonsterDropItem,501,50;
-      bonus2 bAddMonsterDropItem,502,20;
-      bonus2 bAddMonsterDropItem,503,20;
-      bonus2 bAddMonsterDropItem,504,20;
-      bonus2 bAddMonsterDropItem,505,10;
-      if (readparam(bStr)>=95)
-         bonus2 bAddEff,Eff_Stun,500;
+      bonus2 bSkillAtk,"AM_ACIDTERROR",30;
+      bonus2 bSkillAtk,"AM_DEMONSTRATION",30;
+      bonus2 bSkillAtk,"CR_ACIDDEMONSTRATION",15;
+      bonus2 bAddEff,Eff_Stun,500;
   - Id: 16002
     AegisName: Stunner_C
     Name: Stunner

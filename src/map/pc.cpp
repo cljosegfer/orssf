@@ -6889,6 +6889,37 @@ int32 pc_steal_coin(map_session_data *sd,block_list *target)
 	return 0;
 }
 
+/**
+ * Marks every spawned instance of a mob on sd's minimap (@showmobs).
+ * Also used to redisplay the marks after a same-map teleport, since the
+ * client discards ZC_COMPASS marks on any teleport regardless of their type.
+ * @param sd sd to send the marks to
+ * @param mob_id mob id to search for on sd's current map
+ */
+void pc_showmobs_display(map_session_data& sd, int32 mob_id){
+	struct s_mapiterator* it = mapit_geteachmob();
+	int32 number = 0;
+
+	for(;;){
+		TBL_MOB* md = (TBL_MOB*)mapit_next(it);
+		if( md == nullptr )
+			break;// no more mobs
+
+		if( md->m != sd.m )
+			continue;
+		if( mob_id != -1 && md->mob_id != mob_id )
+			continue;
+		if( md->special_state.ai || md->master_id )
+			continue; // hide slaves and player summoned mobs
+		if( md->spawn_timer != INVALID_TIMER )
+			continue; // hide mobs waiting for respawn
+
+		++number;
+		clif_viewpoint( sd, 1, 0, md->x, md->y, number, 0xFFFFFF );
+	}
+	mapit_free(it);
+}
+
 /*==========================================
  * Set's a player position.
  * @param sd
@@ -7158,7 +7189,11 @@ enum e_setpos pc_setpos(map_session_data* sd, uint16 mapindex, int32 x, int32 y,
 		vending_update(*sd);
 	if (sd->state.buyingstore)
 		buyingstore_update(*sd);
-	
+
+	// Redisplay @showmobs minimap marks lost to the teleport, as long as we're still on the same map and the search hasn't expired
+	if( !sd->state.changemap && sd->showmobs_id != 0 && DIFF_TICK(gettick(), sd->showmobs_tick) < 15000 )
+		pc_showmobs_display(*sd, sd->showmobs_id);
+
 	return SETPOS_OK;
 }
 
