@@ -2926,7 +2926,7 @@ int32 status_calc_mob_(mob_data* md, uint8 opt)
 					break;
 				case AM_CANNIBALIZE:
 					status->max_hp = 1500 + 200*ud->skill_lv + 10*status_get_lv(mbl);
-					status->mode = static_cast<e_mode>(status->mode|MD_CANATTACK|MD_AGGRESSIVE);
+					status->mode = static_cast<e_mode>(status->mode|MD_CANATTACK|MD_AGGRESSIVE|MD_CANMOVE);
 					break;
 				case MH_SUMMON_LEGION:
 				{

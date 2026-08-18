@@ -1541,7 +1541,7 @@ static int32 mob_ai_sub_hard_slavemob(mob_data *md,t_tick tick)
 		// Distance with between slave and master is measured.
 		md->master_dist = distance_bl(md, bl);
 
-		if (battle_config.slave_stick_with_master || md->special_state.ai == AI_ABR || md->special_state.ai == AI_BIONIC) {
+		if (battle_config.slave_stick_with_master || md->special_state.ai == AI_ABR || md->special_state.ai == AI_BIONIC || md->special_state.ai == AI_FLORA) {
 			// Teleport to master if further away than 15 cells (official value for AI_ABR and AI_BIONIC)
 			if (bl->m != md->m || md->master_dist > AREA_SIZE+1) {
 				md->master_dist = 0;

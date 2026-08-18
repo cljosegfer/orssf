@@ -24181,7 +24181,7 @@ Body:
     Agi: 12
     Vit: 24
     Int: 0
-    Dex: 36
+    Dex: 3600
     Luk: 15
     AttackRange: 4
     SkillRange: 10
@@ -42614,7 +42614,7 @@ Body:
     Vit: 0
     Int: 0
     Dex: 0
-    Luk: 0
+    Luk: 1
     SkillRange: 0
     ChaseRange: 0
     Size: Medium
@@ -42845,7 +42845,7 @@ Body:
     Vit: 0
     Int: 0
     Dex: 0
-    Luk: 0
+    Luk: 1
     SkillRange: 0
     ChaseRange: 0
     Size: Medium

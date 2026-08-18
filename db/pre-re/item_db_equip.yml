@@ -40539,7 +40539,7 @@ Body:
       bonus2 bSkillAtk,"CR_ACIDDEMONSTRATION",15;
       bonus bMaxSP,50;
       bonus bHealPower,10;
-      bonus2 bAddEff,Eff_Curse,500;
+      bonus2 bAddEff,Eff_Curse,1000;
   - Id: 16001
     AegisName: Red_Square_Bag
     Name: Red Square Bag
@@ -40572,7 +40572,7 @@ Body:
       bonus2 bSkillAtk,"AM_ACIDTERROR",30;
       bonus2 bSkillAtk,"AM_DEMONSTRATION",30;
       bonus2 bSkillAtk,"CR_ACIDDEMONSTRATION",15;
-      bonus2 bAddEff,Eff_Stun,500;
+      bonus2 bAddEff,Eff_Stun,1000;
   - Id: 16002
     AegisName: Stunner_C
     Name: Stunner

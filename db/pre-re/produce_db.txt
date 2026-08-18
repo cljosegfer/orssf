@@ -352,7 +352,7 @@
 //-- Acid Bottle <-- AM_PHARMACY & Acid Bottle Creation Guide & 1 Empty Bottle, 1 Immortal Heart
 129,7136,22,228,1,7129,0,713,100,929,100
 //-- Plant Bottle <-- AM_PHARMACY & Plant Bottle Creation Guide & 1 Empty Bottle, 2 Maneater Blossom
-130,7137,22,228,1,7130,0,713,1,1032,2
+130,7137,22,228,1,7130,0,713,100,1032,200
 //-- Marine Sphere Bottle <-- AM_PHARMACY & Marine Sphere Creation Guide & 1 Empty Bottle, 1 Tendon, 1 Detonator
 131,7138,22,228,1,7131,0,713,1,1050,1,1051,1
 //-- Glistening Coat <-- AM_PHARMACY & Glistening Coat Creation Guide & 1 Alcohol, 1 Heart of Mermaid, 1 Zenorcs Fang, 1 Empty Bottle

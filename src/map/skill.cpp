@@ -1263,6 +1263,48 @@ int32 skill_additional_effect( block_list* src, block_list *bl, uint16 skill_id,
 		//So if the target can't be inflicted with statuses, this is pointless.
 		return 0;
 
+	// Cannibalize plants inherit their alchemist's on-attack status chances (bAddEff).
+	if( !sd && md && md->master_id && md->special_state.ai == AI_FLORA && battle_config.summons_trigger_autospells ) {
+		map_session_data* msd = map_id2sd(md->master_id);
+
+		if( msd && skill_id != WS_CARTTERMINATION && skill_id != AM_DEMONSTRATION && skill_id != CR_REFLECTSHIELD && skill_id != MS_REFLECTSHIELD && skill_id != GN_HELLS_PLANT_ATK
+#ifndef RENEWAL
+			&& skill_id != ASC_BREAKER
+#endif
+		) {
+			for (const auto &it : msd->addeff) {
+				int32 rate = it.rate;
+
+				if( attack_type&BF_LONG ) // Any ranged physical attack takes status arrows into account (Grimtooth...) [DracoRPG]
+					rate += it.arrow_rate;
+				if( !rate )
+					continue;
+
+				if ((it.flag&(ATF_WEAPON|ATF_MAGIC|ATF_MISC)) != (ATF_WEAPON|ATF_MAGIC|ATF_MISC)) {
+					// Trigger has attack type consideration.
+					if ((it.flag&ATF_WEAPON && attack_type&BF_WEAPON) ||
+						(it.flag&ATF_MAGIC && attack_type&BF_MAGIC) ||
+						(it.flag&ATF_MISC && attack_type&BF_MISC))
+						;
+					else
+						continue;
+				}
+
+				if ((it.flag&(ATF_LONG|ATF_SHORT)) != (ATF_LONG|ATF_SHORT)) {
+					// Trigger has range consideration.
+					if ((it.flag&ATF_LONG && !(attack_type&BF_LONG)) ||
+						(it.flag&ATF_SHORT && !(attack_type&BF_SHORT)))
+						continue; //Range Failed.
+				}
+
+				if (it.flag&ATF_TARGET)
+					status_change_start(src, bl, it.sc, rate, 7, 0, 0, 0, it.duration, SCSTART_NONE, 100);
+				if (it.flag&ATF_SELF)
+					status_change_start(src, src, it.sc, rate, 7, 0, 0, 0, it.duration, SCSTART_NONE, 100);
+			}
+		}
+	}
+
 	if( sd )
 	{ // These statuses would be applied anyway even if the damage was blocked by some skills. [Inkfish]
 		if( skill_id != WS_CARTTERMINATION && skill_id != AM_DEMONSTRATION && skill_id != CR_REFLECTSHIELD && skill_id != MS_REFLECTSHIELD && skill_id != GN_HELLS_PLANT_ATK
